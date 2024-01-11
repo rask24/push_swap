@@ -32,7 +32,7 @@ all: title $(NAME)
 $(NAME): $(OBJ)
 	@printf "\n"
 	@make -C $(LIBFT_DIR)
-	@$(CC) $^ -o $@
+	@$(CC) $^ -L $(LIBFT_DIR) -lft -o $@
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
