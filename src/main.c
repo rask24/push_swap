@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/11 14:42:21 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/11 15:56:52 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	main(int argc, char **argv)
 {
 	if (argc < 2)
 		return (0);
-	// if (!is_valid_argument())
-	exit_with_error();
-	// TODO: delete
-	(void)argv;
+	if (is_invalid_argument(argc, argv))
+		exit_with_error();
 	return (0);
 }
