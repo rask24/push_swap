@@ -6,11 +6,16 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/11 19:40:24 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/11 20:14:28 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	put_void(void *content)
+{
+	puts(content);
+}
 
 int	main(int argc, char **argv)
 {
