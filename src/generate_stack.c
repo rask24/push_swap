@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   generate_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/11 19:40:24 by reasuke          ###   ########.fr       */
+/*   Created: 2024/01/11 19:04:40 by reasuke           #+#    #+#             */
+/*   Updated: 2024/01/11 19:36:37 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+t_list	*generate_stack(int argc, char **argv)
 {
-	t_list	*stack_a;
+	t_list	*stack;
+	int		i;
 
-	if (argc < 2)
-		return (0);
-	if (is_invalid_argument(argc, argv))
-		exit_with_error();
-	stack_a = generate_stack(argc, argv);
-	ft_lstclear(&stack_a, NULL);
-	return (0);
+	i = 1;
+	stack = NULL;
+	while (i < argc)
+	{
+		ft_lstadd_back(&stack, ft_lstnew(argv[i]));
+		i++;
+	}
+	return (stack);
 }

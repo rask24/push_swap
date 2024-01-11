@@ -7,6 +7,7 @@ INC_DIR			= ./include
 LIBFT_DIR		= ./libft
 SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/is_invalid_argument.c \
+					$(SRC_DIR)/generate_stack.c \
 					$(SRC_DIR)/utils/exit_with_error.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))

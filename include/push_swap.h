@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/11 15:45:14 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/11 19:35:24 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include "../libft/libft.h"
 
 bool	is_invalid_argument(int argc, char **argv);
+
+t_list	*generate_stack(int argc, char **argv);
 
 void	exit_with_error(void);
 
