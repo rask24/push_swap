@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   exit_with_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/11 15:45:14 by reasuke          ###   ########.fr       */
+/*   Created: 2024/01/11 14:38:17 by reasuke           #+#    #+#             */
+/*   Updated: 2024/01/11 14:38:59 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <limits.h>
-# include <stdbool.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-// TODO: delete
-# include <stdio.h>
-
-# include "../libft/libft.h"
-
-bool	is_invalid_argument(int argc, char **argv);
-
-void	exit_with_error(void);
-
-#endif
+void	exit_with_error(void)
+{
+	ft_putendl_fd("Error", STDERR_FILENO);
+	exit(1);
+}

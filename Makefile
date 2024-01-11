@@ -5,7 +5,9 @@ SRC_DIR			= ./src
 BUILD_DIR		= ./build
 INC_DIR			= ./include
 LIBFT_DIR		= ./libft
-SRC				= $(SRC_DIR)/main.c
+SRC				= $(SRC_DIR)/main.c \
+					$(SRC_DIR)/is_invalid_argument.c \
+					$(SRC_DIR)/utils/exit_with_error.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
 DEPFLAGS		= -MMD -MP
@@ -13,7 +15,8 @@ INCLUDE			= -I $(INC_DIR)
 
 CXXFLAGS		= -std=c++20 -Wall -Wextra -Werror
 TEST_DIR		= ./test
-TEST_SRC		= $(TEST_DIR)/test.cpp
+TEST_SRC		= $(TEST_DIR)/test_is_invalid_argument.cpp
+TEST_OBJ		= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))
 GTEST_VERSION	= 1.14.0
 GTEST_DIR		= ./test/gtest
 GTEST_ARCHIVE	= v$(GTEST_VERSION).tar.gz
@@ -32,7 +35,7 @@ all: title $(NAME)
 $(NAME): $(OBJ)
 	@printf "\n"
 	@make -C $(LIBFT_DIR)
-	@$(CC) $^ -o $@
+	@$(CC) $^ -L $(LIBFT_DIR) -lft -o $@
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
@@ -52,8 +55,9 @@ re: fclean all
 test: $(GTEST_DIR)
 	@echo "$(BLUE)test$(RESET)"
 	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -L $(LIBFT_DIR) -l ft -lpthread -o tester \
-		$(TEST_SRC) $(GTEST_DIR)/gtest_main.cc $(GTEST_DIR)/gtest-all.cc
+		$(TEST_SRC) $(GTEST_DIR)/gtest_main.cc $(GTEST_DIR)/gtest-all.cc $(TEST_OBJ)
 	@./tester # --gtest_filter=Vector.other
+	@$(RM) tester
 
 $(GTEST_DIR):
 	@echo "$(BLUE)fetching google test$(RESET)"
@@ -72,6 +76,6 @@ norm:
 title:
 	@echo "$(BLUE)push_swap$(RESET)"
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test norm title
 
 -include $(DEP)
