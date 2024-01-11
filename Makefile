@@ -1,6 +1,5 @@
 NAME			= push_swap
 CFLAGS			= -Werror -Wextra -Wall -O3
-NORM			= norminette
 
 SRC_DIR			= ./src
 BUILD_DIR		= ./build
@@ -12,16 +11,16 @@ DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
 DEPFLAGS		= -MMD -MP
 INCLUDE			= -I $(INC_DIR)
 
-GTEST_VERSION	= 1.8.0
-GTEST_DIR		= ./gtest
-GTEST			= $(GTEST_DIR)/gtest $(GTEST_DIR)/googletest-release-$(GTEST_VERSION)
+CXXFLAGS		= -std=c++20 -Wall -Wextra -Werror
 TEST_DIR		= ./test
 TEST_SRC		= $(TEST_DIR)/test.cpp
-TEST_COMPILE	= clang++ -std=c++11 \
-					$(TEST_SRC) \
-					$(GTEST_DIR)/googletest-release-$(GTEST_VERSION)/googletest/src/gtest_main.cc \
-					$(GTEST_DIR)/gtest/gtest-all.cc \
-					-I $(GTEST_DIR) $(INCLUDE) -L $(LIBFT_DIR) -l ft -lpthread -o tester
+GTEST_VERSION	= 1.14.0
+GTEST_DIR		= ./test/gtest
+GTEST_ARCHIVE	= v$(GTEST_VERSION).tar.gz
+GTEST_SRC_DIR	= googletest-$(GTEST_VERSION)
+GTEST_FUSE		= fuse_gtest_files.py
+
+NORM			= norminette
 
 GREEN	=	\033[0;32m
 BLUE	=	\033[0;34m
@@ -50,17 +49,22 @@ fclean: clean
 
 re: fclean all
 
-test: $(GTEST)
+test: $(GTEST_DIR)
 	@echo "$(BLUE)test$(RESET)"
-	@$(TEST_COMPILE)
+	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -L $(LIBFT_DIR) -l ft -lpthread -o tester \
+		$(TEST_SRC) $(GTEST_DIR)/gtest_main.cc $(GTEST_DIR)/gtest-all.cc
 	@./tester # --gtest_filter=Vector.other
 
-$(GTEST):
-	@curl -OL https://github.com/google/googletest/archive/refs/tags/release-$(GTEST_VERSION).tar.gz
-	@tar -xvzf release-$(GTEST_VERSION).tar.gz googletest-release-$(GTEST_VERSION)
-	@$(RM) release-$(GTEST_VERSION).tar.gz
-	@python3 googletest-release-$(GTEST_VERSION)/googletest/scripts/fuse_gtest_files.py $(GTEST_DIR)
-	@mv googletest-release-$(GTEST_VERSION) $(GTEST_DIR)
+$(GTEST_DIR):
+	@echo "$(BLUE)fetching google test$(RESET)"
+	@curl -#OL https://github.com/google/googletest/archive/refs/tags/$(GTEST_ARCHIVE)
+	@echo "$(BLUE)fetching fuse_gtest_files.py$(RESET)"
+	@curl -#OL https://raw.githubusercontent.com/google/googletest/ec44c6c1675c25b9827aacd08c02433cccde7780/googletest/scripts/$(GTEST_FUSE)
+	@tar -xzf $(GTEST_ARCHIVE) $(GTEST_SRC_DIR)
+	@python3 $(GTEST_FUSE) $(GTEST_SRC_DIR)/googletest $(GTEST_DIR)
+	@mv $(GTEST_SRC_DIR)/googletest/src/gtest_main.cc $(GTEST_DIR)
+	@mv $(GTEST_DIR)/gtest/* $(GTEST_DIR)
+	@$(RM) -r $(GTEST_SRC_DIR) $(GTEST_DIR)/gtest $(GTEST_ARCHIVE) $(GTEST_FUSE)
 
 norm:
 	$(NORM) $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
