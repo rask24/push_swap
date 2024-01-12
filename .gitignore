@@ -60,6 +60,7 @@ build/
 # Executable File
 push_swap
 checker_Mac
+checker_linux
 tester
 
 # Subject File
