@@ -1,5 +1,7 @@
 NAME			= push_swap
-CFLAGS			= -Werror -Wextra -Wall -O3
+CFLAGS			= -Werror -Wextra -Wall
+PROD_FLAGS		= -O3
+DEV_FLAGS		= -g -O0 -D DEV
 
 SRC_DIR			= ./src
 BUILD_DIR		= ./build
@@ -31,6 +33,7 @@ BLUE	=	\033[0;34m
 RED		=	\033[0;31m
 RESET	=	\033[0m
 
+all: CFLAGS += $(PROD_FLAGS)
 all: title $(NAME)
 
 $(NAME): $(OBJ)
@@ -45,13 +48,17 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	@make clean -C $(LIBFT_DIR)
-	@$(RM) $(OBJ)
+	@$(RM) $(OBJ) $(DEP)
 
 fclean: clean
 	@make fclean -C $(LIBFT_DIR)
 	@$(RM) $(NAME)
 
 re: fclean all
+
+dev: CFLAGS += $(DEV_FLAGS)
+dev: title
+dev: $(NAME)
 
 test: $(GTEST_DIR)
 	@echo "$(BLUE)test$(RESET)"
@@ -77,6 +84,6 @@ norm:
 title:
 	@echo "$(BLUE)push_swap$(RESET)"
 
-.PHONY: all clean fclean re test norm title
+.PHONY: all clean fclean re dev test norm title
 
 -include $(DEP)

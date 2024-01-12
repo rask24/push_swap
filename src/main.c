@@ -6,16 +6,26 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/11 20:14:28 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/12 15:49:05 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+#ifdef DEV
+
+__attribute__((destructor))
+void	destructor(void)
+{
+	system("leaks -q push_swap");
+}
+
 void	put_void(void *content)
 {
 	puts(content);
 }
+
+#endif
 
 int	main(int argc, char **argv)
 {
@@ -26,6 +36,6 @@ int	main(int argc, char **argv)
 	if (is_invalid_argument(argc, argv))
 		exit_with_error();
 	stack_a = generate_stack(argc, argv);
-	ft_lstclear(&stack_a, NULL);
+	ft_lstclear(&stack_a, free);
 	return (0);
 }
