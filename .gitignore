@@ -68,3 +68,6 @@ en.subject.pdf
 
 # Google Test Source
 gtest/
+
+# Visualizer
+push_swap_visualizer/
