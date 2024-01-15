@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_invalid_argument.c                              :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:44:55 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/11 18:16:19 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:18:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,11 @@ static bool	_has_duplicate(int argc, char **argv)
 	return (false);
 }
 
-bool	is_invalid_argument(int argc, char **argv)
+int	check_args(int argc, char **argv)
 {
-	return (_has_not_digit(argc, argv)
+	if (_has_not_digit(argc, argv)
 		|| _has_overflow(argc, argv)
-		|| _has_duplicate(argc, argv));
+		|| _has_duplicate(argc, argv))
+		exit_with_error();
+	return (0);
 }

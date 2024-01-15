@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 12:04:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:04:27 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 
-	if (argc < 2)
-		return (0);
-	if (is_invalid_argument(argc, argv))
-		exit_with_error();
+	check_args(argc, argv);
 	stack_a = generate_stack(argc, argv);
 	if (argc < 5)
 		nano_sort(stack_a, argc);
