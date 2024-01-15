@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 15:14:07 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 15:24:24 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	destructor(void)
 
 void	put_void(void *content)
 {
-	puts(content);
+	ft_printf("%d\n", *(int *)content);
 }
 
 #endif
@@ -37,7 +37,9 @@ int	main(int argc, char **argv)
 
 	check_args(argc, argv);
 	stack_a = generate_stack(argc, argv);
+	ft_lstiter(stack_a, put_void);
 	sort(&stack_a, argc);
+	ft_lstiter(stack_a, put_void);
 	ft_lstclear(&stack_a, free);
 	return (0);
 }
