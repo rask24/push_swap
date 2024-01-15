@@ -60,6 +60,7 @@ build/
 # Executable File
 push_swap
 checker_Mac
+checker_linux
 tester
 
 # Subject File
@@ -67,3 +68,6 @@ en.subject.pdf
 
 # Google Test Source
 gtest/
+
+# Visualizer
+push_swap_visualizer/

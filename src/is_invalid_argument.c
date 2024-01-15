@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:44:55 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/11 16:18:03 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:16:19 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static bool	_has_not_digit(int argc, char **argv)
 	return (false);
 }
 
-static bool	_has_overflowed(int argc, char **argv)
+static bool	_has_overflow(int argc, char **argv)
 {
 	int		i;
 	long	num;
@@ -67,6 +67,6 @@ static bool	_has_duplicate(int argc, char **argv)
 bool	is_invalid_argument(int argc, char **argv)
 {
 	return (_has_not_digit(argc, argv)
-		|| _has_overflowed(argc, argv)
+		|| _has_overflow(argc, argv)
 		|| _has_duplicate(argc, argv));
 }
