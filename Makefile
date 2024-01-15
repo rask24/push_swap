@@ -24,8 +24,11 @@ INCLUDE			= -I $(INC_DIR)
 
 CXXFLAGS		= -std=c++20 -Wall -Wextra -Werror
 TEST_DIR		= ./test
-TEST_SRC		= $(TEST_DIR)/test_is_invalid_argument.cpp \
-					$(TEST_DIR)/test_stack_operations.cpp
+TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
+					$(TEST_DIR)/test_push_stack.cpp \
+					$(TEST_DIR)/test_reverse_rotate_stack.cpp \
+					$(TEST_DIR)/test_rotate_stack.cpp \
+					$(TEST_DIR)/test_swap_stack.cpp
 TEST_OBJ		= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))
 GTEST_VERSION	= 1.14.0
 GTEST_DIR		= ./test/gtest
