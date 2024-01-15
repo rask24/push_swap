@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 15:22:11 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 15:34:25 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,34 +36,21 @@ static void	_handle_3(t_list **stack)
 	second = *(int *)(*stack)->next->content;
 	third = *(int *)(*stack)->next->next->content;
 	if (first == 2 && second == 1 && third == 3)
-	{
-		swap_stack(stack);
-		ft_putendl_fd("sa", STDOUT_FILENO);
-	}
+		operate_sa(stack);
 	else if (first == 3 && second == 2 && third == 1)
 	{
-		ft_putendl_fd("sa", STDOUT_FILENO);
-		swap_stack(stack);
-		ft_putendl_fd("rra", STDOUT_FILENO);
-		reverse_rotate_stack(stack);
+		operate_sa(stack);
+		operate_rra(stack);
 	}
 	else if (first == 3 && second == 1 && third == 2)
-	{
-		rotate_stack(stack);
-		ft_putendl_fd("ra", STDOUT_FILENO);
-	}
+		operate_ra(stack);
 	else if (first == 1 && second == 3 && third == 2)
 	{
-		swap_stack(stack);
-		ft_putendl_fd("sa", STDOUT_FILENO);
-		rotate_stack(stack);
-		ft_putendl_fd("ra", STDOUT_FILENO);
+		operate_sa(stack);
+		operate_ra(stack);
 	}
 	else if (first == 2 && second == 3 && third == 1)
-	{
-		reverse_rotate_stack(stack);
-		ft_putendl_fd("rra", STDOUT_FILENO);
-	}
+		operate_rra(stack);
 }
 
 void	nano_sort(t_list **stack, int num_of_element)
