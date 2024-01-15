@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:32:19 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 15:33:01 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:48:46 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	operate_ra(t_list **stack_a)
 
 void	operate_rra(t_list **stack_a)
 {
-	swap_stack(stack_a);
+	reverse_rotate_stack(stack_a);
 	ft_putendl_fd("rra", STDOUT_FILENO);
 }

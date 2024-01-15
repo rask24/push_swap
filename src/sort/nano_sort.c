@@ -49,7 +49,7 @@ static void	_handle_3(t_list **stack)
 		operate_sa(stack);
 		operate_ra(stack);
 	}
-	else if (first == 2 && second == 3 && third == 1)
+	else if (third < first && first < second)
 		operate_rra(stack);
 }
 

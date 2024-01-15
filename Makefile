@@ -11,6 +11,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/check_args.c \
 					$(SRC_DIR)/generate_stack.c \
 					$(SRC_DIR)/sort/sort.c \
+					$(SRC_DIR)/sort/micro_sort.c \
 					$(SRC_DIR)/sort/nano_sort.c \
 					$(SRC_DIR)/stack_operations/operation.c \
 					$(SRC_DIR)/stack_operations/push.c \
