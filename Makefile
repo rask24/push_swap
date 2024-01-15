@@ -11,6 +11,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/check_args.c \
 					$(SRC_DIR)/generate_stack.c \
 					$(SRC_DIR)/nano_sort.c \
+					$(SRC_DIR)/stack_operations/swap.c \
 					$(SRC_DIR)/utils/exit_with_error.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
@@ -19,7 +20,8 @@ INCLUDE			= -I $(INC_DIR)
 
 CXXFLAGS		= -std=c++20 -Wall -Wextra -Werror
 TEST_DIR		= ./test
-TEST_SRC		= $(TEST_DIR)/test_is_invalid_argument.cpp
+TEST_SRC		= $(TEST_DIR)/test_is_invalid_argument.cpp \
+					$(TEST_DIR)/test_stack_operations.cpp
 TEST_OBJ		= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))
 GTEST_VERSION	= 1.14.0
 GTEST_DIR		= ./test/gtest

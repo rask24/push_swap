@@ -1,44 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 13:27:42 by reasuke          ###   ########.fr       */
+/*   Created: 2024/01/15 13:28:54 by reasuke           #+#    #+#             */
+/*   Updated: 2024/01/15 13:47:24 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#ifdef DEV
-
-# ifdef __APPLE__
-
-__attribute__((destructor))
-void	destructor(void)
+void	swap_stack(t_list **stack)
 {
-	system("leaks -q push_swap");
-}
+	t_list	*second;
 
-# endif
-
-void	put_void(void *content)
-{
-	puts(content);
-}
-
-#endif
-
-int	main(int argc, char **argv)
-{
-	t_list	*stack_a;
-
-	check_args(argc, argv);
-	stack_a = generate_stack(argc, argv);
-	if (argc < 5)
-		nano_sort(stack_a, argc);
-	ft_lstclear(&stack_a, free);
-	return (0);
+	if (ft_lstsize(*stack) < 2)
+		return ;
+	second = (*stack)->next;
+	(*stack)->next = (*stack)->next->next;
+	second->next = *stack;
+	*stack = second;
 }
