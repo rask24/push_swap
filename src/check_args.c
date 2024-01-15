@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:44:55 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 13:07:33 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:18:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ static bool	_has_duplicate(int argc, char **argv)
 	return (false);
 }
 
-void	check_args(int argc, char **argv)
+int	check_args(int argc, char **argv)
 {
 	if (_has_not_digit(argc, argv)
 		|| _has_overflow(argc, argv)
 		|| _has_duplicate(argc, argv))
 		exit_with_error();
+	return (0);
 }
