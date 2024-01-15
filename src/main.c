@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/12 16:17:17 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 12:04:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 #ifdef DEV
 
+# ifdef __APPLE__
+
 __attribute__((destructor))
 void	destructor(void)
 {
 	system("leaks -q push_swap");
 }
+
+# endif
 
 void	put_void(void *content)
 {
