@@ -12,6 +12,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/generate_stack.c \
 					$(SRC_DIR)/nano_sort.c \
 					$(SRC_DIR)/stack_operations/swap.c \
+					$(SRC_DIR)/stack_operations/rotate.c \
 					$(SRC_DIR)/utils/exit_with_error.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
