@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 14:58:08 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 15:13:28 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int		check_args(int argc, char **argv);
 
 t_list	*generate_stack(int argc, char **argv);
 
-void	nano_sort(t_list *stack, int argc);
+void	sort(t_list **stack, int argc);
+void	nano_sort(t_list **stack, int num_of_element);
 
 void	swap_stack(t_list **stack);
 void	rotate_stack(t_list **stack);

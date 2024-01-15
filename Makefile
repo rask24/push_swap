@@ -10,7 +10,8 @@ LIBFT_DIR		= ./libft
 SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/check_args.c \
 					$(SRC_DIR)/generate_stack.c \
-					$(SRC_DIR)/nano_sort.c \
+					$(SRC_DIR)/sort/sort.c \
+					$(SRC_DIR)/sort/nano_sort.c \
 					$(SRC_DIR)/stack_operations/swap.c \
 					$(SRC_DIR)/stack_operations/rotate.c \
 					$(SRC_DIR)/utils/exit_with_error.c
