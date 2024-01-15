@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 15:34:25 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 15:50:46by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ static void	_handle_3(t_list **stack)
 	first = *(int *)(*stack)->content;
 	second = *(int *)(*stack)->next->content;
 	third = *(int *)(*stack)->next->next->content;
-	if (first == 2 && second == 1 && third == 3)
+	if (second < first && first < third)
 		operate_sa(stack);
-	else if (first == 3 && second == 2 && third == 1)
+	else if (third < second && second < first)
 	{
 		operate_sa(stack);
 		operate_rra(stack);
 	}
-	else if (first == 3 && second == 1 && third == 2)
+	else if (second < third && third < first)
 		operate_ra(stack);
-	else if (first == 1 && second == 3 && third == 2)
+	else if (first < third && third < second)
 	{
 		operate_sa(stack);
 		operate_ra(stack);
