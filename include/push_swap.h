@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 16:31:59 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:58:32 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	micro_sort(t_list **stack_a, t_list **stack_b);
 void	operate_sa(t_list **stack_a);
 void	operate_ra(t_list **stack_a);
 void	operate_rra(t_list **stack_a);
+void	operate_pa(t_list **stack_b, t_list **stack_a);
+void	operate_pb(t_list **stack_a, t_list **stack_b);
 void	push_stack(t_list **stack_1, t_list **stack_2);
 void	swap_stack(t_list **stack);
 void	rotate_stack(t_list **stack);

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:05:46 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 15:17:24 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:56:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,6 @@ void	rotate_stack(t_list **stack)
 	*stack = second;
 }
 
-t_list	*ft_lst_before(t_list *lst, t_list *trg)
-{
-	t_list	*before;
-
-	if (!lst)
-		return (NULL);
-	before = lst;
-	while (before->next && before->next != trg)
-		before = before->next;
-	if (before->next != trg)
-		return (NULL);
-	return (before);
-}
-
 void	reverse_rotate_stack(t_list **stack)
 {
 	t_list	*before_last;
@@ -52,4 +38,16 @@ void	reverse_rotate_stack(t_list **stack)
 	before_last->next = NULL;
 	last->next = *stack;
 	*stack = last;
+}
+
+void	operate_ra(t_list **stack_a)
+{
+	rotate_stack(stack_a);
+	ft_putendl_fd("ra", STDOUT_FILENO);
+}
+
+void	operate_rra(t_list **stack_a)
+{
+	reverse_rotate_stack(stack_a);
+	ft_putendl_fd("rra", STDOUT_FILENO);
 }

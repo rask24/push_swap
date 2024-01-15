@@ -13,10 +13,10 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/sort/sort.c \
 					$(SRC_DIR)/sort/micro_sort.c \
 					$(SRC_DIR)/sort/nano_sort.c \
-					$(SRC_DIR)/stack_operations/operation.c \
 					$(SRC_DIR)/stack_operations/push.c \
 					$(SRC_DIR)/stack_operations/swap.c \
 					$(SRC_DIR)/stack_operations/rotate.c \
+					$(SRC_DIR)/stack_operations/ft_lst_before.c \
 					$(SRC_DIR)/utils/exit_with_error.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation.c                                        :+:      :+:    :+:   */
+/*   ft_lst_before.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 15:32:19 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 16:48:46 by reasuke          ###   ########.fr       */
+/*   Created: 2024/01/15 16:54:29 by reasuke           #+#    #+#             */
+/*   Updated: 2024/01/15 16:54:44 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	operate_sa(t_list **stack_a)
+t_list	*ft_lst_before(t_list *lst, t_list *trg)
 {
-	swap_stack(stack_a);
-	ft_putendl_fd("sa", STDOUT_FILENO);
-}
+	t_list	*before;
 
-void	operate_ra(t_list **stack_a)
-{
-	rotate_stack(stack_a);
-	ft_putendl_fd("ra", STDOUT_FILENO);
-}
-
-void	operate_rra(t_list **stack_a)
-{
-	reverse_rotate_stack(stack_a);
-	ft_putendl_fd("rra", STDOUT_FILENO);
+	if (!lst)
+		return (NULL);
+	before = lst;
+	while (before->next && before->next != trg)
+		before = before->next;
+	if (before->next != trg)
+		return (NULL);
+	return (before);
 }
