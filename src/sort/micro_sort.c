@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:32:27 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/17 18:28:00 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:33:18 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,17 @@ static void	_handle_4(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-static void	_handle_5(t_list **stack_a, t_list **stack_b)
+static void	_edge_flow_5(t_list **stack_a, t_list **stack_b)
 {
-	operate_pb(stack_a, stack_b);
-	operate_pb(stack_a, stack_b);
-	nano_sort(stack_a, 3);
-	if (first_content(stack_b) < second_content(stack_b))
-		operate_sb(stack_b);
-	if (first_content(stack_b) == 5 && second_content(stack_b) == 4)
-	{
-		operate_pa(stack_b, stack_a);
-		operate_pa(stack_b, stack_a);
-		operate_ra(stack_a);
-		operate_ra(stack_a);
-		return ;
-	}
-	else if (first_content(stack_b) == 5)
+	operate_pa(stack_b, stack_a);
+	operate_pa(stack_b, stack_a);
+	operate_ra(stack_a);
+	operate_ra(stack_a);
+}
+
+static void	_normal_flow_5(t_list **stack_a, t_list **stack_b)
+{
+	if (first_content(stack_b) == 5)
 	{
 		operate_pa(stack_b, stack_a);
 		operate_rra(stack_a);
@@ -68,6 +63,19 @@ static void	_handle_5(t_list **stack_a, t_list **stack_b)
 	operate_pa(stack_b, stack_a);
 	while (first_content(stack_a) != 1)
 		operate_rra(stack_a);
+}
+
+static void	_handle_5(t_list **stack_a, t_list **stack_b)
+{
+	operate_pb(stack_a, stack_b);
+	operate_pb(stack_a, stack_b);
+	nano_sort(stack_a, 3);
+	if (first_content(stack_b) < second_content(stack_b))
+		operate_sb(stack_b);
+	if (first_content(stack_b) == 5 && second_content(stack_b) == 4)
+		_edge_flow_5(stack_a, stack_b);
+	else
+		_normal_flow_5(stack_a, stack_b);
 }
 
 void	micro_sort(t_list **stack_a, t_list **stack_b, int num_a)
