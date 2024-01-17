@@ -10,7 +10,13 @@ LIBFT_DIR		= ./libft
 SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/check_args.c \
 					$(SRC_DIR)/generate_stack.c \
-					$(SRC_DIR)/nano_sort.c \
+					$(SRC_DIR)/sort/sort.c \
+					$(SRC_DIR)/sort/micro_sort.c \
+					$(SRC_DIR)/sort/nano_sort.c \
+					$(SRC_DIR)/stack_operations/push.c \
+					$(SRC_DIR)/stack_operations/swap.c \
+					$(SRC_DIR)/stack_operations/rotate.c \
+					$(SRC_DIR)/stack_operations/ft_lst_before.c \
 					$(SRC_DIR)/utils/exit_with_error.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
@@ -19,7 +25,12 @@ INCLUDE			= -I $(INC_DIR)
 
 CXXFLAGS		= -std=c++20 -Wall -Wextra -Werror
 TEST_DIR		= ./test
-TEST_SRC		= $(TEST_DIR)/test_is_invalid_argument.cpp
+TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
+					$(TEST_DIR)/test_push_stack.cpp \
+					$(TEST_DIR)/test_reverse_rotate_stack.cpp \
+					$(TEST_DIR)/test_rotate_stack.cpp \
+					$(TEST_DIR)/test_swap_stack.cpp \
+					$(TEST_DIR)/test_sort.cpp
 TEST_OBJ		= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))
 GTEST_VERSION	= 1.14.0
 GTEST_DIR		= ./test/gtest

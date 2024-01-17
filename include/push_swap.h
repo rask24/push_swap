@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 13:19:05 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:22:03 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,21 @@ int		check_args(int argc, char **argv);
 
 t_list	*generate_stack(int argc, char **argv);
 
-void	nano_sort(t_list *stack, int argc);
+void	sort(t_list **stack_a, t_list **stack_b, int num_a);
+void	nano_sort(t_list **stack, int num_a);
+void	micro_sort(t_list **stack_a, t_list **stack_b, int num_a);
+
+void	operate_sa(t_list **stack_a);
+void	operate_sb(t_list **stack_b);
+void	operate_ra(t_list **stack_a);
+void	operate_rra(t_list **stack_a);
+void	operate_pa(t_list **stack_b, t_list **stack_a);
+void	operate_pb(t_list **stack_a, t_list **stack_b);
+void	push_stack(t_list **stack_1, t_list **stack_2);
+void	swap_stack(t_list **stack);
+void	rotate_stack(t_list **stack);
+void	reverse_rotate_stack(t_list **stack);
+t_list	*ft_lst_before(t_list *lst, t_list *trg);
 
 void	exit_with_error(void);
 

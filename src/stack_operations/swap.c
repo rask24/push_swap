@@ -1,45 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/16 13:13:30 by reasuke          ###   ########.fr       */
+/*   Created: 2024/01/15 13:28:54 by reasuke           #+#    #+#             */
+/*   Updated: 2024/01/17 16:21:26 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#ifdef DEV
-
-# ifdef __APPLE__
-
-__attribute__((destructor))
-void	destructor(void)
+void	swap_stack(t_list **stack)
 {
-	system("leaks -q push_swap");
+	t_list	*second;
+
+	if (ft_lstsize(*stack) < 2)
+		return ;
+	second = (*stack)->next;
+	(*stack)->next = (*stack)->next->next;
+	second->next = *stack;
+	*stack = second;
 }
 
-# endif
-
-void	put_void(void *content)
+void	operate_sa(t_list **stack_a)
 {
-	ft_printf("%d\n", *(int *)content);
+	swap_stack(stack_a);
+	ft_putendl_fd("sa", STDOUT_FILENO);
 }
 
-#endif
-
-int	main(int argc, char **argv)
+void	operate_sb(t_list **stack_b)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-
-	check_args(argc, argv);
-	stack_a = generate_stack(argc, argv);
-	stack_b = NULL;
-	sort(&stack_a, &stack_b, argc - 1);
-	ft_lstclear(&stack_a, free);
-	return (0);
+	swap_stack(stack_b);
+	ft_putendl_fd("sb", STDOUT_FILENO);
 }
