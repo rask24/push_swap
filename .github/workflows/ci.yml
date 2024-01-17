@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Build push_swap
         run: make
   test:
@@ -28,6 +30,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Build push_swap
         run: make
       - name: Test
