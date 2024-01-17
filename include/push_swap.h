@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/17 16:05:34 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:22:03 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	nano_sort(t_list **stack, int num_a);
 void	micro_sort(t_list **stack_a, t_list **stack_b, int num_a);
 
 void	operate_sa(t_list **stack_a);
+void	operate_sb(t_list **stack_b);
 void	operate_ra(t_list **stack_a);
 void	operate_rra(t_list **stack_a);
 void	operate_pa(t_list **stack_b, t_list **stack_a);

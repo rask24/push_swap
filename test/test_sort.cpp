@@ -2,9 +2,6 @@
 
 #include <vector>
 #include <algorithm>
-#include <sstream>
-
-std::stringstream cout;
 
 #include "gtest/gtest.h"
 
@@ -74,4 +71,8 @@ TEST(sort, threeEelments) {
 
 TEST(sort, fourElements) {
   sort_test(4);
+}
+
+TEST(sort, fiveElements) {
+  sort_test(5);
 }

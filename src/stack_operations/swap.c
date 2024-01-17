@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:28:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 16:56:03 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:21:26 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,10 @@ void	operate_sa(t_list **stack_a)
 {
 	swap_stack(stack_a);
 	ft_putendl_fd("sa", STDOUT_FILENO);
+}
+
+void	operate_sb(t_list **stack_b)
+{
+	swap_stack(stack_b);
+	ft_putendl_fd("sb", STDOUT_FILENO);
 }
