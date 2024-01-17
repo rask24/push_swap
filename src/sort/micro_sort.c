@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:32:27 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/17 17:43:30 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:22:03 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,15 @@ static void	_handle_5(t_list **stack_a, t_list **stack_b)
 	nano_sort(stack_a, 3);
 	if (_first(stack_b) < _second(stack_b))
 		operate_sb(stack_b);
-	if (_first(stack_b) == 5)
+	if (_first(stack_b) == 5 && _second(stack_b) == 4)
+	{
+		operate_pa(stack_b, stack_a);
+		operate_pa(stack_b, stack_a);
+		operate_ra(stack_a);
+		operate_ra(stack_a);
+		return ;
+	}
+	else if (_first(stack_b) == 5)
 	{
 		operate_pa(stack_b, stack_a);
 		operate_rra(stack_a);
