@@ -6,37 +6,42 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:32:27 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 16:59:03 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:07:10 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	micro_sort(t_list **stack_a, t_list **stack_b)
+static void	_handle_4(t_list **stack_a, t_list **stack_b)
 {
-	int	tmp;
+	int	first;
 
-	push_stack(stack_a, stack_b);
-	ft_putendl_fd("pb", STDOUT_FILENO);
-	tmp = *(int *)(*stack_b)->content;
+	operate_pb(stack_a, stack_b);
 	nano_sort(stack_a, 3);
-	if (tmp == 1)
+	first = *(int *)(*stack_b)->content;
+	if (first == 1)
 		operate_pa(stack_b, stack_a);
-	if (tmp == 2)
+	if (first == 2)
 	{
 		operate_pa(stack_b, stack_a);
 		operate_sa(stack_a);
 	}
-	else if (tmp == 3)
+	else if (first == 3)
 	{
 		operate_rra(stack_a);
 		operate_pa(stack_b, stack_a);
 		operate_ra(stack_a);
 		operate_ra(stack_a);
 	}
-	else if (tmp == 4)
+	else if (first == 4)
 	{
 		operate_pa(stack_b, stack_a);
 		operate_ra(stack_a);
 	}
+}
+
+void	micro_sort(t_list **stack_a, t_list **stack_b, int num_a)
+{
+	if (num_a == 4)
+		_handle_4(stack_a, stack_b);
 }
