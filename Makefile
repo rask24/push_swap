@@ -92,8 +92,8 @@ leak: $(NAME)
 
 releak: fclean leak
 
-test: all $(GTEST_DIR) $(TEST_OBJ) $(GTEST_OBJ)
-	@echo "test"
+test: all $(GTEST_OBJ) $(TEST_OBJ)
+	@echo "$(BLUE)test$(RESET)"
 	$(CXX) -L $(LIBFT_DIR) -lft -lpthread $(OBJ_FILTER_MAIN) $(TEST_OBJ) $(GTEST_OBJ) -o $(TEST_NAME)
 	./$(TEST_NAME)
 	@$(RM) $(TEST_NAME)
@@ -102,9 +102,10 @@ $(BUILD_DIR)/$(TEST_DIR)/%.o: $(TEST_DIR)/%.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $< -o $@
 
-$(BUILD_DIR)/$(GTEST_DIR)/%.o: $(GTEST_DIR)/%.cc
+$(GTEST_OBJ): $(GTEST_DIR)
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest-all.cc -o $(BUILD_DIR)/$(GTEST_DIR)/gtest-all.o
+	$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest_main.cc -o $(BUILD_DIR)/$(GTEST_DIR)/gtest_main.o
 
 $(GTEST_DIR):
 	@echo "fetching google test"
