@@ -14,3 +14,25 @@ jobs:
           python3 -m pip install norminette
       - name: Run Norminette
         run: make norm
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Build push_swap
+        run: make
+  test:
+    name: test
+    runs-on: macos-12
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Build push_swap
+        run: make
+      - name: Test
+        run: make test

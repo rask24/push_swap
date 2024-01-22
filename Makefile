@@ -1,12 +1,18 @@
 NAME			= push_swap
 CFLAGS			= -Werror -Wextra -Wall
+CXXFLAGS		= -std=c++17 -Wall -Wextra -Werror
 PROD_FLAGS		= -O3
-DEV_FLAGS		= -g -O0 -D DEV
+DEV_FLAGS		= -g -fsanitize=address -O0 -D DEV
+LEAK_FLAGS		= -O0 -D DEV -D LEAK
+INCLUDE			= -I $(INC_DIR)
 
-SRC_DIR			= ./src
-BUILD_DIR		= ./build
-INC_DIR			= ./include
-LIBFT_DIR		= ./libft
+SRC_DIR			= src
+BUILD_DIR		= build
+INC_DIR			= include
+LIBFT_DIR		= libft
+TEST_DIR		= test
+GTEST_DIR		= test/gtest
+
 SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/check_args.c \
 					$(SRC_DIR)/generate_stack.c \
@@ -22,22 +28,25 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/utils/exit_with_error.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
-DEPFLAGS		= -MMD -MP
-INCLUDE			= -I $(INC_DIR)
-
-CXXFLAGS		= -std=c++20 -Wall -Wextra -Werror
-TEST_DIR		= ./test
+OBJ_FILTER_MAIN	= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))
+TEST_NAME		= tester
 TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
 					$(TEST_DIR)/test_push_stack.cpp \
 					$(TEST_DIR)/test_reverse_rotate_stack.cpp \
 					$(TEST_DIR)/test_rotate_stack.cpp \
 					$(TEST_DIR)/test_swap_stack.cpp \
-					$(TEST_DIR)/test_sort.cpp
-TEST_OBJ		= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))
+					$(TEST_DIR)/test_sort.cpp \
+					$(TEST_DIR)/test_ft_lst_before.cpp
+TEST_OBJ		= $(patsubst $(TEST_DIR)/%.cpp, $(BUILD_DIR)/$(TEST_DIR)/%.o, $(TEST_SRC))
+DEPFLAGS		= -MMD -MP
+GTEST_SRC		= $(GTEST_DIR)/gtest_main.cc $(GTEST_DIR)/gtest-all.cc
+GTEST_OBJ		= $(patsubst $(GTEST_DIR)/%.cc, $(BUILD_DIR)/$(GTEST_DIR)/%.o, $(GTEST_SRC))
+
 GTEST_VERSION	= 1.14.0
-GTEST_DIR		= ./test/gtest
 GTEST_ARCHIVE	= v$(GTEST_VERSION).tar.gz
+GTEST_REPO_URL	= https://github.com/google/googletest/archive/refs/tags/$(GTEST_ARCHIVE)
 GTEST_SRC_DIR	= googletest-$(GTEST_VERSION)
+GTEST_FUSE_URL	= https://raw.githubusercontent.com/google/googletest/ec44c6c1675c25b9827aacd08c02433cccde7780/googletest/scripts/$(GTEST_FUSE)
 GTEST_FUSE		= fuse_gtest_files.py
 
 NORM			= norminette
@@ -48,12 +57,13 @@ RED		=	\033[0;31m
 RESET	=	\033[0m
 
 all: CFLAGS += $(PROD_FLAGS)
-all: title $(NAME)
+all: title
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	@printf "\n"
 	@make -C $(LIBFT_DIR)
-	@$(CC) $^ -L $(LIBFT_DIR) -lft -o $@
+	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $@
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
@@ -74,18 +84,34 @@ dev: CFLAGS += $(DEV_FLAGS)
 dev: title
 dev: $(NAME)
 
-test: $(GTEST_DIR)
+redev: fclean dev
+
+leak: CFLAGS += $(LEAK_FLAGS)
+leak: title
+leak: $(NAME)
+
+releak: fclean leak
+
+test: all $(GTEST_OBJ) $(TEST_OBJ)
 	@echo "$(BLUE)test$(RESET)"
-	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -L $(LIBFT_DIR) -l ft -lpthread -o tester \
-		$(TEST_SRC) $(GTEST_DIR)/gtest_main.cc $(GTEST_DIR)/gtest-all.cc $(TEST_OBJ)
-	@./tester # --gtest_filter=Vector.other
-	@$(RM) tester
+	$(CXX) -L $(LIBFT_DIR) -lft -lpthread $(OBJ_FILTER_MAIN) $(TEST_OBJ) $(GTEST_OBJ) -o $(TEST_NAME)
+	./$(TEST_NAME)
+	@$(RM) $(TEST_NAME)
+
+$(BUILD_DIR)/$(TEST_DIR)/%.o: $(TEST_DIR)/%.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $< -o $@
+
+$(GTEST_OBJ): $(GTEST_DIR)
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest-all.cc -o $(BUILD_DIR)/$(GTEST_DIR)/gtest-all.o
+	$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest_main.cc -o $(BUILD_DIR)/$(GTEST_DIR)/gtest_main.o
 
 $(GTEST_DIR):
-	@echo "$(BLUE)fetching google test$(RESET)"
-	@curl -#OL https://github.com/google/googletest/archive/refs/tags/$(GTEST_ARCHIVE)
-	@echo "$(BLUE)fetching fuse_gtest_files.py$(RESET)"
-	@curl -#OL https://raw.githubusercontent.com/google/googletest/ec44c6c1675c25b9827aacd08c02433cccde7780/googletest/scripts/$(GTEST_FUSE)
+	@echo "fetching google test"
+	@curl -#OL $(GTEST_REPO_URL)
+	@echo "fetching fuse_gtest_files.py"
+	@curl -#OL $(GTEST_FUSE_URL)
 	@tar -xzf $(GTEST_ARCHIVE) $(GTEST_SRC_DIR)
 	@python3 $(GTEST_FUSE) $(GTEST_SRC_DIR)/googletest $(GTEST_DIR)
 	@mv $(GTEST_SRC_DIR)/googletest/src/gtest_main.cc $(GTEST_DIR)
@@ -98,6 +124,6 @@ norm:
 title:
 	@echo "$(BLUE)push_swap$(RESET)"
 
-.PHONY: all clean fclean re dev test norm title
+.PHONY: all clean fclean re dev redev leak releak test norm title
 
 -include $(DEP)

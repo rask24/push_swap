@@ -6,14 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/16 13:13:30 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:36:13 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#ifdef DEV
-
+#ifdef LEAK
 # ifdef __APPLE__
 
 __attribute__((destructor))
@@ -23,6 +22,8 @@ void	destructor(void)
 }
 
 # endif
+#endif
+#ifdef DEV
 
 void	put_void(void *content)
 {
