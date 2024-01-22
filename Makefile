@@ -2,7 +2,8 @@ NAME			= push_swap
 CFLAGS			= -Werror -Wextra -Wall
 CXXFLAGS		= -std=c++17 -Wall -Wextra -Werror
 PROD_FLAGS		= -O3
-DEV_FLAGS		= -g -O0 -D DEV
+DEV_FLAGS		= -g -fsanitize=address -O0 -D DEV
+LEAK_FLAGS		= -O0 -D DEV -D LEAK
 INCLUDE			= -I $(INC_DIR)
 
 SRC_DIR			= src
@@ -85,6 +86,12 @@ dev: $(NAME)
 
 redev: fclean dev
 
+leak: CFLAGS += $(LEAK_FLAGS)
+leak: title
+leak: $(NAME)
+
+releak: fclean leak
+
 test: all $(GTEST_DIR) $(TEST_OBJ) $(GTEST_OBJ)
 	@echo "test"
 	$(CXX) -L $(LIBFT_DIR) -lft -lpthread $(OBJ_FILTER_MAIN) $(TEST_OBJ) $(GTEST_OBJ) -o $(TEST_NAME)
@@ -116,6 +123,6 @@ norm:
 title:
 	@echo "$(BLUE)push_swap$(RESET)"
 
-.PHONY: all clean fclean re dev test norm title
+.PHONY: all clean fclean re dev redev leak releak test norm title
 
 -include $(DEP)
