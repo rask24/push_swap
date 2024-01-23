@@ -28,8 +28,8 @@ static void sort_test_main(int N) {
   // {3, 2, 1}
   do {
     // initialize stack
-    t_list *stack_a = NULL;
-    t_list *stack_b = NULL;
+    t_stack *stack_a = NULL;
+    t_stack *stack_b = NULL;
     for (int &i : v) {
       ft_lstadd_back(&stack_a, ft_lstnew(new int(i)));
     }

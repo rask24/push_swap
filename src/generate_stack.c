@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:04:40 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 12:56:26 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:10:51 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ int	*_coordinate_compression(int argc, char **argv)
 	return (compressred_array);
 }
 
-t_list	*generate_stack(int argc, char **argv)
+t_stack	*generate_stack(int argc, char **argv)
 {
-	t_list	*stack;
+	t_stack	*stack;
 	int		*compressed_array;
 	int		i;
 	int		*ptr;

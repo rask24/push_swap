@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/22 17:02:49 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:58:27 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,40 @@
 // naive implement: insertion sort
 // find smallest number of a
 // rotate
-// push to stack_b
-// push to stack_a
+// push to b
+// push to a
 
-static void	push_in_order(t_list **stack_a, t_list **stack_b, int num_a)
+static void	push_in_order(t_list **p_a, t_list **p_b, int num_a)
 {
 	int	i;
 
 	i = 1;
 	while (i <= num_a)
 	{
-		if (first_content(stack_a) == i)
+		if (first_content(p_a) == i)
 		{
-			operate_pb(stack_a, stack_b);
+			operate_pb(p_a, p_b);
 			i++;
 		}
 		else
-			operate_ra(stack_a);
+			operate_ra(p_a);
 	}
 }
 
-static void	push_revert(t_list **stack_a, t_list **stack_b, int num_a)
+static void	push_revert(t_list **p_a, t_list **p_b, int num_a)
 {
 	int	i;
 
 	i = 0;
 	while (i < num_a)
 	{
-		operate_pa(stack_b, stack_a);
+		operate_pa(p_b, p_a);
 		i++;
 	}
 }
 
-void	large_sort(t_list **stack_a, t_list **stack_b, int num_a)
+void	large_sort(t_list **p_a, t_list **p_b, int num_a)
 {
-	push_in_order(stack_a, stack_b, num_a);
-	push_revert(stack_a, stack_b, num_a);
+	push_in_order(p_a, p_b, num_a);
+	push_revert(p_a, p_b, num_a);
 }

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/22 15:36:13 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:48:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void	put_void(void *content)
 
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_stack	*a;
+	t_stack	*b;
 
 	check_args(argc, argv);
-	stack_a = generate_stack(argc, argv);
-	stack_b = NULL;
-	sort(&stack_a, &stack_b, argc - 1);
-	ft_lstclear(&stack_a, free);
+	a = generate_stack(argc, argv);
+	b = NULL;
+	sort(&a, &b, argc - 1);
+	clear_stack(&a, free);
 	return (0);
 }
