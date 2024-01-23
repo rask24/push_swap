@@ -23,6 +23,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/stack_operations/push.c \
 					$(SRC_DIR)/stack_operations/swap.c \
 					$(SRC_DIR)/stack_operations/rotate.c \
+					$(SRC_DIR)/stack_operations/reverse_rotate.c \
 					$(SRC_DIR)/stack_operations/ft_lst_before.c \
 					$(SRC_DIR)/utils/first_content.c \
 					$(SRC_DIR)/utils/second_content.c \
