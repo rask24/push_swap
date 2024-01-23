@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 15:56:52 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 16:23:40 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	operate_sa(t_stack **p_a);
 void	operate_sb(t_stack **p_b);
 void	operate_ra(t_stack **p_a);
 void	operate_rra(t_stack **p_a);
+void	operate_rb(t_stack **p_b);
 void	operate_pa(t_stack **p_b, t_stack **p_a);
 void	operate_pb(t_stack **p_a, t_stack **p_b);
 void	push_stack(t_stack **p_s1, t_stack **p_s2);

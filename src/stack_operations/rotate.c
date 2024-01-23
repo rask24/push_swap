@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:05:46 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 15:31:46 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 16:23:22 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,10 @@ void	operate_rra(t_stack **p_a)
 {
 	reverse_rotate_stack(p_a);
 	ft_putendl_fd("rra", STDOUT_FILENO);
+}
+
+void	operate_rb(t_stack **p_b)
+{
+	rotate_stack(p_b);
+	ft_putendl_fd("rb", STDOUT_FILENO);
 }
