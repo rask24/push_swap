@@ -6,13 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:27:37 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 15:11:36 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:37:13 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	first_content(t_stack **stack)
+int	first_content(t_stack **p_stack)
 {
-	return (*(int *)(*stack)->content);
+	return (*(int *)(*p_stack)->content);
 }

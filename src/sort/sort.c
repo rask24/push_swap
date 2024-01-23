@@ -6,16 +6,16 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:10:35 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 15:11:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:26:11 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort(t_stack **stack_a, t_stack **stack_b, int num_a)
+void	sort(t_stack **p_a, t_stack **p_b, int num_a)
 {
 	if (num_a <= 3)
-		nano_sort(stack_a, num_a);
+		nano_sort(p_a, num_a);
 	else if (num_a <= 5)
-		micro_sort(stack_a, stack_b, num_a);
+		micro_sort(p_a, p_b, num_a);
 }

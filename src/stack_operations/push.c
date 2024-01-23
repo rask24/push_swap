@@ -6,32 +6,32 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:56:53 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 15:11:29 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:36:08 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_stack(t_stack **stack_1, t_stack **stack_2)
+void	push_stack(t_stack **p_s1, t_stack **p_s2)
 {
-	t_stack	*stack_1_first;
+	t_stack	*s1_first;
 
-	if (!*stack_1)
+	if (!*p_s1)
 		return ;
-	stack_1_first = *stack_1;
-	*stack_1 = (*stack_1)->next;
-	stack_1_first->next = NULL;
-	ft_lstadd_front(stack_2, stack_1_first);
+	s1_first = *p_s1;
+	*p_s1 = (*p_s1)->next;
+	s1_first->next = NULL;
+	ft_lstadd_front(p_s2, s1_first);
 }
 
-void	operate_pa(t_stack **stack_b, t_stack **stack_a)
+void	operate_pa(t_stack **p_b, t_stack **p_a)
 {
-	push_stack(stack_b, stack_a);
+	push_stack(p_b, p_a);
 	ft_putendl_fd("pa", STDOUT_FILENO);
 }
 
-void	operate_pb(t_stack **stack_a, t_stack **stack_b)
+void	operate_pb(t_stack **p_a, t_stack **p_b)
 {
-	push_stack(stack_a, stack_b);
+	push_stack(p_a, p_b);
 	ft_putendl_fd("pb", STDOUT_FILENO);
 }
