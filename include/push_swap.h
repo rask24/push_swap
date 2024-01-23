@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 15:25:01 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:51:40 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ t_list	*ft_lst_before(t_list *lst, t_list *trg);
 int		first_content(t_stack **p_stack);
 int		second_content(t_stack **p_stack);
 void	exit_with_error(void);
+void	clear_stack(t_stack **p_stack, void (*del)(void *));
 
 #endif
