@@ -6,15 +6,15 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:56:53 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/15 17:02:11 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:11:29 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_stack(t_list **stack_1, t_list **stack_2)
+void	push_stack(t_stack **stack_1, t_stack **stack_2)
 {
-	t_list	*stack_1_first;
+	t_stack	*stack_1_first;
 
 	if (!*stack_1)
 		return ;
@@ -24,13 +24,13 @@ void	push_stack(t_list **stack_1, t_list **stack_2)
 	ft_lstadd_front(stack_2, stack_1_first);
 }
 
-void	operate_pa(t_list **stack_b, t_list **stack_a)
+void	operate_pa(t_stack **stack_b, t_stack **stack_a)
 {
 	push_stack(stack_b, stack_a);
 	ft_putendl_fd("pa", STDOUT_FILENO);
 }
 
-void	operate_pb(t_list **stack_a, t_list **stack_b)
+void	operate_pb(t_stack **stack_a, t_stack **stack_b)
 {
 	push_stack(stack_a, stack_b);
 	ft_putendl_fd("pb", STDOUT_FILENO);

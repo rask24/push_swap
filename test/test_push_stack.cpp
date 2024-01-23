@@ -14,8 +14,8 @@ static void *convert_const_char_to_void(const char *str) {
 }
 
 TEST(push_stack, noElements) {
-  t_list *stack_a;
-  t_list *stack_b;
+  t_stack *stack_a;
+  t_stack *stack_b;
 
   stack_a = NULL;
   stack_b = NULL;
@@ -27,8 +27,8 @@ TEST(push_stack, noElements) {
 }
 
 TEST(push_stack, nullPush) {
-  t_list *stack_a;
-  t_list *stack_b;
+  t_stack *stack_a;
+  t_stack *stack_b;
   void *element_10 = convert_const_char_to_void("10");
 
   stack_a = NULL;
@@ -43,9 +43,9 @@ TEST(push_stack, nullPush) {
 }
 
 TEST(push_stack, pushToNull) {
-  t_list *stack_a;
+  t_stack *stack_a;
   void *element_00 = convert_const_char_to_void("00");
-  t_list *stack_b;
+  t_stack *stack_b;
 
   stack_a = NULL;
   ft_lstadd_back(&stack_a, ft_lstnew(element_00));
@@ -59,13 +59,13 @@ TEST(push_stack, pushToNull) {
 }
 
 TEST(push_stack, fiveElements) {
-  t_list *stack_a;
+  t_stack *stack_a;
   void *element_00 = convert_const_char_to_void("00");
   void *element_01 = convert_const_char_to_void("01");
   void *element_02 = convert_const_char_to_void("02");
   void *element_03 = convert_const_char_to_void("03");
   void *element_04 = convert_const_char_to_void("04");
-  t_list *stack_b;
+  t_stack *stack_b;
   void *element_10 = convert_const_char_to_void("10");
   void *element_11 = convert_const_char_to_void("11");
   void *element_12 = convert_const_char_to_void("12");

@@ -6,13 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:32:27 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/17 18:33:18 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:11:02 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	_handle_4(t_list **stack_a, t_list **stack_b)
+static void	_handle_4(t_stack **stack_a, t_stack **stack_b)
 {
 	operate_pb(stack_a, stack_b);
 	nano_sort(stack_a, 3);
@@ -37,7 +37,7 @@ static void	_handle_4(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-static void	_edge_flow_5(t_list **stack_a, t_list **stack_b)
+static void	_edge_flow_5(t_stack **stack_a, t_stack **stack_b)
 {
 	operate_pa(stack_b, stack_a);
 	operate_pa(stack_b, stack_a);
@@ -45,7 +45,7 @@ static void	_edge_flow_5(t_list **stack_a, t_list **stack_b)
 	operate_ra(stack_a);
 }
 
-static void	_normal_flow_5(t_list **stack_a, t_list **stack_b)
+static void	_normal_flow_5(t_stack **stack_a, t_stack **stack_b)
 {
 	if (first_content(stack_b) == 5)
 	{
@@ -65,7 +65,7 @@ static void	_normal_flow_5(t_list **stack_a, t_list **stack_b)
 		operate_rra(stack_a);
 }
 
-static void	_handle_5(t_list **stack_a, t_list **stack_b)
+static void	_handle_5(t_stack **stack_a, t_stack **stack_b)
 {
 	operate_pb(stack_a, stack_b);
 	operate_pb(stack_a, stack_b);
@@ -78,7 +78,7 @@ static void	_handle_5(t_list **stack_a, t_list **stack_b)
 		_normal_flow_5(stack_a, stack_b);
 }
 
-void	micro_sort(t_list **stack_a, t_list **stack_b, int num_a)
+void	micro_sort(t_stack **stack_a, t_stack **stack_b, int num_a)
 {
 	if (num_a == 4)
 		_handle_4(stack_a, stack_b);

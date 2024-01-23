@@ -6,13 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/17 16:04:38 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:11:03 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	_handle_2(t_list **stack)
+static void	_handle_2(t_stack **stack)
 {
 	int	first;
 	int	second;
@@ -26,7 +26,7 @@ static void	_handle_2(t_list **stack)
 	}
 }
 
-static void	_handle_3(t_list **stack)
+static void	_handle_3(t_stack **stack)
 {
 	int	first;
 	int	second;
@@ -53,7 +53,7 @@ static void	_handle_3(t_list **stack)
 		operate_rra(stack);
 }
 
-void	nano_sort(t_list **stack, int num_a)
+void	nano_sort(t_stack **stack, int num_a)
 {
 	if (num_a == 2)
 		_handle_2(stack);
