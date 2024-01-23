@@ -6,32 +6,32 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:28:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/17 16:21:26 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:32:30 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_stack(t_list **stack)
+void	swap_stack(t_stack **p_stack)
 {
-	t_list	*second;
+	t_stack	*second;
 
-	if (ft_lstsize(*stack) < 2)
+	if (ft_lstsize(*p_stack) < 2)
 		return ;
-	second = (*stack)->next;
-	(*stack)->next = (*stack)->next->next;
-	second->next = *stack;
-	*stack = second;
+	second = (*p_stack)->next;
+	(*p_stack)->next = (*p_stack)->next->next;
+	second->next = *p_stack;
+	*p_stack = second;
 }
 
-void	operate_sa(t_list **stack_a)
+void	operate_sa(t_stack **p_a)
 {
-	swap_stack(stack_a);
+	swap_stack(p_a);
 	ft_putendl_fd("sa", STDOUT_FILENO);
 }
 
-void	operate_sb(t_list **stack_b)
+void	operate_sb(t_stack **p_b)
 {
-	swap_stack(stack_b);
+	swap_stack(p_b);
 	ft_putendl_fd("sb", STDOUT_FILENO);
 }

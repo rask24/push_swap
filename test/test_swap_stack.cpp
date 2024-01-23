@@ -14,7 +14,7 @@ static void *convert_const_char_to_void(const char *str) {
 }
 
 TEST(swap, oneElement) {
-  t_list *stack;
+  t_stack *stack;
   void *element0 = convert_const_char_to_void("0");
 
   stack = NULL;
@@ -25,7 +25,7 @@ TEST(swap, oneElement) {
 }
 
 TEST(swap, twoElements) {
-  t_list *stack;
+  t_stack *stack;
   void *element0 = convert_const_char_to_void("0");
   void *element1 = convert_const_char_to_void("1");
 
@@ -39,7 +39,7 @@ TEST(swap, twoElements) {
 }
 
 TEST(swap, fiveElements) {
-  t_list *stack;
+  t_stack *stack;
   void *element0 = convert_const_char_to_void("0");
   void *element1 = convert_const_char_to_void("1");
   void *element2 = convert_const_char_to_void("2");

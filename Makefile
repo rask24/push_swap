@@ -25,7 +25,8 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/stack_operations/ft_lst_before.c \
 					$(SRC_DIR)/utils/first_content.c \
 					$(SRC_DIR)/utils/second_content.c \
-					$(SRC_DIR)/utils/exit_with_error.c
+					$(SRC_DIR)/utils/exit_with_error.c \
+					$(SRC_DIR)/utils/clear_stack.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
 OBJ_FILTER_MAIN	= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))

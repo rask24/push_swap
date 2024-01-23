@@ -6,57 +6,57 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/17 16:04:38 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:27:24 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	_handle_2(t_list **stack)
+static void	_handle_2(t_stack **p_a)
 {
 	int	first;
 	int	second;
 
-	first = *(int *)(*stack)->content;
-	second = *(int *)(*stack)->next->content;
+	first = *(int *)(*p_a)->content;
+	second = *(int *)(*p_a)->next->content;
 	if (first > second)
 	{
-		swap_stack(stack);
+		swap_stack(p_a);
 		ft_putendl_fd("sa", STDOUT_FILENO);
 	}
 }
 
-static void	_handle_3(t_list **stack)
+static void	_handle_3(t_stack **p_a)
 {
 	int	first;
 	int	second;
 	int	third;
 
-	first = *(int *)(*stack)->content;
-	second = *(int *)(*stack)->next->content;
-	third = *(int *)(*stack)->next->next->content;
+	first = *(int *)(*p_a)->content;
+	second = *(int *)(*p_a)->next->content;
+	third = *(int *)(*p_a)->next->next->content;
 	if (second < first && first < third)
-		operate_sa(stack);
+		operate_sa(p_a);
 	else if (third < second && second < first)
 	{
-		operate_sa(stack);
-		operate_rra(stack);
+		operate_sa(p_a);
+		operate_rra(p_a);
 	}
 	else if (second < third && third < first)
-		operate_ra(stack);
+		operate_ra(p_a);
 	else if (first < third && third < second)
 	{
-		operate_sa(stack);
-		operate_ra(stack);
+		operate_sa(p_a);
+		operate_ra(p_a);
 	}
 	else if (third < first && first < second)
-		operate_rra(stack);
+		operate_rra(p_a);
 }
 
-void	nano_sort(t_list **stack, int num_a)
+void	nano_sort(t_stack **p_a, int num_a)
 {
 	if (num_a == 2)
-		_handle_2(stack);
+		_handle_2(p_a);
 	else if (num_a == 3)
-		_handle_3(stack);
+		_handle_3(p_a);
 }

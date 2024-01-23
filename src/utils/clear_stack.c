@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_content.c                                    :+:      :+:    :+:   */
+/*   clear_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 18:27:37 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 15:37:13 by reasuke          ###   ########.fr       */
+/*   Created: 2024/01/23 15:46:24 by reasuke           #+#    #+#             */
+/*   Updated: 2024/01/23 15:47:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	first_content(t_stack **p_stack)
+void	clear_stack(t_stack **p_stack, void (*del)(void *))
 {
-	return (*(int *)(*p_stack)->content);
+	ft_lstclear(p_stack, del);
 }
