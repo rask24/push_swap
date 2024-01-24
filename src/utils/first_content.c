@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:27:37 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 15:37:13 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:55:24 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	first_content(t_stack **p_stack)
 {
-	return (*(int *)(*p_stack)->content);
+	return (((t_content *)(*p_stack)->content)->index);
 }

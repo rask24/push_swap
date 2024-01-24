@@ -27,6 +27,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/stack_operations/ft_lst_before.c \
 					$(SRC_DIR)/utils/first_content.c \
 					$(SRC_DIR)/utils/second_content.c \
+					$(SRC_DIR)/utils/third_content.c \
 					$(SRC_DIR)/utils/exit_with_error.c \
 					$(SRC_DIR)/utils/clear_stack.c \
 					$(SRC_DIR)/utils/stack_size.c

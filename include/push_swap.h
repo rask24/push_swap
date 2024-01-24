@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 17:22:03 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/01/24 17:03:30 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # include "../libft/libft.h"
 
 typedef t_list	t_stack;
+typedef struct s_content
+{
+	int	index;
+	int	delta_a;
+	int	delta_b;
+	int	target;
+}	t_content;
 
 int		check_args(int argc, char **argv);
 
@@ -32,7 +39,7 @@ t_stack	*generate_stack(int argc, char **argv);
 void	sort(t_stack **p_a, t_stack **p_b, int num_a);
 void	nano_sort(t_stack **p_a, int num_a);
 void	micro_sort(t_stack **p_a, t_stack **p_b, int num_a);
-void	large_sort(t_list **p_a, t_list **p_b, int num_a);
+// void	large_sort(t_stack **p_a, t_stack **p_b, int num_a);
 
 void	operate_sa(t_stack **p_a);
 void	operate_sb(t_stack **p_b);
@@ -54,6 +61,7 @@ t_list	*ft_lst_before(t_list *lst, t_list *trg);
 
 int		first_content(t_stack **p_stack);
 int		second_content(t_stack **p_stack);
+int		third_content(t_stack **p_stack);
 void	exit_with_error(void);
 void	clear_stack(t_stack **p_stack, void (*del)(void *));
 int		stack_size(t_stack *stack);

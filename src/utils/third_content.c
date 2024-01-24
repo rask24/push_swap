@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   large_sort.c                                       :+:      :+:    :+:   */
+/*   third_content.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/24 16:47:42 by reasuke          ###   ########.fr       */
+/*   Created: 2024/01/17 18:28:02 by reasuke           #+#    #+#             */
+/*   Updated: 2024/01/24 17:03:02 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// naive implement: insertion sort
-// find smallest number of a
-// rotate
-// push to b
-// push to a
-
-// void	large_sort(t_stack **p_a, t_stack **p_b, int num_a)
-// {
-// }
+int	third_content(t_stack **p_stack)
+{
+	return (((t_content *)(*p_stack)->next->next->content)->index);
+}
