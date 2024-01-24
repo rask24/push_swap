@@ -31,13 +31,14 @@ static void sort_test_main(int N) {
     t_stack *stack_a = NULL;
     t_stack *stack_b = NULL;
     for (int &i : v) {
-      ft_lstadd_back(&stack_a, ft_lstnew(new int(i)));
+      t_content *c = new t_content({i, 0, 0, 0});
+      ft_lstadd_back(&stack_a, ft_lstnew(c));
     }
     // sort
     sort(&stack_a, &stack_b, N);
     // check if the order is appropreate
     for (int i = 1; stack_a; ++i, stack_a = stack_a->next) {
-      EXPECT_EQ(*(int *)stack_a->content, i);
+      EXPECT_EQ(first_content(&stack_a), i);
     }
   } while (std::next_permutation(v.begin(), v.end()));
 }
@@ -75,6 +76,7 @@ static void sort_test(int N) {
 //   t_list *stack_a = NULL;
 //   t_list *stack_b = NULL;
 //   for (int &i : v) {
+//      FIXME: use content
 //     ft_lstadd_back(&stack_a, ft_lstnew(new int(i)));
 //   }
 //   // sort
