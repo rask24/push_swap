@@ -31,6 +31,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/utils/third_content.c \
 					$(SRC_DIR)/utils/exit_with_error.c \
 					$(SRC_DIR)/utils/clear_stack.c \
+					$(SRC_DIR)/utils/get_content.c \
 					$(SRC_DIR)/utils/stack_size.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 16:38:12 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/08 07:44:33 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ int				third_content(t_stack **p_stack);
 void			exit_with_error(void);
 void			clear_stack(t_stack **p_stack, void (*del)(void *));
 int				stack_size(t_stack *stack);
+t_content		*get_content(t_stack *st);
 
 #endif
