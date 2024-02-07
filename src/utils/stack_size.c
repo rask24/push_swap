@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   stack_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 15:10:35 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:04:45 by reasuke          ###   ########.fr       */
+/*   Created: 2024/01/23 16:25:21 by reasuke           #+#    #+#             */
+/*   Updated: 2024/02/07 15:05:54 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort(t_stack **p_a, t_stack **p_b, int num_a)
+int	stack_size(t_stack *stack)
 {
-	if (num_a <= 3)
-		nano_sort(p_a, num_a);
-	else if (num_a <= 5)
-		micro_sort(p_a, p_b, num_a);
+	return (ft_lstsize(stack));
 }

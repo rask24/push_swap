@@ -19,14 +19,18 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/sort/sort.c \
 					$(SRC_DIR)/sort/micro_sort.c \
 					$(SRC_DIR)/sort/nano_sort.c \
+					$(SRC_DIR)/sort/large_sort.c \
 					$(SRC_DIR)/stack_operations/push.c \
 					$(SRC_DIR)/stack_operations/swap.c \
 					$(SRC_DIR)/stack_operations/rotate.c \
+					$(SRC_DIR)/stack_operations/reverse_rotate.c \
 					$(SRC_DIR)/stack_operations/ft_lst_before.c \
 					$(SRC_DIR)/utils/first_content.c \
 					$(SRC_DIR)/utils/second_content.c \
+					$(SRC_DIR)/utils/third_content.c \
 					$(SRC_DIR)/utils/exit_with_error.c \
-					$(SRC_DIR)/utils/clear_stack.c
+					$(SRC_DIR)/utils/clear_stack.c \
+					$(SRC_DIR)/utils/stack_size.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
 OBJ_FILTER_MAIN	= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))

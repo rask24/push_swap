@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:04:40 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 15:10:51 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/07 15:06:20 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,20 +90,20 @@ int	*_coordinate_compression(int argc, char **argv)
 
 t_stack	*generate_stack(int argc, char **argv)
 {
-	t_stack	*stack;
-	int		*compressed_array;
-	int		i;
-	int		*ptr;
+	t_stack		*stack;
+	int			*compressed_array;
+	int			i;
+	t_content	*ptr;
 
 	compressed_array = _coordinate_compression(argc, argv);
 	i = 0;
 	stack = NULL;
 	while (i < argc - 1)
 	{
-		ptr = ft_calloc(1, sizeof(int));
+		ptr = ft_calloc(1, sizeof(t_content));
 		if (!ptr)
 			exit_with_error();
-		*ptr = compressed_array[i];
+		ptr->index = compressed_array[i];
 		ft_lstadd_back(&stack, ft_lstnew(ptr));
 		i++;
 	}

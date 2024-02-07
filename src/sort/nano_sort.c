@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/01/23 15:27:24 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/07 15:04:35 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 
 static void	_handle_2(t_stack **p_a)
 {
-	int	first;
-	int	second;
-
-	first = *(int *)(*p_a)->content;
-	second = *(int *)(*p_a)->next->content;
-	if (first > second)
+	if (first_content(p_a) > second_content(p_a))
 	{
 		swap_stack(p_a);
 		ft_putendl_fd("sa", STDOUT_FILENO);
@@ -32,9 +27,9 @@ static void	_handle_3(t_stack **p_a)
 	int	second;
 	int	third;
 
-	first = *(int *)(*p_a)->content;
-	second = *(int *)(*p_a)->next->content;
-	third = *(int *)(*p_a)->next->next->content;
+	first = first_content(p_a);
+	second = second_content(p_a);
+	third = third_content(p_a);
 	if (second < first && first < third)
 		operate_sa(p_a);
 	else if (third < second && second < first)
