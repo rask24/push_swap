@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:04:00 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/07 16:38:12 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ typedef t_list	t_stack;
 typedef struct s_content
 {
 	int			index;
-	int			delta_a;
-	int			delta_b;
-	int			target;
+	int			sf_cost;
+	int			sr_cost;
+	int			if_cost;
+	int			ir_cost;
 }				t_content;
 
 int				check_args(int argc, char **argv);
@@ -35,7 +36,9 @@ t_stack			*generate_stack(int argc, char **argv);
 void			sort(t_stack **p_a, t_stack **p_b, int num_a);
 void			nano_sort(t_stack **p_a, int num_a);
 void			micro_sort(t_stack **p_a, t_stack **p_b, int num_a);
-// void	large_sort(t_stack **p_a, t_stack **p_b, int num_a);
+void			large_sort(t_stack **p_a, t_stack **p_b, int num_a);
+
+void			set_selection_cost(t_stack **p_b);
 
 void			operate_sa(t_stack **p_a);
 void			operate_sb(t_stack **p_b);

@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   set_selection_cost.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 15:10:35 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 16:35:12 by reasuke          ###   ########.fr       */
+/*   Created: 2024/02/07 16:37:17 by reasuke           #+#    #+#             */
+/*   Updated: 2024/02/07 16:49:26 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort(t_stack **p_a, t_stack **p_b, int num_a)
+void	set_selection_cost(t_stack **p_b)
 {
-	if (num_a <= 3)
-		nano_sort(p_a, num_a);
-	else if (num_a <= 5)
-		micro_sort(p_a, p_b, num_a);
-	else
-		large_sort(p_a, p_b, num_a);
+	t_stack	*st;
+	int		size_b;
+	int		i;
+
+	st = *p_b;
+	size_b = stack_size(*p_b);
+	i = 0;
+	while (i < size_b)
+	{
+		((t_content *)st->content)->sf_cost = i;
+		((t_content *)st->content)->sr_cost = -((size_b - i) % size_b);
+		st = st->next;
+		i++;
+	}
 }
