@@ -7,7 +7,7 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-  #include "push_swap.h"
+#include "push_swap.h"
 }
 
 static void sort_test_main(int N) {
@@ -103,25 +103,15 @@ static void sort_test(int N) {
 //   close(stdout_copy);
 // }
 
-TEST(sort, oneElement) {
-  sort_test(1);
-}
+TEST(sort, oneElement) { sort_test(1); }
 
-TEST(sort, twoElements) {
-  sort_test(2);
-}
+TEST(sort, twoElements) { sort_test(2); }
 
-TEST(sort, threeEelments) {
-  sort_test(3);
-}
+TEST(sort, threeEelments) { sort_test(3); }
 
-TEST(sort, fourElements) {
-  sort_test(4);
-}
+TEST(sort, fourElements) { sort_test(4); }
 
-TEST(sort, fiveElements) {
-  sort_test(5);
-}
+TEST(sort, fiveElements) { sort_test(5); }
 
 // TEST(sort, sixElements) {
 //   sort_test(6);

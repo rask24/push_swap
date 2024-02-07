@@ -3,11 +3,11 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-  #include "push_swap.h"
+#include "push_swap.h"
 }
 
 static void *convert_const_char_to_void(const char *str) {
-  const void *const_element = static_cast<const void*>(str);
+  const void *const_element = static_cast<const void *>(str);
   void *element = const_cast<void *>(const_element);
 
   return element;
@@ -26,7 +26,6 @@ TEST(ft_lst_before, test) {
   t_list *lst3 = ft_lstnew(element3);
   t_list *lst4 = ft_lstnew(element4);
   t_list *dummy = ft_lstnew(convert_const_char_to_void("dummy"));
-
 
   stack = NULL;
   ft_lstadd_back(&stack, lst0);
