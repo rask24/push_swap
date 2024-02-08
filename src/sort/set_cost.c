@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:17:33 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/08 21:38:17 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/08 21:47:27 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static int	_calc_max_index(t_stack **p_a)
 	size_a = stack_size(*p_a);
 	i = 0;
 	max_a = INT_MIN;
+	max_index = -1;
 	while (i < size_a)
 	{
 		if (ft_chmax(&max_a, get_content(st_a)->index))
