@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 16:53:42 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/08 07:33:42 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ void	large_sort(t_stack **p_a, t_stack **p_b, int num_a)
 	_init_stack(p_a, p_b, num_a);
 	nano_sort(p_a, 3);
 	set_selection_cost(p_b);
+	set_insertion_cost(p_a, p_b);
 }

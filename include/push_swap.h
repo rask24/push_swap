@@ -39,6 +39,7 @@ void			micro_sort(t_stack **p_a, t_stack **p_b, int num_a);
 void			large_sort(t_stack **p_a, t_stack **p_b, int num_a);
 
 void			set_selection_cost(t_stack **p_b);
+void			set_insertion_cost(t_stack **p_a, t_stack **p_b);
 
 void			operate_sa(t_stack **p_a);
 void			operate_sb(t_stack **p_b);
