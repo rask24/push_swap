@@ -18,13 +18,15 @@ extern "C" {
 
 TEST(set_selection_cost, selection) {
   int N = 5;
+  t_stack *stack_a = NULL;
   t_stack *stack_b = NULL;
   for (int i = 0; i < N; ++i) {
     t_content *c = new t_content({i, 0, 0, 0, 0});
+    ft_lstadd_back(&stack_a, ft_lstnew(c));
     ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
 
-  set_selection_cost(&stack_b);
+  set_cost(&stack_a, &stack_b);
 
   // index: 2
   t_stack *target = stack_b->next->next;
@@ -53,7 +55,7 @@ TEST(set_insertion_cost, insertion1) {
       ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
 
-  set_insertion_cost(&stack_a, &stack_b);
+  set_cost(&stack_a, &stack_b);
 
   t_stack *target;
   int if_cost;
@@ -99,7 +101,7 @@ TEST(set_insertion_cost, insertion2) {
     ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
 
-  set_insertion_cost(&stack_a, &stack_b);
+  set_cost(&stack_a, &stack_b);
 
   t_stack *target;
   int if_cost;

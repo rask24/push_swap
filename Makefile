@@ -20,8 +20,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/sort/micro_sort.c \
 					$(SRC_DIR)/sort/nano_sort.c \
 					$(SRC_DIR)/sort/large_sort.c \
-					$(SRC_DIR)/sort/set_selection_cost.c \
-					$(SRC_DIR)/sort/set_insertion_cost.c \
+					$(SRC_DIR)/sort/set_cost.c \
 					$(SRC_DIR)/stack_operations/push.c \
 					$(SRC_DIR)/stack_operations/swap.c \
 					$(SRC_DIR)/stack_operations/rotate.c \
