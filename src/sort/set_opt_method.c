@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:23:28 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/09 23:11:44 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/09 23:20:32 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,19 @@ static int	_calc_cost(t_stack *st_b, t_method method)
 	return (-1);
 }
 
-static void	_set_opt_method(t_stack **p_b)
+static void	_set_opt_method(t_stack *st_b, int *cost)
+{
+	if (ft_chmin(cost, _calc_cost(st_b, FF)))
+		get_content(st_b)->opt_method = FF;
+	if (ft_chmin(cost, _calc_cost(st_b, FR)))
+		get_content(st_b)->opt_method = FR;
+	if (ft_chmin(cost, _calc_cost(st_b, RF)))
+		get_content(st_b)->opt_method = RF;
+	if (ft_chmin(cost, _calc_cost(st_b, RR)))
+		get_content(st_b)->opt_method = RR;
+}
+
+static void	_set_min_cost_opt_method(t_stack **p_b)
 {
 	int		i;
 	int		size_b;
@@ -47,14 +59,8 @@ static void	_set_opt_method(t_stack **p_b)
 	while (i < size_b)
 	{
 		cost = INT_MAX;
-		if (ft_chmin(&cost, _calc_cost(st_b, FF)))
-			get_content(st_b)->opt_method = FF;
-		if (ft_chmin(&cost, _calc_cost(st_b, FR)))
-			get_content(st_b)->opt_method = FR;
-		if (ft_chmin(&cost, _calc_cost(st_b, RF)))
-			get_content(st_b)->opt_method = RF;
-		if (ft_chmin(&cost, _calc_cost(st_b, RR)))
-			get_content(st_b)->opt_method = RR;
+		_set_opt_method(st_b, &cost);
+		get_content(st_b)->min_cost = cost;
 		st_b = st_b->next;
 		i++;
 	}
@@ -62,5 +68,5 @@ static void	_set_opt_method(t_stack **p_b)
 
 void	set_opt(t_stack **p_b)
 {
-	_set_opt_method(p_b);
+	_set_min_cost_opt_method(p_b);
 }

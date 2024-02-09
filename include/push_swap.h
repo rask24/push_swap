@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/09 23:10:54 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/09 23:13:42 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_content
 	int			sr_cost;
 	int			if_cost;
 	int			ir_cost;
+	int			min_cost;
 	t_method	opt_method;
 	bool		is_opt;
 }				t_content;
