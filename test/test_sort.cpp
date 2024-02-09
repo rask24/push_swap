@@ -31,7 +31,7 @@ static void sort_test_main(int N) {
     t_stack *stack_a = NULL;
     t_stack *stack_b = NULL;
     for (int &i : v) {
-      t_content *c = new t_content({i, 0, 0, 0, 0});
+      t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
       ft_lstadd_back(&stack_a, ft_lstnew(c));
     }
     // sort
