@@ -19,7 +19,7 @@ extern "C" {
 //  8       | 9      <- FF: (4, 0), FR: (4, 0), RF: (-1, 0), RR: (-1, 0)
 // .                         4           4           1            1
 
-TEST(set_opt_medthod, opt_method1) {
+TEST(set_opt, set_opt_method1) {
   int N;
   t_stack *stack_a;
   t_stack *stack_b;
@@ -29,14 +29,14 @@ TEST(set_opt_medthod, opt_method1) {
   stack_a = NULL;
   stack_b = NULL;
   for (int i = 0; i < 2 * N; ++i) {
-    c = new t_content({i, 0, 0, 0, 0, INIT});
+    c = new t_content({i, 0, 0, 0, 0, INIT, false});
     if (i % 2 == 0)
       ft_lstadd_back(&stack_a, ft_lstnew(c));
     else
       ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
   set_cost(&stack_a, &stack_b);
-  set_opt_method(&stack_b);
+  set_opt(&stack_b);
 
   t_stack *target;
 
@@ -58,7 +58,7 @@ TEST(set_opt_medthod, opt_method1) {
 //  4       | 5       <- FF: (4, 0), FR: (-1, 0), RF: (4, 0), RR: (-1, 0)
 //                            4           1           4           1
 
-TEST(set_opt_method, opt_method2) {
+TEST(set_opt, opt_method2) {
   t_stack *stack_a;
   t_stack *stack_b;
   t_content *c;
@@ -68,16 +68,16 @@ TEST(set_opt_method, opt_method2) {
   stack_a = NULL;
   stack_b = NULL;
   for (int &i : v_a) {
-    c = new t_content({i, 0, 0, 0, 0, INIT});
+    c = new t_content({i, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
   for (int &i : v_b) {
-    c = new t_content({i, 0, 0, 0, 0, INIT});
+    c = new t_content({i, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
 
   set_cost(&stack_a, &stack_b);
-  set_opt_method(&stack_b);
+  set_opt(&stack_b);
 
   t_stack *target;
 

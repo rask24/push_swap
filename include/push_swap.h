@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/09 22:46:32 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/09 23:10:54 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_content
 	int			if_cost;
 	int			ir_cost;
 	t_method	opt_method;
+	bool		is_opt;
 }				t_content;
 
 int				check_args(int argc, char **argv);
@@ -49,7 +50,7 @@ void			nano_sort(t_stack **p_a, int num_a);
 void			micro_sort(t_stack **p_a, t_stack **p_b, int num_a);
 void			large_sort(t_stack **p_a, t_stack **p_b, int num_a);
 void			set_cost(t_stack **p_a, t_stack **p_b);
-void			set_opt_method(t_stack **p_b);
+void			set_opt(t_stack **p_b);
 
 void			operate_sa(t_stack **p_a);
 void			operate_sb(t_stack **p_b);

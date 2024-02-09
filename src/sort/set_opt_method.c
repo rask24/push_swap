@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:23:28 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/09 22:35:30 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/09 23:11:44 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	_calc_cost(t_stack *st_b, t_method method)
 	return (-1);
 }
 
-void	set_opt_method(t_stack **p_b)
+static void	_set_opt_method(t_stack **p_b)
 {
 	int		i;
 	int		size_b;
@@ -58,4 +58,9 @@ void	set_opt_method(t_stack **p_b)
 		st_b = st_b->next;
 		i++;
 	}
+}
+
+void	set_opt(t_stack **p_b)
+{
+	_set_opt_method(p_b);
 }
