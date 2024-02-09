@@ -21,7 +21,7 @@ TEST(set_selection_cost, selection) {
   t_stack *stack_a = NULL;
   t_stack *stack_b = NULL;
   for (int i = 0; i < N; ++i) {
-    t_content *c = new t_content({i, 0, 0, 0, 0});
+    t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
     ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
@@ -48,7 +48,7 @@ TEST(set_insertion_cost, insertion1) {
   t_stack *stack_a = NULL;
   t_stack *stack_b = NULL;
   for (int i = 0; i < 2 * N; ++i) {
-    t_content *c = new t_content({i, 0, 0, 0, 0});
+    t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
     if (i % 2 == 0)
       ft_lstadd_back(&stack_a, ft_lstnew(c));
     else
@@ -93,11 +93,11 @@ TEST(set_insertion_cost, insertion2) {
   t_stack *stack_a = NULL;
   t_stack *stack_b = NULL;
   for (int &i : v_a) {
-    t_content *c = new t_content({i, 0, 0, 0, 0});
+    t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
   for (int &i : v_b) {
-    t_content *c = new t_content({i, 0, 0, 0, 0});
+    t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
 
