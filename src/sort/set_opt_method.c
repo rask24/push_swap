@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:23:28 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/09 23:20:32 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/09 23:40:17 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,37 @@ static void	_set_min_cost_opt_method(t_stack **p_b)
 	}
 }
 
+static void	_set_is_opt(t_stack **p_b)
+{
+	int		i;
+	t_stack	*st_b;
+	int		size_b;
+	int		opt_cost;
+	int		min_index;
+
+	size_b = stack_size(*p_b);
+	i = 0;
+	st_b = *p_b;
+	opt_cost = INT_MAX;
+	while (i < size_b)
+	{
+		if (ft_chmin(&opt_cost, get_content(st_b)->min_cost))
+			min_index = i;
+		st_b = st_b->next;
+		i++;
+	}
+	i = 0;
+	st_b = *p_b;
+	while (i < min_index)
+	{
+		st_b = st_b->next;
+		i++;
+	}
+	get_content(st_b)->is_opt = true;
+}
+
 void	set_opt(t_stack **p_b)
 {
 	_set_min_cost_opt_method(p_b);
+	_set_is_opt(p_b);
 }
