@@ -26,7 +26,6 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/stack_operations/swap.c \
 					$(SRC_DIR)/stack_operations/rotate.c \
 					$(SRC_DIR)/stack_operations/reverse_rotate.c \
-					$(SRC_DIR)/stack_operations/ft_lst_before.c \
 					$(SRC_DIR)/utils/first_content.c \
 					$(SRC_DIR)/utils/second_content.c \
 					$(SRC_DIR)/utils/third_content.c \
@@ -45,8 +44,7 @@ TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
 					$(TEST_DIR)/test_swap_stack.cpp \
 					$(TEST_DIR)/test_set_cost.cpp \
 					$(TEST_DIR)/test_set_opt_method.cpp \
-					$(TEST_DIR)/test_sort.cpp \
-					$(TEST_DIR)/test_ft_lst_before.cpp
+					$(TEST_DIR)/test_sort.cpp
 TEST_OBJ		= $(patsubst $(TEST_DIR)/%.cpp, $(BUILD_DIR)/$(TEST_DIR)/%.o, $(TEST_SRC))
 DEPFLAGS		= -MMD -MP
 GTEST_SRC		= $(GTEST_DIR)/gtest_main.cc $(GTEST_DIR)/gtest-all.cc
