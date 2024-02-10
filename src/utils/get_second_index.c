@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   third_content.c                                    :+:      :+:    :+:   */
+/*   get_second_index.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:28:02 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:06:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 20:56:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	third_content(t_stack **p_stack)
+int	get_second_index(t_stack **p_stack)
 {
-	return (((t_content *)(*p_stack)->next->next->content)->index);
+	return (((t_content *)(*p_stack)->next->content)->index);
 }

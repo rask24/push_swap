@@ -38,7 +38,7 @@ static void sort_test_main(int N) {
     sort(&stack_a, &stack_b, N);
     // check if the order is appropreate
     for (int i = 1; stack_a; ++i, stack_a = stack_a->next) {
-      EXPECT_EQ(first_content(&stack_a), i);
+      EXPECT_EQ(get_first_index(&stack_a), i);
     }
   } while (std::next_permutation(v.begin(), v.end()));
 }

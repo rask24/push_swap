@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 19:29:08 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 20:56:41 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void			swap_stack(t_stack **p_stack);
 void			rotate_stack(t_stack **p_stack);
 void			reverse_rotate_stack(t_stack **p_stack);
 
-int				first_content(t_stack **p_stack);
-int				second_content(t_stack **p_stack);
-int				third_content(t_stack **p_stack);
+int				get_first_index(t_stack **p_stack);
+int				get_second_index(t_stack **p_stack);
+int				get_third_index(t_stack **p_stack);
 void			exit_with_error(void);
 void			clear_stack(t_stack **p_stack, void (*del)(void *));
 int				stack_size(t_stack *stack);
