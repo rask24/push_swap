@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/09 23:13:42 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 11:50:20 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void			micro_sort(t_stack **p_a, t_stack **p_b, int num_a);
 void			large_sort(t_stack **p_a, t_stack **p_b, int num_a);
 void			set_cost(t_stack **p_a, t_stack **p_b);
 void			set_opt(t_stack **p_b);
+void			greedy_operation(t_stack **p_a, t_stack **p_b);
 
 void			operate_sa(t_stack **p_a);
 void			operate_sb(t_stack **p_b);
