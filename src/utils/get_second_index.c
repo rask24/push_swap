@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_before.c                                    :+:      :+:    :+:   */
+/*   get_second_index.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 16:54:29 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:04:54 by reasuke          ###   ########.fr       */
+/*   Created: 2024/01/17 18:28:02 by reasuke           #+#    #+#             */
+/*   Updated: 2024/02/10 20:56:06 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lst_before(t_list *lst, t_list *trg)
+int	get_second_index(t_stack **p_stack)
 {
-	t_list	*before;
-
-	if (!lst)
-		return (NULL);
-	before = lst;
-	while (before->next && before->next != trg)
-		before = before->next;
-	if (before->next != trg)
-		return (NULL);
-	return (before);
+	return (((t_content *)(*p_stack)->next->content)->index);
 }

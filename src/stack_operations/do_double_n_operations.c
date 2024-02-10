@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   do_double_n_operations.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 15:10:35 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 21:36:16 by reasuke          ###   ########.fr       */
+/*   Created: 2024/02/10 19:22:50 by reasuke           #+#    #+#             */
+/*   Updated: 2024/02/10 19:29:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort(t_stack **p_a, t_stack **p_b)
+void	do_double_n_operations(t_stack **p_a, t_stack **p_b, int n,
+		void (*operation)(t_stack **, t_stack **))
 {
-	int	size_a;
-
-	if (is_sorted_stack(*p_a))
-		return ;
-	size_a = stack_size(*p_a);
-	if (size_a <= 3)
-		nano_sort(p_a);
-	else if (size_a <= 5)
-		micro_sort(p_a, p_b);
-	else
-		large_sort(p_a, p_b);
+	while (n--)
+		operation(p_a, p_b);
 }

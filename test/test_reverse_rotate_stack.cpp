@@ -3,11 +3,11 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-  #include "push_swap.h"
+#include "push_swap.h"
 }
 
 static void *convert_const_char_to_void(const char *str) {
-  const void *const_element = static_cast<const void*>(str);
+  const void *const_element = static_cast<const void *>(str);
   void *element = const_cast<void *>(const_element);
 
   return element;

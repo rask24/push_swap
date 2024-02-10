@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:04:35 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 21:14:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	_handle_2(t_stack **p_a)
 {
-	if (first_content(p_a) > second_content(p_a))
+	if (get_first_index(p_a) > get_second_index(p_a))
 	{
 		swap_stack(p_a);
 		ft_putendl_fd("sa", STDOUT_FILENO);
@@ -27,9 +27,9 @@ static void	_handle_3(t_stack **p_a)
 	int	second;
 	int	third;
 
-	first = first_content(p_a);
-	second = second_content(p_a);
-	third = third_content(p_a);
+	first = get_first_index(p_a);
+	second = get_second_index(p_a);
+	third = get_third_index(p_a);
 	if (second < first && first < third)
 		operate_sa(p_a);
 	else if (third < second && second < first)
@@ -48,10 +48,13 @@ static void	_handle_3(t_stack **p_a)
 		operate_rra(p_a);
 }
 
-void	nano_sort(t_stack **p_a, int num_a)
+void	nano_sort(t_stack **p_a)
 {
-	if (num_a == 2)
+	int	size_a;
+
+	size_a = stack_size(*p_a);
+	if (size_a == 2)
 		_handle_2(p_a);
-	else if (num_a == 3)
+	else if (size_a == 3)
 		_handle_3(p_a);
 }

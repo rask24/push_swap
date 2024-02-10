@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_content.c                                    :+:      :+:    :+:   */
+/*   do_single_n_operations.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 18:27:37 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:05:41 by reasuke          ###   ########.fr       */
+/*   Created: 2024/02/10 19:22:26 by reasuke           #+#    #+#             */
+/*   Updated: 2024/02/10 19:29:08 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	first_content(t_stack **p_stack)
+void	do_single_n_operations(t_stack **p_st, int n,
+		void (*operation)(t_stack **))
 {
-	return (((t_content *)(*p_stack)->content)->index);
+	while (n--)
+		operation(p_st);
 }
