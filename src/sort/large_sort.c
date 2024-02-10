@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 16:02:24 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 19:16:52 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ static void	_init_stack(t_stack **p_a, t_stack **p_b, int num_a)
 	}
 }
 
+static void	_sort_stack_a(t_stack **p_a, int num_a)
+{
+	if (get_content(*p_a)->index > num_a / 2)
+	{
+		while (!is_sorted_stack(*p_a))
+			operate_ra(p_a);
+	}
+	else
+	{
+		while (!is_sorted_stack(*p_a))
+			operate_rra(p_a);
+	}
+}
+
 void	large_sort(t_stack **p_a, t_stack **p_b, int num_a)
 {
 	int	i;
@@ -38,4 +52,5 @@ void	large_sort(t_stack **p_a, t_stack **p_b, int num_a)
 		greedy_operation(p_a, p_b);
 		i++;
 	}
+	_sort_stack_a(p_a, num_a);
 }
