@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 20:56:41 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 21:12:16 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct s_content
 }				t_content;
 
 int				check_args(int argc, char **argv);
-
 t_stack			*generate_stack(int argc, char **argv);
+void			exit_with_error(void);
 
 void			sort(t_stack **p_a, t_stack **p_b, int num_a);
 void			nano_sort(t_stack **p_a, int num_a);
@@ -76,12 +76,11 @@ void			swap_stack(t_stack **p_stack);
 void			rotate_stack(t_stack **p_stack);
 void			reverse_rotate_stack(t_stack **p_stack);
 
+void			clear_stack(t_stack **p_stack, void (*del)(void *));
+t_content		*get_content(t_stack *st);
 int				get_first_index(t_stack **p_stack);
 int				get_second_index(t_stack **p_stack);
 int				get_third_index(t_stack **p_stack);
-void			exit_with_error(void);
-void			clear_stack(t_stack **p_stack, void (*del)(void *));
 int				stack_size(t_stack *stack);
-t_content		*get_content(t_stack *st);
 
 #endif

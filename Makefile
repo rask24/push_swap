@@ -14,14 +14,15 @@ TEST_DIR		= test
 GTEST_DIR		= test/gtest
 
 SRC				= $(SRC_DIR)/main.c \
-					$(SRC_DIR)/check_args.c \
-					$(SRC_DIR)/generate_stack.c \
+					$(SRC_DIR)/initialization/check_args.c \
+					$(SRC_DIR)/initialization/exit_with_error.c \
+					$(SRC_DIR)/initialization/generate_stack.c \
 					$(SRC_DIR)/sort/sort.c \
 					$(SRC_DIR)/sort/micro_sort.c \
 					$(SRC_DIR)/sort/nano_sort.c \
 					$(SRC_DIR)/sort/large_sort.c \
 					$(SRC_DIR)/sort/set_cost.c \
-					$(SRC_DIR)/sort/set_opt_method.c \
+					$(SRC_DIR)/sort/set_opt.c \
 					$(SRC_DIR)/sort/greedy_operation.c \
 					$(SRC_DIR)/sort/is_sorted_stack.c \
 					$(SRC_DIR)/stack_operations/push.c \
@@ -33,7 +34,6 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/utils/get_first_index.c \
 					$(SRC_DIR)/utils/get_second_index.c \
 					$(SRC_DIR)/utils/get_third_index.c \
-					$(SRC_DIR)/utils/exit_with_error.c \
 					$(SRC_DIR)/utils/clear_stack.c \
 					$(SRC_DIR)/utils/get_content.c \
 					$(SRC_DIR)/utils/stack_size.c
