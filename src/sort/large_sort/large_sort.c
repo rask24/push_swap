@@ -6,22 +6,16 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 19:31:10 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 21:24:58 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	_init_stack(t_stack **p_a, t_stack **p_b, int num_a)
+static void	_push_b_n_times(t_stack **p_a, t_stack **p_b, int n)
 {
-	int	i;
-
-	i = 0;
-	while (i < num_a - 3)
-	{
+	while (n--)
 		operate_pb(p_a, p_b);
-		i++;
-	}
 }
 
 static void	_sort_stack_a(t_stack **p_a, int num_a)
@@ -38,19 +32,20 @@ static void	_sort_stack_a(t_stack **p_a, int num_a)
 	}
 }
 
-void	large_sort(t_stack **p_a, t_stack **p_b, int num_a)
+void	large_sort(t_stack **p_a, t_stack **p_b)
 {
-	int	i;
+	int	size_a;
+	int	size_b;
 
-	_init_stack(p_a, p_b, num_a);
-	nano_sort(p_a, 3);
-	i = 0;
-	while (i < num_a - 3)
+	size_a = stack_size(*p_a);
+	size_b = size_a - 3;
+	_push_b_n_times(p_a, p_b, size_b);
+	nano_sort(p_a);
+	while (size_b--)
 	{
 		set_cost(p_a, p_b);
 		set_opt(p_b);
 		greedy_operation(p_a, p_b);
-		i++;
 	}
-	_sort_stack_a(p_a, num_a);
+	_sort_stack_a(p_a, size_a);
 }

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:12:35 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 21:19:08 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 	check_args(argc, argv);
 	a = generate_stack(argc, argv);
 	b = NULL;
-	sort(&a, &b, argc - 1);
+	sort(&a, &b);
 	clear_stack(&a, free);
 	return (0);
 }

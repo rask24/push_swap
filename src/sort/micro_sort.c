@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:32:27 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 20:55:11 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 21:17:40 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	_handle_4(t_stack **p_a, t_stack **p_b)
 {
 	operate_pb(p_a, p_b);
-	nano_sort(p_a, 3);
+	nano_sort(p_a);
 	if (get_first_index(p_b) == 1)
 		operate_pa(p_b, p_a);
 	else if (get_first_index(p_b) == 2)
@@ -69,7 +69,7 @@ static void	_handle_5(t_stack **p_a, t_stack **p_b)
 {
 	operate_pb(p_a, p_b);
 	operate_pb(p_a, p_b);
-	nano_sort(p_a, 3);
+	nano_sort(p_a);
 	if (get_first_index(p_b) < get_second_index(p_b))
 		operate_sb(p_b);
 	if (get_first_index(p_b) == 5 && get_second_index(p_b) == 4)
@@ -78,10 +78,13 @@ static void	_handle_5(t_stack **p_a, t_stack **p_b)
 		_normal_flow_5(p_a, p_b);
 }
 
-void	micro_sort(t_stack **p_a, t_stack **p_b, int num_a)
+void	micro_sort(t_stack **p_a, t_stack **p_b)
 {
-	if (num_a == 4)
+	int	size_a;
+
+	size_a = stack_size(*p_a);
+	if (size_a == 4)
 		_handle_4(p_a, p_b);
-	else if (num_a == 5)
+	else if (size_a == 5)
 		_handle_5(p_a, p_b);
 }

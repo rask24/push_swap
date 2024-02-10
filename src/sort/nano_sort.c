@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 15:58:22 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 20:56:41 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 21:14:43 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,13 @@ static void	_handle_3(t_stack **p_a)
 		operate_rra(p_a);
 }
 
-void	nano_sort(t_stack **p_a, int num_a)
+void	nano_sort(t_stack **p_a)
 {
-	if (num_a == 2)
+	int	size_a;
+
+	size_a = stack_size(*p_a);
+	if (size_a == 2)
 		_handle_2(p_a);
-	else if (num_a == 3)
+	else if (size_a == 3)
 		_handle_3(p_a);
 }

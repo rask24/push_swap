@@ -35,7 +35,7 @@ static void sort_test_main(int N) {
       ft_lstadd_back(&stack_a, ft_lstnew(c));
     }
     // sort
-    sort(&stack_a, &stack_b, N);
+    sort(&stack_a, &stack_b);
     // check if the order is appropreate
     for (int i = 1; stack_a; ++i, stack_a = stack_a->next) {
       EXPECT_EQ(get_first_index(&stack_a), i);
@@ -77,7 +77,7 @@ static void random_sort_test_main(int N) {
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
   // sort
-  sort(&stack_a, &stack_b, N);
+  sort(&stack_a, &stack_b);
   // check if the order is appropreate
   for (int i = 1; stack_a; ++i, stack_a = stack_a->next) {
     EXPECT_EQ(*(int *)stack_a->content, i);

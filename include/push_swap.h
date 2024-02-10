@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 21:12:16 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/10 21:18:02 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int				check_args(int argc, char **argv);
 t_stack			*generate_stack(int argc, char **argv);
 void			exit_with_error(void);
 
-void			sort(t_stack **p_a, t_stack **p_b, int num_a);
-void			nano_sort(t_stack **p_a, int num_a);
-void			micro_sort(t_stack **p_a, t_stack **p_b, int num_a);
-void			large_sort(t_stack **p_a, t_stack **p_b, int num_a);
+void			sort(t_stack **p_a, t_stack **p_b);
+void			nano_sort(t_stack **p_a);
+void			micro_sort(t_stack **p_a, t_stack **p_b);
+void			large_sort(t_stack **p_a, t_stack **p_b);
 void			set_cost(t_stack **p_a, t_stack **p_b);
 void			set_opt(t_stack **p_b);
 void			greedy_operation(t_stack **p_a, t_stack **p_b);
