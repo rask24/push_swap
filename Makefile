@@ -106,20 +106,30 @@ leak: $(NAME)
 
 releak: fclean leak
 
-test: all $(GTEST_OBJ) $(TEST_OBJ)
-	@echo "$(BLUE)test$(RESET)"
-	$(CXX) -L $(LIBFT_DIR) -lft -lpthread $(OBJ_FILTER_MAIN) $(TEST_OBJ) $(GTEST_OBJ) -o $(TEST_NAME)
+test: test_clean test_main
+
+test_main: all $(GTEST_OBJ) $(TEST_OBJ)
+	@echo "$(BLUE)\ntest linking$(RESET)"
+	@$(CXX) -L $(LIBFT_DIR) -lft -lpthread $(OBJ_FILTER_MAIN) $(TEST_OBJ) $(GTEST_OBJ) -o $(TEST_NAME)
 	./$(TEST_NAME)
 	@$(RM) $(TEST_NAME)
 
+test_clean:
+	@echo "$(BLUE)test cleaning$(RESET)"
+	@$(RM) -r $(BUILD_DIR)/$(TEST_DIR)
+
 $(BUILD_DIR)/$(TEST_DIR)/%.o: $(TEST_DIR)/%.cpp
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $< -o $@
+	@printf "$(GREEN).$(RESET)"
 
 $(GTEST_OBJ): $(GTEST_DIR)
+	@echo "$(BLUE)test compiling$(RESET)"
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest-all.cc -o $(BUILD_DIR)/$(GTEST_DIR)/gtest-all.o
-	$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest_main.cc -o $(BUILD_DIR)/$(GTEST_DIR)/gtest_main.o
+	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest-all.cc -o $(BUILD_DIR)/$(GTEST_DIR)/gtest-all.o
+	@printf "$(GREEN).$(RESET)"
+	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest_main.cc -o $(BUILD_DIR)/$(GTEST_DIR)/gtest_main.o
+	@printf "$(GREEN).$(RESET)"
 
 $(GTEST_DIR):
 	@echo "fetching google test"
