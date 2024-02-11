@@ -6,11 +6,14 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 21:24:58 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:53:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "large_sort.h"
 #include "push_swap.h"
+#include "sort.h"
+#include "stack_operations.h"
 
 static void	_push_b_n_times(t_stack **p_a, t_stack **p_b, int n)
 {

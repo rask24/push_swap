@@ -8,6 +8,7 @@
 
 extern "C" {
 #include "push_swap.h"
+#include "sort.h"
 }
 
 static void sort_test_main(int N) {

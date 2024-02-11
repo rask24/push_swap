@@ -6,11 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:04:40 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:06:20 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:35:32 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "initialization.h"
 
 int	*_generate_int_array(int array_size)
 {

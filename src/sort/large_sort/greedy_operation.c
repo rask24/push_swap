@@ -6,11 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 10:43:16 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 20:34:46 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:53:46 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "large_sort.h"
 #include "push_swap.h"
+#include "stack_operations.h"
 
 static t_stack	*_find_opt_st_b(t_stack **p_b)
 {

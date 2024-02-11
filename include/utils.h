@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted_stack.c                                  :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 18:47:11 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:54:04 by reasuke          ###   ########.fr       */
+/*   Created: 2024/02/11 12:39:00 by reasuke           #+#    #+#             */
+/*   Updated: 2024/02/11 12:39:47 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "sort.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-bool	is_sorted_stack(t_stack *st)
-{
-	int	current;
+# include "push_swap.h"
 
-	current = 1;
-	while (st)
-	{
-		if (get_content(st)->index != current)
-			return (false);
-		current++;
-		st = st->next;
-	}
-	return (true);
-}
+void		clear_stack(t_stack **p_stack, void (*del)(void *));
+t_content	*get_content(t_stack *st);
+int			get_first_index(t_stack **p_stack);
+int			get_second_index(t_stack **p_stack);
+int			get_third_index(t_stack **p_stack);
+int			stack_size(t_stack *stack);
+
+#endif
