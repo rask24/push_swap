@@ -4,6 +4,7 @@ CXXFLAGS		= -std=c++17 -Wall -Wextra -Werror
 PROD_FLAGS		= -O3
 DEV_FLAGS		= -g -fsanitize=address -O0 -D DEV
 LEAK_FLAGS		= -O0 -D DEV -D LEAK
+DEPFLAGS		= -MMD -MP
 INCLUDE			= -I $(INC_DIR)
 
 SRC_DIR			= src
@@ -53,7 +54,6 @@ TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
 					$(TEST_DIR)/test_is_sorted_stack.cpp \
 					$(TEST_DIR)/test_sort.cpp
 TEST_OBJ		= $(patsubst $(TEST_DIR)/%.cpp, $(TEST_BUILD_DIR)/%.o, $(TEST_SRC))
-DEPFLAGS		= -MMD -MP
 GTEST_SRC		= $(GTEST_DIR)/gtest_main.cc $(GTEST_DIR)/gtest-all.cc
 GTEST_OBJ		= $(patsubst $(GTEST_DIR)/%.cc, $(TEST_BUILD_DIR)/%.o, $(GTEST_SRC))
 
