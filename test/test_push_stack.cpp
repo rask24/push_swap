@@ -4,6 +4,7 @@
 
 extern "C" {
 #include "push_swap.h"
+#include "stack_operations.h"
 }
 
 static void *convert_const_char_to_void(const char *str) {

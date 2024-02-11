@@ -6,6 +6,7 @@
 #include "gtest/gtest.h"
 
 extern "C" {
+#include "large_sort.h"
 #include "push_swap.h"
 }
 

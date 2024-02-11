@@ -3,6 +3,7 @@
 #include "gtest/gtest.h"
 
 extern "C" {
+#include "initialization.h"
 #include "push_swap.h"
 }
 

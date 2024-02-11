@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted_stack.c                                  :+:      :+:    :+:   */
+/*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 18:47:11 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:54:04 by reasuke          ###   ########.fr       */
+/*   Created: 2024/02/11 12:57:41 by reasuke           #+#    #+#             */
+/*   Updated: 2024/02/11 12:58:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "sort.h"
+#ifndef TYPES_H
+# define TYPES_H
 
-bool	is_sorted_stack(t_stack *st)
+typedef t_list	t_stack;
+
+typedef enum e_method
 {
-	int	current;
+	INIT,
+	FF,
+	FR,
+	RF,
+	RR,
+}				t_method;
 
-	current = 1;
-	while (st)
-	{
-		if (get_content(st)->index != current)
-			return (false);
-		current++;
-		st = st->next;
-	}
-	return (true);
-}
+typedef struct s_content
+{
+	int			index;
+	int			sf_cost;
+	int			sr_cost;
+	int			if_cost;
+	int			ir_cost;
+	int			min_cost;
+	t_method	opt_method;
+	bool		is_opt;
+}				t_content;
+#endif

@@ -6,11 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:32:27 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 21:17:40 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:54:02 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "sort.h"
+#include "stack_operations.h"
 
 static void	_handle_4(t_stack **p_a, t_stack **p_b)
 {

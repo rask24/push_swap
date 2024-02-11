@@ -12,6 +12,7 @@ INC_DIR			= include
 LIBFT_DIR		= libft
 TEST_DIR		= test
 GTEST_DIR		= test/gtest
+TEST_BUILD_DIR	= test/build
 
 SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/initialization/check_args.c \
@@ -51,10 +52,10 @@ TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
 					$(TEST_DIR)/test_greedy_operation.cpp \
 					$(TEST_DIR)/test_is_sorted_stack.cpp \
 					$(TEST_DIR)/test_sort.cpp
-TEST_OBJ		= $(patsubst $(TEST_DIR)/%.cpp, $(BUILD_DIR)/$(TEST_DIR)/%.o, $(TEST_SRC))
+TEST_OBJ		= $(patsubst $(TEST_DIR)/%.cpp, $(TEST_BUILD_DIR)/%.o, $(TEST_SRC))
 DEPFLAGS		= -MMD -MP
 GTEST_SRC		= $(GTEST_DIR)/gtest_main.cc $(GTEST_DIR)/gtest-all.cc
-GTEST_OBJ		= $(patsubst $(GTEST_DIR)/%.cc, $(BUILD_DIR)/$(GTEST_DIR)/%.o, $(GTEST_SRC))
+GTEST_OBJ		= $(patsubst $(GTEST_DIR)/%.cc, $(TEST_BUILD_DIR)/%.o, $(GTEST_SRC))
 
 GTEST_VERSION	= 1.14.0
 GTEST_ARCHIVE	= v$(GTEST_VERSION).tar.gz
@@ -116,9 +117,9 @@ test_main: all $(GTEST_OBJ) $(TEST_OBJ)
 
 test_clean:
 	@echo "$(BLUE)test cleaning$(RESET)"
-	@$(RM) -r $(BUILD_DIR)/$(TEST_DIR)
+	@$(RM) -r $(TEST_BUILD_DIR)
 
-$(BUILD_DIR)/$(TEST_DIR)/%.o: $(TEST_DIR)/%.cpp
+$(TEST_BUILD_DIR)/%.o: $(TEST_DIR)/%.cpp
 	@mkdir -p $(@D)
 	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $< -o $@
 	@printf "$(GREEN).$(RESET)"
@@ -126,9 +127,9 @@ $(BUILD_DIR)/$(TEST_DIR)/%.o: $(TEST_DIR)/%.cpp
 $(GTEST_OBJ): $(GTEST_DIR)
 	@echo "$(BLUE)test compiling$(RESET)"
 	@mkdir -p $(@D)
-	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest-all.cc -o $(BUILD_DIR)/$(GTEST_DIR)/gtest-all.o
+	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest-all.cc -o $(TEST_BUILD_DIR)/gtest-all.o
 	@printf "$(GREEN).$(RESET)"
-	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest_main.cc -o $(BUILD_DIR)/$(GTEST_DIR)/gtest_main.o
+	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest_main.cc -o $(TEST_BUILD_DIR)/gtest_main.o
 	@printf "$(GREEN).$(RESET)"
 
 $(GTEST_DIR):

@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted_stack.c                                  :+:      :+:    :+:   */
+/*   large_sort.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 18:47:11 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:54:04 by reasuke          ###   ########.fr       */
+/*   Created: 2024/02/11 12:36:38 by reasuke           #+#    #+#             */
+/*   Updated: 2024/02/11 12:37:50 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "sort.h"
+#ifndef LARGE_SORT_H
+# define LARGE_SORT_H
 
-bool	is_sorted_stack(t_stack *st)
-{
-	int	current;
+# include "push_swap.h"
 
-	current = 1;
-	while (st)
-	{
-		if (get_content(st)->index != current)
-			return (false);
-		current++;
-		st = st->next;
-	}
-	return (true);
-}
+void	large_sort(t_stack **p_a, t_stack **p_b);
+void	set_cost(t_stack **p_a, t_stack **p_b);
+void	set_opt(t_stack **p_b);
+void	greedy_operation(t_stack **p_a, t_stack **p_b);
+
+#endif

@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted_stack.c                                  :+:      :+:    :+:   */
+/*   initialization.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 18:47:11 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:54:04 by reasuke          ###   ########.fr       */
+/*   Created: 2024/02/11 12:30:37 by reasuke           #+#    #+#             */
+/*   Updated: 2024/02/11 12:33:50 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "sort.h"
+#ifndef INITIALIZATION_H
+# define INITIALIZATION_H
 
-bool	is_sorted_stack(t_stack *st)
-{
-	int	current;
+# include "push_swap.h"
 
-	current = 1;
-	while (st)
-	{
-		if (get_content(st)->index != current)
-			return (false);
-		current++;
-		st = st->next;
-	}
-	return (true);
-}
+int		check_args(int argc, char **argv);
+t_stack	*generate_stack(int argc, char **argv);
+void	exit_with_error(void);
+
+#endif

@@ -7,6 +7,7 @@
 
 extern "C" {
 #include "push_swap.h"
+#include "sort.h"
 }
 
 // st: sorted
