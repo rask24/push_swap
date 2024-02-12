@@ -100,28 +100,28 @@ static void random_sort_test(int N) {
   close(stdout_copy);
 }
 
-TEST(sort, oneElement) { sort_test(1); }
+TEST(sort, element1) { sort_test(1); }
 
-TEST(sort, twoElements) { sort_test(2); }
+TEST(sort, elements2) { sort_test(2); }
 
-TEST(sort, threeEelments) { sort_test(3); }
+TEST(sort, elements3) { sort_test(3); }
 
-TEST(sort, fourElements) { sort_test(4); }
+TEST(sort, elements4) { sort_test(4); }
 
-TEST(sort, fiveElements) { sort_test(5); }
+TEST(sort, elements5) { sort_test(5); }
 
-TEST(sort, sixElements) { sort_test(6); }
+TEST(sort, elements6) { sort_test(6); }
 
-TEST(sort, sevenElements) { sort_test(7); }
+TEST(sort, elements7) { sort_test(7); }
 
-TEST(sort, eightElementsRandom) { random_sort_test(8); }
+TEST(sort, randomElements8) { random_sort_test(8); }
 
-TEST(sort, nineElementsRandom) { random_sort_test(9); }
+TEST(sort, randomElements9) { random_sort_test(9); }
 
-TEST(sort, tenElementsRandom) { random_sort_test(10); }
+TEST(sort, randomElements10) { random_sort_test(10); }
 
-TEST(sort, hundredElementsRandom) { random_sort_test(100); }
+TEST(sort, randomElements100) { random_sort_test(100); }
 
-TEST(sort, twoHundredElementsRandom) { random_sort_test(200); }
+TEST(sort, randomElements200) { random_sort_test(200); }
 
-TEST(sort, thousandElementsRandom) { random_sort_test(500); }
+TEST(sort, randomElements500) { random_sort_test(500); }
