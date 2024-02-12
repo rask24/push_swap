@@ -24,6 +24,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/sort/nano_sort.c \
 					$(SRC_DIR)/sort/is_sorted_stack.c \
 					$(SRC_DIR)/sort/large_sort/large_sort.c \
+					$(SRC_DIR)/sort/large_sort/push_b_segmented.c \
 					$(SRC_DIR)/sort/large_sort/set_cost.c \
 					$(SRC_DIR)/sort/large_sort/set_opt.c \
 					$(SRC_DIR)/sort/large_sort/greedy_operation.c \
