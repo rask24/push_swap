@@ -12,17 +12,15 @@ extern "C" {
 #include "push_swap.h"
 }
 
+__attribute__((unused)) static void put_void(void *p_content) {
+  t_content *c = static_cast<t_content *>(p_content);
+  std::cout << c->index << "\n";
+}
+
 static void segmented_test_main1() {
-  int N = 20;
-  std::vector<int> v(N);
-  for (int i = 0; i < N; ++i) {
-    v[i] = i + 1;
-  }
-  // shuffle vector
-  std::random_device seed_gen;
-  std::mt19937 engine(seed_gen());
-  std::shuffle(v.begin(), v.end(), engine);
-  int size_a = N;
+  std::vector<int> v = {9,  14, 18, 13, 12, 19, 2, 8,  16, 6,
+                        10, 17, 7,  1,  20, 15, 3, 11, 4,  5};
+  int size_a = v.size();
 
   t_stack *stack_a = NULL;
   t_stack *stack_b = NULL;
@@ -32,6 +30,7 @@ static void segmented_test_main1() {
   }
 
   push_b_segmented(&stack_a, &stack_b, size_a, 5);
+
   t_stack *st = stack_b;
   for (int i = 0; i < size_a; ++i) {
     if (i < 4) {
@@ -120,17 +119,17 @@ static void segmented_test_main2() {
 }
 
 TEST(push_b_segmented, case2) {
-  // save stdout
-  int stdout_copy = dup(STDOUT_FILENO);
-  // redirect stdout to /dev/null
-  int dev_null = open("/dev/null", O_WRONLY);
-  dup2(dev_null, 1);
-  close(dev_null);
+  // // save stdout
+  // int stdout_copy = dup(STDOUT_FILENO);
+  // // redirect stdout to /dev/null
+  // int dev_null = open("/dev/null", O_WRONLY);
+  // dup2(dev_null, 1);
+  // close(dev_null);
 
   // execute test
   segmented_test_main2();
 
-  // revert stdout
-  dup2(stdout_copy, STDOUT_FILENO);
-  close(stdout_copy);
+  // // revert stdout
+  // dup2(stdout_copy, STDOUT_FILENO);
+  // close(stdout_copy);
 }
