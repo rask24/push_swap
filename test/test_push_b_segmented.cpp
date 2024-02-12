@@ -119,17 +119,17 @@ static void segmented_test_main2() {
 }
 
 TEST(push_b_segmented, case2) {
-  // // save stdout
-  // int stdout_copy = dup(STDOUT_FILENO);
-  // // redirect stdout to /dev/null
-  // int dev_null = open("/dev/null", O_WRONLY);
-  // dup2(dev_null, 1);
-  // close(dev_null);
+  // save stdout
+  int stdout_copy = dup(STDOUT_FILENO);
+  // redirect stdout to /dev/null
+  int dev_null = open("/dev/null", O_WRONLY);
+  dup2(dev_null, 1);
+  close(dev_null);
 
   // execute test
   segmented_test_main2();
 
-  // // revert stdout
-  // dup2(stdout_copy, STDOUT_FILENO);
-  // close(stdout_copy);
+  // revert stdout
+  dup2(stdout_copy, STDOUT_FILENO);
+  close(stdout_copy);
 }

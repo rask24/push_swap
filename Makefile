@@ -109,9 +109,7 @@ leak: $(NAME)
 
 releak: fclean leak
 
-test: test_clean test_main
-
-test_main: all $(GTEST_OBJ) $(TEST_OBJ)
+test: all $(GTEST_OBJ) $(TEST_OBJ)
 	@echo "$(BLUE)\ntest linking$(RESET)"
 	@$(CXX) -L $(LIBFT_DIR) -lft -lpthread $(OBJ_FILTER_MAIN) $(TEST_OBJ) $(GTEST_OBJ) -o $(TEST_NAME)
 	./$(TEST_NAME)
@@ -120,6 +118,8 @@ test_main: all $(GTEST_OBJ) $(TEST_OBJ)
 test_clean:
 	@echo "$(BLUE)test cleaning$(RESET)"
 	@$(RM) -r $(TEST_BUILD_DIR)
+
+retest: test_clean test
 
 $(TEST_BUILD_DIR)/%.o: $(TEST_DIR)/%.cpp
 	@mkdir -p $(@D)
