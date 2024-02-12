@@ -4,6 +4,7 @@ CXXFLAGS		= -std=c++17 -Wall -Wextra -Werror
 PROD_FLAGS		= -O3
 DEV_FLAGS		= -g -fsanitize=address -O0 -D DEV
 LEAK_FLAGS		= -O0 -D DEV -D LEAK
+DEPFLAGS		= -MMD -MP
 INCLUDE			= -I $(INC_DIR)
 
 SRC_DIR			= src
@@ -23,6 +24,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/sort/nano_sort.c \
 					$(SRC_DIR)/sort/is_sorted_stack.c \
 					$(SRC_DIR)/sort/large_sort/large_sort.c \
+					$(SRC_DIR)/sort/large_sort/push_b_segmented.c \
 					$(SRC_DIR)/sort/large_sort/set_cost.c \
 					$(SRC_DIR)/sort/large_sort/set_opt.c \
 					$(SRC_DIR)/sort/large_sort/greedy_operation.c \
@@ -47,13 +49,13 @@ TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
 					$(TEST_DIR)/test_reverse_rotate_stack.cpp \
 					$(TEST_DIR)/test_rotate_stack.cpp \
 					$(TEST_DIR)/test_swap_stack.cpp \
+					$(TEST_DIR)/test_push_b_segmented.cpp \
 					$(TEST_DIR)/test_set_cost.cpp \
 					$(TEST_DIR)/test_set_opt_method.cpp \
 					$(TEST_DIR)/test_greedy_operation.cpp \
 					$(TEST_DIR)/test_is_sorted_stack.cpp \
 					$(TEST_DIR)/test_sort.cpp
 TEST_OBJ		= $(patsubst $(TEST_DIR)/%.cpp, $(TEST_BUILD_DIR)/%.o, $(TEST_SRC))
-DEPFLAGS		= -MMD -MP
 GTEST_SRC		= $(GTEST_DIR)/gtest_main.cc $(GTEST_DIR)/gtest-all.cc
 GTEST_OBJ		= $(patsubst $(GTEST_DIR)/%.cc, $(TEST_BUILD_DIR)/%.o, $(GTEST_SRC))
 
