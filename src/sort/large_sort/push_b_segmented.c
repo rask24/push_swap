@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 22:57:28 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/12 17:24:53 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/12 18:32:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,9 @@ static bool	_should_push_b(int index, int pushed, int n, int num_seg)
 	return (inf < index && index <= sup);
 }
 
-void	push_b_segmented(t_stack **p_a, t_stack **p_b, int n)
+void	push_b_segmented(t_stack **p_a, t_stack **p_b, int n, int num_seg)
 {
 	int	pushed;
-	int	num_seg;
 
 	pushed = 0;
 	num_seg = 5;

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/12 11:33:20 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/12 18:33:50 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	large_sort(t_stack **p_a, t_stack **p_b)
 	if (size_a < 200)
 		_push_b_n_times(p_a, p_b, size_b);
 	else
-		push_b_segmented(p_a, p_b, size_b);
+		push_b_segmented(p_a, p_b, size_b, 5);
 	nano_sort(p_a);
 	while (size_b--)
 	{

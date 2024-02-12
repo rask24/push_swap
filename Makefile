@@ -49,6 +49,7 @@ TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
 					$(TEST_DIR)/test_reverse_rotate_stack.cpp \
 					$(TEST_DIR)/test_rotate_stack.cpp \
 					$(TEST_DIR)/test_swap_stack.cpp \
+					$(TEST_DIR)/test_push_b_segmented.cpp \
 					$(TEST_DIR)/test_set_cost.cpp \
 					$(TEST_DIR)/test_set_opt_method.cpp \
 					$(TEST_DIR)/test_greedy_operation.cpp \

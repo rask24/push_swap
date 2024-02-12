@@ -66,7 +66,6 @@ static void random_sort_test_main(int N) {
     v[i] = i + 1;
   }
   // shuffle vector
-  std::cout << std::endl;
   std::random_device seed_gen;
   std::mt19937 engine(seed_gen());
   std::shuffle(v.begin(), v.end(), engine);
