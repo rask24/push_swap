@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:58:12 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/13 12:45:48 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,10 @@
 # include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+int		check_args(int argc, char **argv);
+t_stack	*generate_stack(int argc, char **argv);
+
+void	sort(t_stack **p_a, t_stack **p_b);
 
 #endif

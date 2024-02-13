@@ -6,107 +6,106 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:04:40 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:35:32 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/13 14:01:23 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
+#include "push_swap.h"
 
-int	*_generate_int_array(int array_size)
+int	*_allocate_int_array(int size_a)
 {
 	int	*array;
 
-	array = malloc(sizeof(int) * array_size);
+	array = malloc(sizeof(int) * size_a);
 	if (!array)
 		exit_with_error();
 	return (array);
 }
 
-int	*_generate_numberd_array(int array_size, char **argv)
+int	*_generate_numberd_array(int size_a, char **argv)
 {
 	int	i;
-	int	*numberd_array;
+	int	*numberd;
 
-	numberd_array = _generate_int_array(array_size);
+	numberd = _allocate_int_array(size_a);
 	i = 0;
-	while (i < array_size)
+	while (i < size_a)
 	{
-		numberd_array[i] = ft_atoi(argv[i + 1]);
+		numberd[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
-	return (numberd_array);
+	return (numberd);
 }
 
-int	*_generate_sorted_array(int argc, char **argv)
+int	*_generate_sorted_array(int size_a, char **argv)
 {
-	int	array_size;
-	int	*sorted_array;
+	int	*sorted;
 	int	i;
 	int	j;
 
-	array_size = argc - 1;
-	sorted_array = _generate_numberd_array(array_size, argv);
-	i = array_size - 1;
+	sorted = _generate_numberd_array(size_a, argv);
+	i = size_a - 1;
 	while (i > 0)
 	{
 		j = 0;
 		while (j < i)
 		{
-			if (sorted_array[j] > sorted_array[j + 1])
-				ft_swap(sorted_array + j, sorted_array + j + 1);
+			if (sorted[j] > sorted[j + 1])
+				ft_swap(sorted + j, sorted + j + 1);
 			j++;
 		}
 		i--;
 	}
-	return (sorted_array);
+	return (sorted);
 }
 
-int	*_coordinate_compression(int argc, char **argv)
+int	*_coordinate_compression(int size_a, char **argv)
 {
-	int	*compressred_array;
-	int	*sorted_array;
-	int	array_size;
+	int	*comp;
+	int	*sorted;
 	int	i;
 	int	j;
 
-	array_size = argc - 1;
-	compressred_array = _generate_int_array(array_size);
-	sorted_array = _generate_sorted_array(argc, argv);
+	comp = _allocate_int_array(size_a);
+	sorted = _generate_sorted_array(size_a, argv);
 	i = 0;
-	while (i < array_size)
+	while (i < size_a)
 	{
 		j = 0;
-		while (j < array_size)
+		while (j < size_a)
 		{
-			if (ft_atoi(argv[i + 1]) == sorted_array[j])
-				compressred_array[i] = j + 1;
+			if (ft_atoi(argv[i + 1]) == sorted[j])
+				comp[i] = j;
 			j++;
 		}
 		i++;
 	}
-	free(sorted_array);
-	return (compressred_array);
+	free(sorted);
+	return (comp);
 }
 
 t_stack	*generate_stack(int argc, char **argv)
 {
-	t_stack		*stack;
-	int			*compressed_array;
+	t_stack		*st;
+	int			*comp;
 	int			i;
 	t_content	*ptr;
+	int			size_a;
 
-	compressed_array = _coordinate_compression(argc, argv);
+	size_a = argc - 1;
+	comp = _coordinate_compression(size_a, argv);
 	i = 0;
-	stack = NULL;
-	while (i < argc - 1)
+	st = NULL;
+	while (i < size_a)
 	{
 		ptr = ft_calloc(1, sizeof(t_content));
 		if (!ptr)
 			exit_with_error();
-		ptr->index = compressed_array[i];
-		ft_lstadd_back(&stack, ft_lstnew(ptr));
+		ptr->index = comp[i];
+		ft_lstadd_back(&st, ft_lstnew(ptr));
 		i++;
 	}
-	free(compressed_array);
-	return (stack);
+	free(comp);
+	return (st);
 }

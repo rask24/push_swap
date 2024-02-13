@@ -6,11 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:44:55 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:35:17 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/13 11:45:54 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
+#include "push_swap.h"
 
 static bool	_has_not_digit(int argc, char **argv)
 {
