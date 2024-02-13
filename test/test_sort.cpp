@@ -16,7 +16,7 @@ static void sort_test_main(int N) {
   // e.g. N = 3 -> v = {1, 2, 3}
   std::vector<int> v(N);
   for (int i = 0; i < N; ++i) {
-    v[i] = i + 1;
+    v[i] = i;
   }
 
   // generate permutation of v (N! patterns)
@@ -38,7 +38,7 @@ static void sort_test_main(int N) {
     // sort
     sort(&stack_a, &stack_b);
     // check if the order is appropreate
-    for (int i = 1; stack_a; ++i, stack_a = stack_a->next) {
+    for (int i = 0; stack_a; ++i, stack_a = stack_a->next) {
       EXPECT_EQ(get_first_index(&stack_a), i);
     }
   } while (std::next_permutation(v.begin(), v.end()));
@@ -63,7 +63,7 @@ static void sort_test(int N) {
 static void random_sort_test_main(int N) {
   std::vector<int> v(N);
   for (int i = 0; i < N; ++i) {
-    v[i] = i + 1;
+    v[i] = i;
   }
   // shuffle vector
   std::random_device seed_gen;
@@ -79,7 +79,7 @@ static void random_sort_test_main(int N) {
   // sort
   sort(&stack_a, &stack_b);
   // check if the order is appropreate
-  for (int i = 1; stack_a; ++i, stack_a = stack_a->next) {
+  for (int i = 0; stack_a; ++i, stack_a = stack_a->next) {
     EXPECT_EQ(*(int *)stack_a->content, i);
   }
 }

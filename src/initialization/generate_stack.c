@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:04:40 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/13 11:46:14 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/13 14:01:23 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	*_coordinate_compression(int size_a, char **argv)
 		while (j < size_a)
 		{
 			if (ft_atoi(argv[i + 1]) == sorted[j])
-				comp[i] = j + 1;
+				comp[i] = j;
 			j++;
 		}
 		i++;

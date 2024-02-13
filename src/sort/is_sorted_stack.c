@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 18:47:11 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:54:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/13 14:01:58 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	is_sorted_stack(t_stack *st)
 {
 	int	current;
 
-	current = 1;
+	current = 0;
 	while (st)
 	{
 		if (get_content(st)->index != current)

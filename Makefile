@@ -2,7 +2,7 @@ NAME			= push_swap
 CFLAGS			= -Werror -Wextra -Wall
 CXXFLAGS		= -std=c++17 -Wall -Wextra -Werror
 PROD_FLAGS		= -O3
-DEV_FLAGS		= -g -fsanitize=address -O0 -D DEV
+DEV_FLAGS		= -g -fsanitize=address,integer,undefined -O0 -D DEV
 LEAK_FLAGS		= -O0 -D DEV -D LEAK
 DEPFLAGS		= -MMD -MP
 INCLUDE			= -I $(INC_DIR)

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 16:32:27 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:54:02 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/13 15:38:56 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ static void	_handle_4(t_stack **p_a, t_stack **p_b)
 {
 	operate_pb(p_a, p_b);
 	nano_sort(p_a);
-	if (get_first_index(p_b) == 1)
+	if (get_first_index(p_b) == 0)
 		operate_pa(p_b, p_a);
-	else if (get_first_index(p_b) == 2)
+	else if (get_first_index(p_b) == 1)
 	{
 		operate_pa(p_b, p_a);
 		operate_sa(p_a);
 	}
-	else if (get_first_index(p_b) == 3)
+	else if (get_first_index(p_b) == 2)
 	{
 		operate_rra(p_a);
 		operate_pa(p_b, p_a);
 		operate_ra(p_a);
 		operate_ra(p_a);
 	}
-	else if (get_first_index(p_b) == 4)
+	else if (get_first_index(p_b) == 3)
 	{
 		operate_pa(p_b, p_a);
 		operate_ra(p_a);
@@ -49,7 +49,7 @@ static void	_edge_flow_5(t_stack **p_a, t_stack **p_b)
 
 static void	_normal_flow_5(t_stack **p_a, t_stack **p_b)
 {
-	if (get_first_index(p_b) == 5)
+	if (get_first_index(p_b) == 4)
 	{
 		operate_pa(p_b, p_a);
 		operate_rra(p_a);
@@ -63,7 +63,7 @@ static void	_normal_flow_5(t_stack **p_a, t_stack **p_b)
 	while (get_first_index(p_a) != get_first_index(p_b) + 1)
 		operate_rra(p_a);
 	operate_pa(p_b, p_a);
-	while (get_first_index(p_a) != 1)
+	while (get_first_index(p_a) != 0)
 		operate_rra(p_a);
 }
 
@@ -74,7 +74,7 @@ static void	_handle_5(t_stack **p_a, t_stack **p_b)
 	nano_sort(p_a);
 	if (get_first_index(p_b) < get_second_index(p_b))
 		operate_sb(p_b);
-	if (get_first_index(p_b) == 5 && get_second_index(p_b) == 4)
+	if (get_first_index(p_b) == 4 && get_second_index(p_b) == 3)
 		_edge_flow_5(p_a, p_b);
 	else
 		_normal_flow_5(p_a, p_b);
