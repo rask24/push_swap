@@ -6,13 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:37:36 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/13 11:43:53 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/13 12:45:59 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initialization.h"
 #include "push_swap.h"
-#include "sort.h"
 
 #ifdef LEAK
 # ifdef __APPLE__
