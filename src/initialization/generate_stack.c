@@ -6,11 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:04:40 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/13 00:07:28 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/13 11:46:14 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
+#include "push_swap.h"
 
 int	*_allocate_int_array(int size_a)
 {

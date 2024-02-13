@@ -6,11 +6,12 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:38:17 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:35:14 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/13 11:46:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "initialization.h"
+#include "push_swap.h"
 
 void	exit_with_error(void)
 {
