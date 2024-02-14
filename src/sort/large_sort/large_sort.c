@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/13 13:28:59 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 16:41:29 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	large_sort(t_stack **p_a, t_stack **p_b)
 	while (size_b--)
 	{
 		set_cost(p_a, p_b);
-		set_opt(p_b);
+		set_min_cost_opt_method(p_b);
+		set_is_target(p_b);
 		greedy_operation(p_a, p_b);
 	}
 	_sort_stack_a(p_a, size_a);

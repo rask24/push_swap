@@ -25,7 +25,7 @@ static void segmented_test_main1() {
   t_stack *stack_a = NULL;
   t_stack *stack_b = NULL;
   for (int &i : v) {
-    t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    t_content *c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
 
@@ -34,18 +34,23 @@ static void segmented_test_main1() {
   t_stack *st = stack_b;
   for (int i = 0; i < size_a; ++i) {
     if (i < 4) {
+      EXPECT_EQ(get_content(st)->segment, 4);
       EXPECT_GE(get_content(st)->index, 16);
       EXPECT_LE(get_content(st)->index, 19);
     } else if (4 <= i && i < 8) {
+      EXPECT_EQ(get_content(st)->segment, 2);
       EXPECT_GE(get_content(st)->index, 8);
       EXPECT_LE(get_content(st)->index, 11);
     } else if (8 <= i && i < 12) {
+      EXPECT_EQ(get_content(st)->segment, 0);
       EXPECT_GE(get_content(st)->index, 0);
       EXPECT_LE(get_content(st)->index, 3);
     } else if (12 <= i && i < 16) {
+      EXPECT_EQ(get_content(st)->segment, 1);
       EXPECT_GE(get_content(st)->index, 4);
       EXPECT_LE(get_content(st)->index, 7);
     } else {
+      EXPECT_EQ(get_content(st)->segment, 3);
       EXPECT_GE(get_content(st)->index, 12);
       EXPECT_LE(get_content(st)->index, 15);
     }
@@ -84,7 +89,7 @@ static void segmented_test_main2() {
   t_stack *stack_a = NULL;
   t_stack *stack_b = NULL;
   for (int &i : v) {
-    t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    t_content *c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
 
@@ -92,18 +97,23 @@ static void segmented_test_main2() {
   t_stack *st = stack_b;
   for (int i = 0; i < size_a - 3; ++i) {
     if (i < 5) {
+      EXPECT_EQ(get_content(st)->segment, 4);
       EXPECT_GE(get_content(st)->index, 12);
       EXPECT_LE(get_content(st)->index, 19);
     } else if (5 <= i && i < 8) {
+      EXPECT_EQ(get_content(st)->segment, 2);
       EXPECT_GE(get_content(st)->index, 6);
       EXPECT_LE(get_content(st)->index, 8);
     } else if (8 <= i && i < 11) {
+      EXPECT_EQ(get_content(st)->segment, 0);
       EXPECT_GE(get_content(st)->index, 0);
       EXPECT_LE(get_content(st)->index, 2);
     } else if (11 <= i && i < 14) {
+      EXPECT_EQ(get_content(st)->segment, 1);
       EXPECT_GE(get_content(st)->index, 3);
       EXPECT_LE(get_content(st)->index, 5);
     } else {
+      EXPECT_EQ(get_content(st)->segment, 3);
       EXPECT_GE(get_content(st)->index, 9);
       EXPECT_LE(get_content(st)->index, 11);
     }
@@ -112,6 +122,7 @@ static void segmented_test_main2() {
 
   st = stack_a;
   while (st) {
+    EXPECT_EQ(get_content(st)->segment, -1);
     EXPECT_GE(get_content(st)->index, 12);
     EXPECT_LE(get_content(st)->index, 19);
     st = st->next;

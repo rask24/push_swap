@@ -11,15 +11,20 @@ extern "C" {
 }
 
 //  stack_a | stack_b
-//  0       | 1      <- FF: (0, 1), FR: (0, -4), RF: (0, 1), RR: (0, -4)
+//  0       | 1      <- RA_RB: (0, 1), RRA_RB: (0, -4), RA_RRB: (0, 1), RRA_RRB:
+//  (0, -4)
 //                           1          4            1            4: 1
-//  2       | 3      <- FF: (1, 2), FR: (1, -3), RF: (-4, 2), RR: (-4, -3)
+//  2       | 3      <- RA_RB: (1, 2), RRA_RB: (1, -3), RA_RRB: (-4, 2),
+//  RRA_RRB: (-4, -3)
 //                           2          4             6            4: 2
-//  4       | 5      <- FF: (2, 3), FR: (2, -2), RF: (-3, 3), RR: (-3, -2)
+//  4       | 5      <- RA_RB: (2, 3), RRA_RB: (2, -2), RA_RRB: (-3, 3),
+//  RRA_RRB: (-3, -2)
 //                           3          4             6            3: 3
-//  6       | 7      <- FF: (3, 4), FR: (3, -1), RF: (-2, 4), RR: (-2, -1)
+//  6       | 7      <- RA_RB: (3, 4), RRA_RB: (3, -1), RA_RRB: (-2, 4),
+//  RRA_RRB: (-2, -1)
 //                           4          4            6            2: 2
-//  8       | 9      <- FF: (4, 0), FR: (4, 0), RF: (-1, 0), RR: (-1, 0)
+//  8       | 9      <- RA_RB: (4, 0), RRA_RB: (4, 0), RA_RRB: (-1, 0), RRA_RRB:
+//  (-1, 0)
 //                           4           4           1            1: 1
 // ========================================================================
 // stack_a | stack_b
@@ -40,7 +45,7 @@ static void greedy_operation_case1() {
   stack_a = NULL;
   stack_b = NULL;
   for (int i = 0; i < 2 * N; ++i) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     if (i % 2 == 0)
       ft_lstadd_back(&stack_a, ft_lstnew(c));
     else
@@ -48,7 +53,8 @@ static void greedy_operation_case1() {
   }
 
   set_cost(&stack_a, &stack_b);
-  set_opt(&stack_b);
+  set_min_cost_opt_method(&stack_b);
+  set_is_target(&stack_b);
   greedy_operation(&stack_a, &stack_b);
 
   std::vector<int> after_a = {1, 2, 4, 6, 8, 0};
@@ -85,15 +91,20 @@ TEST(greedy_operation, case1) {
 }
 
 //  stack_a | stack_b
-//  6       | 8       <- FF: (0, 2), FR: (0, -3), RF: (0, 2), RR: (0, -3)
+//  6       | 8       <- RA_RB: (0, 2), RRA_RB: (0, -3), RA_RRB: (0, 2),
+//  RRA_RRB: (0, -3)
 //                            2           3            2           3: 2
-//  7       | 9       <- FF: (1, 2), FR: (1, -3), RF: (-4, 2), RR: (-4, -3)
+//  7       | 9       <- RA_RB: (1, 2), RRA_RB: (1, -3), RA_RRB: (-4, 2),
+//  RRA_RRB: (-4, -3)
 //                            2           4            6            4: 2
-//  1       | 0       <- FF: (2, 2), FR: (2, -3), RF: (2, 2), RR: (2, -3)
+//  1       | 0       <- RA_RB: (2, 2), RRA_RB: (2, -3), RA_RRB: (2, 2),
+//  RRA_RRB: (2, -3)
 //                            2           5           2           5: 2
-//  3       | 2       <- FF: (3, 3), FR: (3, -2), RF: (-2, 3), RR: (-2, -2)
+//  3       | 2       <- RA_RB: (3, 3), RRA_RB: (3, -2), RA_RRB: (-2, 3),
+//  RRA_RRB: (-2, -2)
 //                            3           5            5            2: 2
-//  4       | 5       <- FF: (4, 0), FR: (-1, 0), RF: (4, 0), RR: (-1, 0)
+//  4       | 5       <- RA_RB: (4, 0), RRA_RB: (-1, 0), RA_RRB: (4, 0),
+//  RRA_RRB: (-1, 0)
 //                            4           1            4           1: 1
 // ========================================================================
 // stack_a | stack_b
@@ -114,16 +125,17 @@ static void greedy_operation_case2() {
   stack_a = NULL;
   stack_b = NULL;
   for (int &i : v_a) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
   for (int &i : v_b) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
 
   set_cost(&stack_a, &stack_b);
-  set_opt(&stack_b);
+  set_min_cost_opt_method(&stack_b);
+  set_is_target(&stack_b);
   greedy_operation(&stack_a, &stack_b);
 
   std::vector<int> after_a = {5, 6, 7, 1, 3, 4};

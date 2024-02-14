@@ -28,7 +28,7 @@ TEST(is_sorted_stack, sorted) {
 
   st = NULL;
   for (int i = 0; i < N; ++i) {
-    t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    t_content *c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&st, ft_lstnew(c));
   }
 
@@ -53,7 +53,7 @@ TEST(is_sorted_stack, not_sorted) {
 
   st = NULL;
   for (int &i : v) {
-    t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    t_content *c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&st, ft_lstnew(c));
   }
 
