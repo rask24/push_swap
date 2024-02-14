@@ -27,7 +27,7 @@ extern "C" {
 //  (-1, 0)
 //                           4           4           1            1: 1
 
-TEST(set_opt, _set_opt_method1) {
+TEST(set_min_cost_opt_method, _set_opt_method1) {
   int N;
   t_stack *stack_a;
   t_stack *stack_b;
@@ -60,7 +60,7 @@ TEST(set_opt, _set_opt_method1) {
   EXPECT_EQ(get_content(target)->opt_method, RA_RRB);
 }
 
-TEST(set_opt, _set_min_cost1) {
+TEST(set_min_cost_opt_method, _set_min_cost1) {
   int N;
   t_stack *stack_a;
   t_stack *stack_b;
@@ -110,7 +110,7 @@ TEST(set_opt, _set_min_cost1) {
 //  RRA_RRB: (-1, 0)
 //                            4           1            4           1: 1
 
-TEST(set_opt, _set_opt_method2) {
+TEST(set_min_cost_opt_method, _set_opt_method2) {
   t_stack *stack_a;
   t_stack *stack_b;
   t_content *c;
@@ -145,7 +145,7 @@ TEST(set_opt, _set_opt_method2) {
   EXPECT_EQ(get_content(target)->opt_method, RA_RRB);
 }
 
-TEST(set_opt, _set_min_cost2) {
+TEST(set_min_cost_opt_method, _set_min_cost2) {
   t_stack *stack_a;
   t_stack *stack_b;
   t_content *c;
