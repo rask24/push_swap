@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:23:28 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:53:55 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:20:41 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,36 @@
 
 static int	_calc_cost(t_stack *st_b, t_method method)
 {
-	int	sf_cost;
-	int	sr_cost;
-	int	if_cost;
-	int	ir_cost;
+	int	rb_cost;
+	int	rrb_cost;
+	int	ra_cost;
+	int	rra_cost;
 
-	sf_cost = get_content(st_b)->sf_cost;
-	sr_cost = get_content(st_b)->sr_cost;
-	if_cost = get_content(st_b)->if_cost;
-	ir_cost = get_content(st_b)->ir_cost;
-	if (method == FF)
-		return (ft_max(sf_cost, if_cost));
-	else if (method == FR)
-		return (sf_cost - ir_cost);
-	else if (method == RF)
-		return (if_cost - sr_cost);
-	else if (method == RR)
-		return (ft_max(-sr_cost, -ir_cost));
+	rb_cost = get_content(st_b)->rb_cost;
+	rrb_cost = get_content(st_b)->rrb_cost;
+	ra_cost = get_content(st_b)->ra_cost;
+	rra_cost = get_content(st_b)->rra_cost;
+	if (method == RA_RB)
+		return (ft_max(rb_cost, ra_cost));
+	else if (method == RRA_RB)
+		return (rb_cost - rra_cost);
+	else if (method == RA_RRB)
+		return (ra_cost - rrb_cost);
+	else if (method == RRA_RRB)
+		return (ft_max(-rrb_cost, -rra_cost));
 	return (-1);
 }
 
 static void	_set_opt_method(t_stack *st_b, int *cost)
 {
-	if (ft_chmin(cost, _calc_cost(st_b, FF)))
-		get_content(st_b)->opt_method = FF;
-	if (ft_chmin(cost, _calc_cost(st_b, FR)))
-		get_content(st_b)->opt_method = FR;
-	if (ft_chmin(cost, _calc_cost(st_b, RF)))
-		get_content(st_b)->opt_method = RF;
-	if (ft_chmin(cost, _calc_cost(st_b, RR)))
-		get_content(st_b)->opt_method = RR;
+	if (ft_chmin(cost, _calc_cost(st_b, RA_RB)))
+		get_content(st_b)->opt_method = RA_RB;
+	if (ft_chmin(cost, _calc_cost(st_b, RRA_RB)))
+		get_content(st_b)->opt_method = RRA_RB;
+	if (ft_chmin(cost, _calc_cost(st_b, RA_RRB)))
+		get_content(st_b)->opt_method = RA_RRB;
+	if (ft_chmin(cost, _calc_cost(st_b, RRA_RRB)))
+		get_content(st_b)->opt_method = RRA_RRB;
 }
 
 static void	_set_min_cost_opt_method(t_stack **p_b)

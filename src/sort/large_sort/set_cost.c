@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:17:33 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:53:50 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:15:57 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ static void	_set_insertion_cost(t_stack **p_a, t_stack *st_b)
 	max_index = _calc_max_index(p_a);
 	if (threshold == INT_MAX)
 		threshold = (max_index + 1) % size_a;
-	get_content(st_b)->if_cost = threshold % size_a;
-	get_content(st_b)->ir_cost = -((size_a - threshold) % size_a);
+	get_content(st_b)->ra_cost = threshold % size_a;
+	get_content(st_b)->rra_cost = -((size_a - threshold) % size_a);
 }
 
 static void	_set_selection_cost(t_stack *st_b, int i, int size_b)
 {
-	get_content(st_b)->sf_cost = i;
-	get_content(st_b)->sr_cost = -((size_b - i) % size_b);
+	get_content(st_b)->rb_cost = i;
+	get_content(st_b)->rrb_cost = -((size_b - i) % size_b);
 }
 
 void	set_cost(t_stack **p_a, t_stack **p_b)

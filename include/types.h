@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:57:41 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:58:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:20:41 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ typedef t_list	t_stack;
 typedef enum e_method
 {
 	INIT,
-	FF,
-	FR,
-	RF,
-	RR,
+	RA_RB,
+	RRA_RB,
+	RA_RRB,
+	RRA_RRB,
 }				t_method;
 
 typedef struct s_content
 {
 	int			index;
-	int			sf_cost;
-	int			sr_cost;
-	int			if_cost;
-	int			ir_cost;
+	int			rb_cost;
+	int			rrb_cost;
+	int			ra_cost;
+	int			rra_cost;
 	int			min_cost;
 	t_method	opt_method;
 	bool		is_opt;
