@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 22:57:28 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/13 15:01:23 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:31:29 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	push_b_segmented(t_stack **p_a, t_stack **p_b, int n, int segs)
 {
 	int	pushed;
 	int	index;
+	int	segment;
 
 	pushed = 0;
 	while (pushed < n)
@@ -69,8 +70,10 @@ void	push_b_segmented(t_stack **p_a, t_stack **p_b, int n, int segs)
 		index = get_content(*p_a)->index;
 		if (_should_push_b(index, pushed, n, segs))
 		{
+			segment = _calc_segment_id(index, n, segs);
+			get_content(*p_a)->segment = segment;
 			operate_pb(p_a, p_b);
-			if (_calc_segment_id(index, n, segs) % 2 == 1)
+			if (segment % 2 == 1)
 				operate_rb(p_b);
 			pushed++;
 		}
