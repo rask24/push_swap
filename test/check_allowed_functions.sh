@@ -15,7 +15,7 @@ check_binary_symbols() {
     done
 }
 
-allowed_functions=("read" "write" "malloc" "free" "exit" "error")
+allowed_functions=("read" "write" "malloc" "free" "exit" "error" "dyld_stub_binder")
 
 # Check symbols for push_swap
 check_binary_symbols "push_swap"

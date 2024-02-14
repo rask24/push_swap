@@ -15,7 +15,7 @@ jobs:
       - name: Run Norminette
         run: make norm
   build:
-    name: Build + Check allowed functions
+    name: build + check allowed functions
     runs-on: macos-12
     steps:
       - name: Checkout repository
@@ -30,10 +30,6 @@ jobs:
         run: make bonus
       - name: Build push_swap
         run: make
-      - name: check
-        run: nm -u push_swap
-      - name: check2
-        run: nm -u checker
       - name: check allowed_functions
         run: test/check_allowed_functions.sh
   unit_test:
