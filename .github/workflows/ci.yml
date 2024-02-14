@@ -15,8 +15,8 @@ jobs:
       - name: Run Norminette
         run: make norm
   build:
-    name: build + check allowed functions
-    runs-on: macos-12
+    name: check allowed functions
+    runs-on: macos-14
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,17 +24,13 @@ jobs:
           submodules: recursive
       - name: Build push_swap
         run: make
-      - name: Clean push_swap
-        run: make fclean
       - name: Build checker
         run: make bonus
-      - name: Build push_swap
-        run: make
       - name: check allowed_functions
         run: test/check_allowed_functions.sh
   unit_test:
     name: unit_test
-    runs-on: macos-12
+    runs-on: macos-14
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -45,7 +41,7 @@ jobs:
       - name: Unit test
         run: make test
   e2e_test:
-    runs-on: macos-12
+    runs-on: macos-14
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -53,6 +49,8 @@ jobs:
           submodules: recursive
       - name: Build push_swap
         run: make
+      - name: Build checker
+        run: make bonus
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:

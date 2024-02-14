@@ -6,11 +6,10 @@ RSpec::Core::RakeTask.new(:test) do |task|
   task.pattern = [
     "test/e2e/spec/corner_cases_spec.rb",
     "test/e2e/spec/error_cases_spec.rb",
+    "test/e2e/spec/checker_spec.rb",
   ]
 end
 
-RSpec::Core::RakeTask.new(:performance) do |task|
-  task.pattern = [
-    "test/e2e/spec/performance_spec.rb",
-  ]
+task(:performance) do
+  ruby "test/e2e/performance.rb"
 end
