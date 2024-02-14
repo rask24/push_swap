@@ -12,8 +12,8 @@ SRC_DIR			= src
 BUILD_DIR		= build
 INC_DIR			= include
 LIBFT_DIR		= libft
-TEST_DIR		= test
-GTEST_DIR		= test/gtest
+TEST_DIR		= test/unit
+GTEST_DIR		= test/unit/gtest
 TEST_BUILD_DIR	= test/build
 
 SRC				= $(SRC_DIR)/main.c \
