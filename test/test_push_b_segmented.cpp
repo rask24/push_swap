@@ -25,7 +25,7 @@ static void segmented_test_main1() {
   t_stack *stack_a = NULL;
   t_stack *stack_b = NULL;
   for (int &i : v) {
-    t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    t_content *c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
 
@@ -84,7 +84,7 @@ static void segmented_test_main2() {
   t_stack *stack_a = NULL;
   t_stack *stack_b = NULL;
   for (int &i : v) {
-    t_content *c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    t_content *c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
 

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:57:41 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/14 14:20:41 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:24:17 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef enum e_method
 typedef struct s_content
 {
 	int			index;
+	int			segment;
 	int			rb_cost;
 	int			rrb_cost;
 	int			ra_cost;

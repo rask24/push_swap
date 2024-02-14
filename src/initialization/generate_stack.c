@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:04:40 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/13 14:01:23 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:28:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_stack	*generate_stack(int argc, char **argv)
 		if (!ptr)
 			exit_with_error();
 		ptr->index = comp[i];
+		ptr->segment = -1;
 		ft_lstadd_back(&st, ft_lstnew(ptr));
 		i++;
 	}

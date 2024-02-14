@@ -37,7 +37,7 @@ TEST(set_opt, _set_opt_method1) {
   stack_a = NULL;
   stack_b = NULL;
   for (int i = 0; i < 2 * N; ++i) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     if (i % 2 == 0)
       ft_lstadd_back(&stack_a, ft_lstnew(c));
     else
@@ -70,7 +70,7 @@ TEST(set_opt, _set_min_cost1) {
   stack_a = NULL;
   stack_b = NULL;
   for (int i = 0; i < 2 * N; ++i) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     if (i % 2 == 0)
       ft_lstadd_back(&stack_a, ft_lstnew(c));
     else
@@ -103,7 +103,7 @@ TEST(set_opt, _set_is_opt1) {
   stack_a = NULL;
   stack_b = NULL;
   for (int i = 0; i < 2 * N; ++i) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     if (i % 2 == 0)
       ft_lstadd_back(&stack_a, ft_lstnew(c));
     else
@@ -150,11 +150,11 @@ TEST(set_opt, _set_opt_method2) {
   stack_a = NULL;
   stack_b = NULL;
   for (int &i : v_a) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
   for (int &i : v_b) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
 
@@ -185,11 +185,11 @@ TEST(set_opt, _set_min_cost2) {
   stack_a = NULL;
   stack_b = NULL;
   for (int &i : v_a) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
   for (int &i : v_b) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
 
@@ -221,11 +221,11 @@ TEST(set_opt, _set_is_opt2) {
   stack_a = NULL;
   stack_b = NULL;
   for (int &i : v_a) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_a, ft_lstnew(c));
   }
   for (int &i : v_b) {
-    c = new t_content({i, 0, 0, 0, 0, 0, INIT, false});
+    c = new t_content({i, -1, 0, 0, 0, 0, 0, INIT, false});
     ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
 
