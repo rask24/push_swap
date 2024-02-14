@@ -15,8 +15,8 @@ jobs:
       - name: Run Norminette
         run: make norm
   build:
-    name: build
-    runs-on: ubuntu-latest
+    name: build + check allowed functions
+    runs-on: macos-12
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,6 +28,10 @@ jobs:
         run: make fclean
       - name: Build checker
         run: make bonus
+      - name: Build push_swap
+        run: make
+      - name: check allowed_functions
+        run: test/check_allowed_functions.sh
   unit_test:
     name: unit_test
     runs-on: macos-12
