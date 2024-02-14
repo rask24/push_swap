@@ -61,7 +61,10 @@ build/
 push_swap
 checker_Mac
 checker_linux
+checker
 tester
+
+!src/checker
 
 # Subject File
 en.subject.pdf
