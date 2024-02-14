@@ -26,16 +26,8 @@ extern "C" {
 //  8       | 9      <- RA_RB: (4, 0), RRA_RB: (4, 0), RA_RRB: (-1, 0), RRA_RRB:
 //  (-1, 0)
 //                           4           4           1            1: 1
-// ========================================================================
-// stack_a | stack_b
-// 1       | 3
-// 2       | 5
-// 4       | 7
-// 6       | 9
-// 8       |
-// 0       |
 
-static void greedy_operation_case1() {
+TEST(set_opt, _set_is_opt1) {
   int N;
   t_stack *stack_a;
   t_stack *stack_b;
@@ -51,43 +43,19 @@ static void greedy_operation_case1() {
     else
       ft_lstadd_back(&stack_b, ft_lstnew(c));
   }
-
   set_cost(&stack_a, &stack_b);
   set_min_cost_opt_method(&stack_b);
   set_is_opt(&stack_b);
-  greedy_operation(&stack_a, &stack_b);
 
-  std::vector<int> after_a = {1, 2, 4, 6, 8, 0};
-  std::vector<int> after_b = {3, 5, 7, 9};
-  t_stack *st;
+  t_stack *st = stack_b;
 
-  st = stack_a;
-  for (int &i : after_a) {
-    EXPECT_EQ(get_content(st)->index, i);
+  for (int i = 0; i < N; ++i) {
+    if (i == 0)
+      EXPECT_EQ(get_content(st)->is_opt, true);
+    else
+      EXPECT_EQ(get_content(st)->is_opt, false);
     st = st->next;
   }
-
-  st = stack_b;
-  for (int &i : after_b) {
-    EXPECT_EQ(get_content(st)->index, i);
-    st = st->next;
-  }
-}
-
-TEST(greedy_operation, case1) {
-  // save stdout
-  int stdout_copy = dup(STDOUT_FILENO);
-  // redirect stdout to /dev/null
-  int dev_null = open("/dev/null", O_WRONLY);
-  dup2(dev_null, 1);
-  close(dev_null);
-
-  // main
-  greedy_operation_case1();
-
-  // revert stdout
-  dup2(stdout_copy, STDOUT_FILENO);
-  close(stdout_copy);
 }
 
 //  stack_a | stack_b
@@ -106,16 +74,9 @@ TEST(greedy_operation, case1) {
 //  4       | 5       <- RA_RB: (4, 0), RRA_RB: (-1, 0), RA_RRB: (4, 0),
 //  RRA_RRB: (-1, 0)
 //                            4           1            4           1: 1
-// ========================================================================
-// stack_a | stack_b
-// 5       | 8
-// 6       | 9
-// 7       | 0
-// 1       | 2
-// 3       |
-// 4       |
 
-static void greedy_operation_case2() {
+TEST(set_opt, _set_is_opt2) {
+  int N = 5;
   t_stack *stack_a;
   t_stack *stack_b;
   t_content *c;
@@ -136,37 +97,14 @@ static void greedy_operation_case2() {
   set_cost(&stack_a, &stack_b);
   set_min_cost_opt_method(&stack_b);
   set_is_opt(&stack_b);
-  greedy_operation(&stack_a, &stack_b);
 
-  std::vector<int> after_a = {5, 6, 7, 1, 3, 4};
-  std::vector<int> after_b = {8, 9, 0, 2};
-  t_stack *st;
+  t_stack *st = stack_b;
 
-  st = stack_a;
-  for (int &i : after_a) {
-    EXPECT_EQ(get_content(st)->index, i);
+  for (int i = 0; i < N; ++i) {
+    if (i == 4)
+      EXPECT_EQ(get_content(st)->is_opt, true);
+    else
+      EXPECT_EQ(get_content(st)->is_opt, false);
     st = st->next;
   }
-
-  st = stack_b;
-  for (int &i : after_b) {
-    EXPECT_EQ(get_content(st)->index, i);
-    st = st->next;
-  }
-}
-
-TEST(greedy_operation, case2) {
-  // save stdout
-  int stdout_copy = dup(STDOUT_FILENO);
-  // redirect stdout to /dev/null
-  int dev_null = open("/dev/null", O_WRONLY);
-  dup2(dev_null, 1);
-  close(dev_null);
-
-  // main
-  greedy_operation_case2();
-
-  // revert stdout
-  dup2(stdout_copy, STDOUT_FILENO);
-  close(stdout_copy);
 }

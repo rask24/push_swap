@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_opt.c                                          :+:      :+:    :+:   */
+/*   set_min_cost_opt_method.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 10:23:28 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/14 14:20:41 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 15:44:15 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	_set_opt_method(t_stack *st_b, int *cost)
 		get_content(st_b)->opt_method = RRA_RRB;
 }
 
-static void	_set_min_cost_opt_method(t_stack **p_b)
+void	set_min_cost_opt_method(t_stack **p_b)
 {
 	int		i;
 	int		size_b;
@@ -65,37 +65,4 @@ static void	_set_min_cost_opt_method(t_stack **p_b)
 		st_b = st_b->next;
 		i++;
 	}
-}
-
-static void	_set_is_opt(t_stack **p_b)
-{
-	int		i;
-	t_stack	*st_b;
-	int		size_b;
-	int		opt_cost;
-	int		min_index;
-
-	size_b = stack_size(*p_b);
-	i = 0;
-	st_b = *p_b;
-	opt_cost = INT_MAX;
-	min_index = -1;
-	while (i < size_b)
-	{
-		if (ft_chmin(&opt_cost, get_content(st_b)->min_cost))
-			min_index = i;
-		st_b = st_b->next;
-		i++;
-	}
-	i = 0;
-	st_b = *p_b;
-	while (i++ < min_index)
-		st_b = st_b->next;
-	get_content(st_b)->is_opt = true;
-}
-
-void	set_opt(t_stack **p_b)
-{
-	_set_min_cost_opt_method(p_b);
-	_set_is_opt(p_b);
 }
