@@ -1,4 +1,5 @@
 NAME			= push_swap
+CHECKER			= checker
 CFLAGS			= -Werror -Wextra -Wall
 CXXFLAGS		= -std=c++17 -Wall -Wextra -Werror
 PROD_FLAGS		= -O3
@@ -42,6 +43,19 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/utils/stack_size.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
+BONUS_SRC		= $(SRC_DIR)/checker/checker_main.c \
+					$(SRC_DIR)/initialization/check_args.c \
+					$(SRC_DIR)/initialization/exit_with_error.c \
+					$(SRC_DIR)/initialization/generate_stack.c \
+					$(SRC_DIR)/sort/is_sorted_stack.c \
+					$(SRC_DIR)/stack_operations/push.c \
+					$(SRC_DIR)/stack_operations/swap.c \
+					$(SRC_DIR)/stack_operations/rotate.c \
+					$(SRC_DIR)/stack_operations/reverse_rotate.c \
+					$(SRC_DIR)/utils/get_content.c \
+					$(SRC_DIR)/utils/stack_size.c
+BONUS_OBJ		= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(BONUS_SRC))
+BONUS_DEP		= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(BONUS_SRC))
 OBJ_FILTER_MAIN	= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))
 TEST_NAME		= tester
 TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
@@ -77,7 +91,16 @@ all: CFLAGS += $(PROD_FLAGS)
 all: title
 all: $(NAME)
 
+bonus: CFLAGS += $(PROD_FLAGS)
+bonus: bonus_title
+bonus: $(CHECKER)
+
 $(NAME): $(OBJ)
+	@printf "\n"
+	@make -C $(LIBFT_DIR)
+	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $@
+
+$(CHECKER): $(BONUS_OBJ)
 	@printf "\n"
 	@make -C $(LIBFT_DIR)
 	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $@
@@ -150,6 +173,9 @@ norm:
 
 title:
 	@echo "$(BLUE)push_swap$(RESET)"
+
+bonus_title:
+	@echo "$(BLUE)bonus$(RESET)"
 
 .PHONY: all clean fclean re dev redev leak releak test norm title
 
