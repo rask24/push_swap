@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/14 16:41:29 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:13:52 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 #include "sort.h"
 #include "stack_operations.h"
 
-// 0...200: 1
-// 200...300: 3
-// 300...400: 5
-// 400...500: 7
-// 450...550: 5
-// 550...650: 6
-
 static int	_calc_number_of_segments(int size_a)
 {
 	int	a;
@@ -29,7 +22,7 @@ static int	_calc_number_of_segments(int size_a)
 	if (size_a <= 200)
 		return (1);
 	a = (size_a - 200) / 100;
-	return (2 * a + 3);
+	return (a + 2);
 }
 
 static void	_sort_stack_a(t_stack **p_a, int num_a)
