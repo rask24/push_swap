@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_is_opt.c                                       :+:      :+:    :+:   */
+/*   set_is_target.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:44:38 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/14 16:22:59 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 16:42:11 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	_calc_target_index(t_stack *st_b, int max_seg)
 	return (target_index);
 }
 
-void	set_is_opt(t_stack **p_b)
+void	set_is_target(t_stack **p_b)
 {
 	int		i;
 	t_stack	*st_b;
@@ -59,5 +59,5 @@ void	set_is_opt(t_stack **p_b)
 	i = 0;
 	while (i++ < target_index)
 		st_b = st_b->next;
-	get_content(st_b)->is_opt = true;
+	get_content(st_b)->is_target = true;
 }

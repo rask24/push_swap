@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 10:43:16 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/14 14:20:41 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 16:40:21 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_stack	*_find_opt_st_b(t_stack **p_b)
 	t_stack	*st_b;
 
 	st_b = *p_b;
-	while (!get_content(st_b)->is_opt)
+	while (!get_content(st_b)->is_target)
 		st_b = st_b->next;
 	return (st_b);
 }

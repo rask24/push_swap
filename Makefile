@@ -28,7 +28,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/sort/large_sort/push_b_segmented.c \
 					$(SRC_DIR)/sort/large_sort/set_cost.c \
 					$(SRC_DIR)/sort/large_sort/set_min_cost_opt_method.c \
-					$(SRC_DIR)/sort/large_sort/set_is_opt.c \
+					$(SRC_DIR)/sort/large_sort/set_is_target.c \
 					$(SRC_DIR)/sort/large_sort/greedy_operation.c \
 					$(SRC_DIR)/stack_operations/push.c \
 					$(SRC_DIR)/stack_operations/swap.c \
@@ -67,7 +67,7 @@ TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
 					$(TEST_DIR)/test_push_b_segmented.cpp \
 					$(TEST_DIR)/test_set_cost.cpp \
 					$(TEST_DIR)/test_set_min_cost_opt_method.cpp \
-					$(TEST_DIR)/test_set_is_opt.cpp \
+					$(TEST_DIR)/test_set_is_target.cpp \
 					$(TEST_DIR)/test_greedy_operation.cpp \
 					$(TEST_DIR)/test_is_sorted_stack.cpp \
 					$(TEST_DIR)/test_sort.cpp

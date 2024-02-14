@@ -54,7 +54,7 @@ static void greedy_operation_case1() {
 
   set_cost(&stack_a, &stack_b);
   set_min_cost_opt_method(&stack_b);
-  set_is_opt(&stack_b);
+  set_is_target(&stack_b);
   greedy_operation(&stack_a, &stack_b);
 
   std::vector<int> after_a = {1, 2, 4, 6, 8, 0};
@@ -135,7 +135,7 @@ static void greedy_operation_case2() {
 
   set_cost(&stack_a, &stack_b);
   set_min_cost_opt_method(&stack_b);
-  set_is_opt(&stack_b);
+  set_is_target(&stack_b);
   greedy_operation(&stack_a, &stack_b);
 
   std::vector<int> after_a = {5, 6, 7, 1, 3, 4};

@@ -27,7 +27,7 @@ extern "C" {
 //  (-1, 0)
 //                           4           4           1            1: 1
 
-TEST(set_is_opt, case1_segment_not_set) {
+TEST(set_is_target, case1_segment_not_set) {
   int N;
   t_stack *stack_a;
   t_stack *stack_b;
@@ -45,15 +45,15 @@ TEST(set_is_opt, case1_segment_not_set) {
   }
   set_cost(&stack_a, &stack_b);
   set_min_cost_opt_method(&stack_b);
-  set_is_opt(&stack_b);
+  set_is_target(&stack_b);
 
   t_stack *st = stack_b;
 
   for (int i = 0; i < N; ++i) {
     if (i == 0)
-      EXPECT_EQ(get_content(st)->is_opt, true);
+      EXPECT_EQ(get_content(st)->is_target, true);
     else
-      EXPECT_EQ(get_content(st)->is_opt, false);
+      EXPECT_EQ(get_content(st)->is_target, false);
     st = st->next;
   }
 }
@@ -80,7 +80,7 @@ TEST(set_is_opt, case1_segment_not_set) {
 //                      4              4               1                1: 1
 //  ==== segment 0  ====> target
 
-TEST(set_is_opt, case1_segment_set) {
+TEST(set_is_target, case1_segment_set) {
   int N;
   t_stack *stack_a;
   t_stack *stack_b;
@@ -100,15 +100,15 @@ TEST(set_is_opt, case1_segment_set) {
   get_content(ft_lstlast(stack_b))->segment = 0;
   set_cost(&stack_a, &stack_b);
   set_min_cost_opt_method(&stack_b);
-  set_is_opt(&stack_b);
+  set_is_target(&stack_b);
 
   t_stack *st = stack_b;
 
   for (int i = 0; i < N; ++i) {
     if (i == 4)
-      EXPECT_EQ(get_content(st)->is_opt, true);
+      EXPECT_EQ(get_content(st)->is_target, true);
     else
-      EXPECT_EQ(get_content(st)->is_opt, false);
+      EXPECT_EQ(get_content(st)->is_target, false);
     st = st->next;
   }
 }
@@ -130,7 +130,7 @@ TEST(set_is_opt, case1_segment_set) {
 //  RRA_RRB: (-1, 0)
 //                            4           1            4           1: 1
 
-TEST(set_is_opt, case2_segment_not_set) {
+TEST(set_is_target, case2_segment_not_set) {
   int N = 5;
   t_stack *stack_a;
   t_stack *stack_b;
@@ -151,15 +151,15 @@ TEST(set_is_opt, case2_segment_not_set) {
 
   set_cost(&stack_a, &stack_b);
   set_min_cost_opt_method(&stack_b);
-  set_is_opt(&stack_b);
+  set_is_target(&stack_b);
 
   t_stack *st = stack_b;
 
   for (int i = 0; i < N; ++i) {
     if (i == 4)
-      EXPECT_EQ(get_content(st)->is_opt, true);
+      EXPECT_EQ(get_content(st)->is_target, true);
     else
-      EXPECT_EQ(get_content(st)->is_opt, false);
+      EXPECT_EQ(get_content(st)->is_target, false);
     st = st->next;
   }
 }
@@ -186,7 +186,7 @@ TEST(set_is_opt, case2_segment_not_set) {
 //                       4              1                4               1: 1
 //  ==== segment -1 ====
 
-TEST(set_is_opt, case2_segment_set) {
+TEST(set_is_target, case2_segment_set) {
   int N = 5;
   t_stack *stack_a;
   t_stack *stack_b;
@@ -213,15 +213,15 @@ TEST(set_is_opt, case2_segment_set) {
 
   set_cost(&stack_a, &stack_b);
   set_min_cost_opt_method(&stack_b);
-  set_is_opt(&stack_b);
+  set_is_target(&stack_b);
 
   t_stack *st = stack_b;
 
   for (int i = 0; i < N; ++i) {
     if (i == 3)
-      EXPECT_EQ(get_content(st)->is_opt, true);
+      EXPECT_EQ(get_content(st)->is_target, true);
     else
-      EXPECT_EQ(get_content(st)->is_opt, false);
+      EXPECT_EQ(get_content(st)->is_target, false);
     st = st->next;
   }
 }

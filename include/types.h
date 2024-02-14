@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:57:41 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/14 14:24:17 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/14 16:40:21 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ typedef struct s_content
 	int			rra_cost;
 	int			min_cost;
 	t_method	opt_method;
-	bool		is_opt;
+	bool		is_target;
 }				t_content;
 #endif
