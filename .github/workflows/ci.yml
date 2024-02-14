@@ -30,6 +30,8 @@ jobs:
         run: make bonus
       - name: Build push_swap
         run: make
+      - name: check
+        run: nm push_swap && nm checker
       - name: check allowed_functions
         run: test/check_allowed_functions.sh
   unit_test:
