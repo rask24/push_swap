@@ -24,6 +24,10 @@ jobs:
           submodules: recursive
       - name: Build push_swap
         run: make
+      - name: Clean push_swap
+        run: make fclean
+      - name: Build checker
+        run: make bonus
   unit_test:
     name: test
     runs-on: macos-12
