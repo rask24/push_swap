@@ -6,7 +6,7 @@ check_binary_symbols() {
         echo "Error: Binary file '$binary' not found."
         exit 1
     fi
-    local undefined_symbols=$(nm -u "$binary" | tr -d '_')
+    local undefined_symbols=$(nm -u "$binary" | sed 's/^_*//')
     for symbol in $undefined_symbols; do
         if [[ ! " ${allowed_functions[@]} " =~ " ${symbol}" ]]; then
             echo "Error: $binary: Disallowed function used: ${symbol}"
