@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "../command_helper"
+require_relative "../helper/command_helper"
 
 describe "Corner cases for push_swap" do
   it "does not output operations for already sorted input" do

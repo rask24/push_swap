@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "../command_helper"
+require_relative "../helper/command_helper"
 
 describe("Performance test for push_swap") do
   size = 500
