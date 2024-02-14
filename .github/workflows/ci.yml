@@ -24,7 +24,7 @@ jobs:
           submodules: recursive
       - name: Build push_swap
         run: make
-  test:
+  unit_test:
     name: test
     runs-on: macos-12
     steps:
@@ -36,5 +36,22 @@ jobs:
         run: make
       - name: Unit test
         run: make test
-      - name: e2e test
+  e2e_test:
+    runs-on: macos-12
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Build push_swap
+        run: make
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.0
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+      - name: Run tests
         run: rake test
