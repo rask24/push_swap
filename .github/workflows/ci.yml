@@ -31,7 +31,9 @@ jobs:
       - name: Build push_swap
         run: make
       - name: check
-        run: nm push_swap && nm checker
+        run: nm -u push_swap
+      - name: check2
+        run: nm -u checker
       - name: check allowed_functions
         run: test/check_allowed_functions.sh
   unit_test:
