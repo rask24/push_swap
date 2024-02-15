@@ -6,7 +6,15 @@ check_binary_symbols() {
         echo "Error: Binary file '$binary' not found."
         exit 1
     fi
-    local undefined_symbols=$(nm -u "$binary" | sed 's/^_*//')
+
+    if [ "$(uname)" = "Darwin" ]; then
+        local undefined_symbols=$(nm -u "$binary" | sed 's/^_*//')
+    elif [ "$(uname)" = "Linux" ]; then
+        local undefined_symbols=$(nm -D push_swap | grep U | grep -v '__' | awk '{print $2}' | awk -F '@' '{print $1}')
+    else
+        exit 1
+    fi
+
     for symbol in $undefined_symbols; do
         if [[ ! " ${allowed_functions[@]} " =~ " ${symbol}" ]]; then
             echo "Error: $binary: Disallowed function used: ${symbol}"
