@@ -5,8 +5,8 @@ require_relative "helper/command_helper"
 size = 500
 results = []
 
-20.times do
-  input = (0...500).to_a.shuffle.map(&:to_s)
+100.times do
+  input = (0...size).to_a.shuffle.map(&:to_s)
   stdout, _stderr, _status = execute_push_swap(*input)
   results << stdout.split("\n").count
 

@@ -13,3 +13,5 @@ end
 task(:performance) do
   ruby "test/e2e/performance.rb"
 end
+
+task default: [:performance]
