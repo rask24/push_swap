@@ -1,7 +1,8 @@
-# executable files
+# executable files / archive files
 NAME			= push_swap
 CHECKER			= checker
 TEST_NAME		= unit_tester
+LIBFT			= $(LIBFT_DIR)/libft.a
 
 # compilar options
 CFLAGS			= -Werror -Wextra -Wall
@@ -91,47 +92,75 @@ GTEST_SRC_DIR	= googletest-$(GTEST_VERSION)
 GTEST_FUSE_URL	= https://raw.githubusercontent.com/google/googletest/ec44c6c1675c25b9827aacd08c02433cccde7780/googletest/scripts/$(GTEST_FUSE)
 GTEST_FUSE		= fuse_gtest_files.py
 
-GREEN	=	\033[0;32m
-BLUE	=	\033[0;34m
-RED		=	\033[0;31m
-RESET	=	\033[0m
+# colors
+RESET			= \033[0m
+ORANGE			= \033[0;33m
+GRAY			= \033[0;90m
+RED				= \033[0;91m
+GREEN			= \033[1;92m
+YELLOW			= \033[1;93m
+BLUE			= \033[0;94m
+MAGENTA			= \033[0;95m
+CYAN			= \033[0;96m
+WHITE			= \033[0;97m
 
 # flags options
 # 1. PROD_FLAGS: flags for production
 # 2. DEV_FLAGS: flags for development
 # 3. LEAK_FLAGS: flangs for checking leaks
 
+# rules for mandatory
 all: CFLAGS += $(PROD_FLAGS)
-all: title
 all: $(NAME)
 
+$(NAME): $(LIBFT) $(SRC)
+	@make _main
+
+_main:
+	@echo "$(BLUE)[$(NAME)]$(RESET)\t\t\t$(WHITE)compling...$(RESET)"
+	@make _build
+
+_build: $(OBJ)
+	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $(NAME)
+	@echo "\n$(BLUE)[$(NAME)]$(RESET)\t\t\t$(GREEN)compiled ✔$(RESET)"
+
+# rules for bonus
 bonus: CFLAGS += $(PROD_FLAGS)
-bonus: bonus_title
 bonus: $(CHECKER)
 
-$(NAME): $(OBJ)
-	@printf "\n"
-	@make -C $(LIBFT_DIR)
-	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $@
+$(CHECKER): $(LIBFT) $(BONUS_SRC)
+	@make _checker_main
 
-$(CHECKER): $(BONUS_OBJ)
-	@printf "\n"
-	@make -C $(LIBFT_DIR)
-	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $@
+_checker_main:
+	@echo "$(BLUE)[$(CHECKER)]$(RESET)\t\t\t$(WHITE)compling...$(RESET)"
+	@make _checker_build
 
+_checker_build: $(BONUS_OBJ)
+	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $(CHECKER)
+	@echo "\n$(BLUE)[$(CHECKER)]$(RESET)\t\t\t$(GREEN)compiled ✔$(RESET)"
+
+# util
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDE) $(DEPFLAGS) -c $< -o $@
-	@printf "$(GREEN).$(RESET)"
+	@printf "$(GREEN)─$(RESET)"
+
+$(LIBFT):
+	@make -C $(@D)
 
 clean:
 	@make clean -C $(LIBFT_DIR)
 	@$(RM) $(OBJ) $(DEP)
+	@echo "$(BLUE)[$(NAME)]\tobject files$(RESET)\t$(GREEN)deleted ✔$(RESET)"
 	@$(RM) $(BONUS_OBJ) $(BONUS_DEP)
+	@echo "$(BLUE)[$(CHECKER)]\tobject files$(RESET)\t$(GREEN)deleted ✔$(RESET)"
 
 fclean: clean
 	@make fclean -C $(LIBFT_DIR)
 	@$(RM) $(NAME)
+	@echo "$(BLUE)[$(NAME)]$(RESET)\t\t\t$(GREEN)deleted ✔$(RESET)"
+	@$(RM) $(CHECKER)
+	@echo "$(BLUE)[$(CHECKER)]$(RESET)\t\t\t$(GREEN)deleted ✔$(RESET)"
 
 re: fclean all
 
@@ -173,12 +202,6 @@ $(GTEST_DIR):
 
 norm:
 	norminette $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
-
-title:
-	@echo "$(BLUE)[push_swap]$(RESET)"
-
-bonus_title:
-	@echo "$(BLUE)[checker]$(RESET)"
 
 .PHONY: all clean fclean re dev redev leak releak test norm title
 
