@@ -62,7 +62,7 @@ push_swap
 checker_Mac
 checker_linux
 checker
-tester
+unit_tester
 
 !src/checker
 

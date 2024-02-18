@@ -1,5 +1,9 @@
+# executable files
 NAME			= push_swap
 CHECKER			= checker
+TEST_NAME		= unit_tester
+
+# compilar options
 CFLAGS			= -Werror -Wextra -Wall
 CXXFLAGS		= -std=c++17 -Wall -Wextra -Werror
 PROD_FLAGS		= -O3
@@ -8,6 +12,7 @@ LEAK_FLAGS		= -O0 -D DEV -D LEAK
 DEPFLAGS		= -MMD -MP
 INCLUDE			= -I $(INC_DIR)
 
+# directories
 SRC_DIR			= src
 BUILD_DIR		= build
 INC_DIR			= include
@@ -16,6 +21,7 @@ TEST_DIR		= test/unit
 GTEST_DIR		= test/unit/gtest
 TEST_BUILD_DIR	= test/build
 
+# mandatory source files
 SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/initialization/check_args.c \
 					$(SRC_DIR)/initialization/exit_with_error.c \
@@ -44,6 +50,9 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/utils/stack_size.c
 OBJ				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP				= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
+OBJ_FILTER_MAIN	= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))
+
+# bonus source files
 BONUS_SRC		= $(SRC_DIR)/checker/checker_main.c \
 					$(SRC_DIR)/initialization/check_args.c \
 					$(SRC_DIR)/initialization/exit_with_error.c \
@@ -57,8 +66,8 @@ BONUS_SRC		= $(SRC_DIR)/checker/checker_main.c \
 					$(SRC_DIR)/utils/stack_size.c
 BONUS_OBJ		= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(BONUS_SRC))
 BONUS_DEP		= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(BONUS_SRC))
-OBJ_FILTER_MAIN	= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC)))
-TEST_NAME		= tester
+
+# test files
 TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
 					$(TEST_DIR)/test_push_stack.cpp \
 					$(TEST_DIR)/test_reverse_rotate_stack.cpp \
@@ -82,12 +91,15 @@ GTEST_SRC_DIR	= googletest-$(GTEST_VERSION)
 GTEST_FUSE_URL	= https://raw.githubusercontent.com/google/googletest/ec44c6c1675c25b9827aacd08c02433cccde7780/googletest/scripts/$(GTEST_FUSE)
 GTEST_FUSE		= fuse_gtest_files.py
 
-NORM			= norminette
-
 GREEN	=	\033[0;32m
 BLUE	=	\033[0;34m
 RED		=	\033[0;31m
 RESET	=	\033[0m
+
+# flags options
+# 1. PROD_FLAGS: flags for production
+# 2. DEV_FLAGS: flags for development
+# 3. LEAK_FLAGS: flangs for checking leaks
 
 all: CFLAGS += $(PROD_FLAGS)
 all: title
@@ -115,6 +127,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	@make clean -C $(LIBFT_DIR)
 	@$(RM) $(OBJ) $(DEP)
+	@$(RM) $(BONUS_OBJ) $(BONUS_DEP)
 
 fclean: clean
 	@make fclean -C $(LIBFT_DIR)
@@ -122,23 +135,11 @@ fclean: clean
 
 re: fclean all
 
-dev: CFLAGS += $(DEV_FLAGS)
-dev: title
-dev: $(NAME)
-
-redev: fclean dev
-
-leak: CFLAGS += $(LEAK_FLAGS)
-leak: title
-leak: $(NAME)
-
-releak: fclean leak
-
+# rules for test
 test: all $(GTEST_OBJ) $(TEST_OBJ)
 	@echo "$(BLUE)\ntest linking$(RESET)"
 	@$(CXX) -L $(LIBFT_DIR) -lft -lpthread $(OBJ_FILTER_MAIN) $(TEST_OBJ) $(GTEST_OBJ) -o $(TEST_NAME)
 	./$(TEST_NAME)
-	@$(RM) $(TEST_NAME)
 
 test_clean:
 	@echo "$(BLUE)test cleaning$(RESET)"
@@ -171,13 +172,13 @@ $(GTEST_DIR):
 	@$(RM) -r $(GTEST_SRC_DIR) $(GTEST_DIR)/gtest $(GTEST_ARCHIVE) $(GTEST_FUSE)
 
 norm:
-	$(NORM) $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
+	norminette $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
 
 title:
-	@echo "$(BLUE)push_swap$(RESET)"
+	@echo "$(BLUE)[push_swap]$(RESET)"
 
 bonus_title:
-	@echo "$(BLUE)bonus$(RESET)"
+	@echo "$(BLUE)[checker]$(RESET)"
 
 .PHONY: all clean fclean re dev redev leak releak test norm title
 
