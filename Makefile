@@ -68,6 +68,9 @@ BONUS_SRC		= $(SRC_DIR)/checker/checker_main.c \
 BONUS_OBJ		= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(BONUS_SRC))
 BONUS_DEP		= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(BONUS_SRC))
 
+# header files
+HEADER			= $(wildcard $(INC_DIR)/*.h)
+
 # test files
 TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
 					$(TEST_DIR)/test_push_stack.cpp \
@@ -113,7 +116,7 @@ WHITE			= \033[0;97m
 all: CFLAGS += $(PROD_FLAGS)
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(SRC)
+$(NAME): $(LIBFT) $(SRC) $(HEADER)
 	@make _main
 
 _main:
