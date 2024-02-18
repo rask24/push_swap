@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/14 17:13:52 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/15 12:34:14 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 static int	_calc_number_of_segments(int size_a)
 {
-	int	a;
+	int	step;
 
-	if (size_a <= 200)
+	if (size_a < 100)
 		return (1);
-	a = (size_a - 200) / 100;
-	return (a + 2);
+	step = (size_a - 100) / 150;
+	return (2 * step + 3);
 }
 
 static void	_sort_stack_a(t_stack **p_a, int num_a)
