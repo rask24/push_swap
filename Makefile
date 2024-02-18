@@ -117,12 +117,12 @@ $(NAME): $(LIBFT) $(SRC)
 	@make _main
 
 _main:
-	@echo "$(BLUE)[$(NAME)]$(RESET)\t\t\t$(WHITE)compling...$(RESET)"
+	@echo "$(BLUE)[$(NAME)]\t./$(NAME)$(RESET)\t$(WHITE)compling...$(RESET)"
 	@make _build
 
 _build: $(OBJ)
 	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $(NAME)
-	@echo "\n$(BLUE)[$(NAME)]$(RESET)\t\t\t$(GREEN)compiled ✔$(RESET)"
+	@echo "\n$(BLUE)[$(NAME)]\t./$(NAME)$(RESET)\t$(GREEN)compiled ✔$(RESET)"
 
 # rules for bonus
 bonus: CFLAGS += $(PROD_FLAGS)
@@ -132,12 +132,12 @@ $(CHECKER): $(LIBFT) $(BONUS_SRC)
 	@make _checker_main
 
 _checker_main:
-	@echo "$(BLUE)[$(CHECKER)]$(RESET)\t\t\t$(WHITE)compling...$(RESET)"
+	@echo "$(BLUE)[$(CHECKER)]\t./$(CHECKER)$(RESET)\t$(WHITE)compling...$(RESET)"
 	@make _checker_build
 
 _checker_build: $(BONUS_OBJ)
 	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $(CHECKER)
-	@echo "\n$(BLUE)[$(CHECKER)]$(RESET)\t\t\t$(GREEN)compiled ✔$(RESET)"
+	@echo "\n$(BLUE)[$(CHECKER)]\t./$(CHECKER)$(RESET)\t$(GREEN)compiled ✔$(RESET)"
 
 # util
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
@@ -158,9 +158,9 @@ clean:
 fclean: clean
 	@make fclean -C $(LIBFT_DIR)
 	@$(RM) $(NAME)
-	@echo "$(BLUE)[$(NAME)]$(RESET)\t\t\t$(GREEN)deleted ✔$(RESET)"
+	@echo "$(BLUE)[$(NAME)]\t./$(NAME)$(RESET)\t$(GREEN)deleted ✔$(RESET)"
 	@$(RM) $(CHECKER)
-	@echo "$(BLUE)[$(CHECKER)]$(RESET)\t\t\t$(GREEN)deleted ✔$(RESET)"
+	@echo "$(BLUE)[$(CHECKER)]\t./$(NAME)$(RESET)\t$(GREEN)deleted ✔$(RESET)"
 
 re: fclean all
 
