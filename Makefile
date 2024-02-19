@@ -10,10 +10,16 @@ LIBFT			= $(LIBFT_DIR)/libft.a
 CFLAGS			= -Werror -Wextra -Wall
 CXXFLAGS		= -std=c++17 -Wall -Wextra -Werror
 PROD_FLAGS		= -O3
-DEV_FLAGS		= -g -fsanitize=address,integer,undefined -O0 -D DEV
-LEAK_FLAGS		= -O0 -D DEV -D LEAK
+DEV_FLAGS		= -O0 -g -fsanitize=address,integer,undefined -D DEV
+LEAK_FLAGS		= -D LEAK
 DEPFLAGS		= -MMD -MP
 INCLUDE			= -I $(INC_DIR)
+
+# flag options
+# 1. PROD_FLAGS: flags for production
+# 2. DEV_FLAGS: flags for development
+# 3. LEAK_FLAGS: flags for checking leaks
+FLAGS_OPTION	= $(LEAK_FLAGS)
 
 # directories
 SRC_DIR			= src
@@ -57,6 +63,7 @@ OBJ_FILTER_MAIN	= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $
 
 # bonus source files
 BONUS_SRC		= $(SRC_DIR)/checker/checker_main.c \
+					$(SRC_DIR)/checker/sort_based_on_operation.c \
 					$(SRC_DIR)/initialization/check_args.c \
 					$(SRC_DIR)/initialization/exit_with_error.c \
 					$(SRC_DIR)/initialization/generate_stack.c \
@@ -66,7 +73,8 @@ BONUS_SRC		= $(SRC_DIR)/checker/checker_main.c \
 					$(SRC_DIR)/stack_operations/rotate.c \
 					$(SRC_DIR)/stack_operations/reverse_rotate.c \
 					$(SRC_DIR)/utils/get_content.c \
-					$(SRC_DIR)/utils/stack_size.c
+					$(SRC_DIR)/utils/stack_size.c \
+					$(SRC_DIR)/utils/clear_stack.c
 BONUS_OBJ		= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(BONUS_SRC))
 BONUS_DEP		= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(BONUS_SRC))
 
@@ -109,23 +117,18 @@ MAGENTA			= \033[0;95m
 CYAN			= \033[0;96m
 WHITE			= \033[0;97m
 
-# flags options
-# 1. PROD_FLAGS: flags for production
-# 2. DEV_FLAGS: flags for development
-# 3. LEAK_FLAGS: flangs for checking leaks
-
 # rules for mandatory
 .PHONY: all
-all: CFLAGS += $(PROD_FLAGS)
+all: CFLAGS += $(FLAGS_OPTION)
 all: $(NAME)
 
-$(NAME): $(LIBFT_DIR) $(SRC) $(HEADER)
-	@make _main
+$(NAME): $(LIBFT) $(SRC) $(HEADER)
+	@make _main CFLAGS="$(CFLAGS)"
 
 .PHONY: _main
-_main: $(LIBFT)
+_main:
 	@echo "$(BLUE)[$(NAME)]\t./$(NAME)$(RESET)\t$(WHITE)compling...$(RESET)"
-	@make _build
+	@make _build CFLAGS="$(CFLAGS)"
 
 .PHONY: _build
 _build: $(OBJ)
@@ -134,16 +137,16 @@ _build: $(OBJ)
 
 # rules for bonus
 .PHONY: bonus
-bonus: CFLAGS += $(PROD_FLAGS)
+bonus: CFLAGS += $(FLAGS_OPTION)
 bonus: $(CHECKER)
 
-$(CHECKER): $(LIBFT_DIR) $(BONUS_SRC) $(HEADER)
-	@make _checker_main
+$(CHECKER): $(LIBFT) $(BONUS_SRC) $(HEADER)
+	@make _checker_main CFLAGS="$(CFLAGS)"
 
 .PHONY: _checker_main
-_checker_main: $(LIBFT)
+_checker_main:
 	@echo "$(BLUE)[$(CHECKER)]\t./$(CHECKER)$(RESET)\t$(WHITE)compling...$(RESET)"
-	@make _checker_build
+	@make _checker_build CFLAGS="$(CFLAGS)"
 
 .PHONY: _checker_build
 _checker_build: $(BONUS_OBJ)
