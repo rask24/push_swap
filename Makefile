@@ -12,7 +12,7 @@ CXXFLAGS		= -std=c++17 -Wall -Wextra -Werror
 PROD_FLAGS		= -O3
 DEV_FLAGS		= -O0 -g -fsanitize=address,integer,undefined -D DEV
 LEAK_FLAGS		= -D LEAK
-DEPFLAGS		= -MMD -MP
+DEP_FLAGS		= -MMD -MP
 INCLUDE			= -I $(INC_DIR)
 
 # flag options
@@ -156,8 +156,10 @@ _checker_build: $(BONUS_OBJ)
 # util
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(INCLUDE) $(DEPFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) $(DEP_FLAGS) -c $< -o $@
 	@printf "$(GREEN)─$(RESET)"
+
+-include $(DEP)
 
 $(LIBFT): $(LIBFT_DIR)
 	@make -C $(@D)
@@ -226,5 +228,3 @@ $(GTEST_DIR):
 .PHONY: norm
 norm:
 	norminette $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
-
--include $(DEP)
