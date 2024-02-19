@@ -19,7 +19,7 @@ INCLUDE			= -I $(INC_DIR)
 # 1. PROD_FLAGS: flags for production
 # 2. DEV_FLAGS: flags for development
 # 3. LEAK_FLAGS: flags for checking leaks
-FLAGS_OPTION	= $(LEAK_FLAGS)
+FLAGS_OPTION	= $(PROD_FLAGS)
 
 # directories
 SRC_DIR			= src
