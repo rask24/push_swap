@@ -1,17 +1,25 @@
-# executable files / archive files
+# executable files
 NAME			= push_swap
 CHECKER			= checker
 TEST_NAME		= unit_tester
+
+# libraries
 LIBFT			= $(LIBFT_DIR)/libft.a
 
 # compilar options
 CFLAGS			= -Werror -Wextra -Wall
 CXXFLAGS		= -std=c++17 -Wall -Wextra -Werror
 PROD_FLAGS		= -O3
-DEV_FLAGS		= -g -fsanitize=address,integer,undefined -O0 -D DEV
-LEAK_FLAGS		= -O0 -D DEV -D LEAK
+DEV_FLAGS		= -O0 -g -fsanitize=address,integer,undefined -D DEV
+LEAK_FLAGS		= -D LEAK
 DEPFLAGS		= -MMD -MP
 INCLUDE			= -I $(INC_DIR)
+
+# flag options
+# 1. PROD_FLAGS: flags for production
+# 2. DEV_FLAGS: flags for development
+# 3. LEAK_FLAGS: flags for checking leaks
+FLAGS_OPTION	= $(PROD_FLAGS)
 
 # directories
 SRC_DIR			= src
@@ -55,6 +63,7 @@ OBJ_FILTER_MAIN	= $(filter-out $(BUILD_DIR)/main.o, $(patsubst $(SRC_DIR)/%.c, $
 
 # bonus source files
 BONUS_SRC		= $(SRC_DIR)/checker/checker_main.c \
+					$(SRC_DIR)/checker/sort_based_on_operation.c \
 					$(SRC_DIR)/initialization/check_args.c \
 					$(SRC_DIR)/initialization/exit_with_error.c \
 					$(SRC_DIR)/initialization/generate_stack.c \
@@ -64,9 +73,13 @@ BONUS_SRC		= $(SRC_DIR)/checker/checker_main.c \
 					$(SRC_DIR)/stack_operations/rotate.c \
 					$(SRC_DIR)/stack_operations/reverse_rotate.c \
 					$(SRC_DIR)/utils/get_content.c \
-					$(SRC_DIR)/utils/stack_size.c
+					$(SRC_DIR)/utils/stack_size.c \
+					$(SRC_DIR)/utils/clear_stack.c
 BONUS_OBJ		= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(BONUS_SRC))
 BONUS_DEP		= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(BONUS_SRC))
+
+# header files
+HEADER			= $(wildcard $(INC_DIR)/*.h)
 
 # test files
 TEST_SRC		= $(TEST_DIR)/test_check_args.cpp \
@@ -85,11 +98,11 @@ TEST_OBJ		= $(patsubst $(TEST_DIR)/%.cpp, $(TEST_BUILD_DIR)/%.o, $(TEST_SRC))
 GTEST_SRC		= $(GTEST_DIR)/gtest_main.cc $(GTEST_DIR)/gtest-all.cc
 GTEST_OBJ		= $(patsubst $(GTEST_DIR)/%.cc, $(TEST_BUILD_DIR)/%.o, $(GTEST_SRC))
 
-GTEST_VERSION	= 1.14.0
-GTEST_ARCHIVE	= v$(GTEST_VERSION).tar.gz
-GTEST_REPO_URL	= https://github.com/google/googletest/archive/refs/tags/$(GTEST_ARCHIVE)
-GTEST_SRC_DIR	= googletest-$(GTEST_VERSION)
-GTEST_FUSE_URL	= https://raw.githubusercontent.com/google/googletest/ec44c6c1675c25b9827aacd08c02433cccde7780/googletest/scripts/$(GTEST_FUSE)
+# google test version: 1.14.0
+GTEST_ARCHIVE	= v1.14.0.tar.gz
+GTEST_REPO_URL	= https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz
+GTEST_SRC_DIR	= googletest-1.14.0
+GTEST_FUSE_URL	= https://raw.githubusercontent.com/google/googletest/ec44c6c1675c25b9827aacd08c02433cccde7780/googletest/scripts/fuse_gtest_files.py
 GTEST_FUSE		= fuse_gtest_files.py
 
 # colors
@@ -104,37 +117,38 @@ MAGENTA			= \033[0;95m
 CYAN			= \033[0;96m
 WHITE			= \033[0;97m
 
-# flags options
-# 1. PROD_FLAGS: flags for production
-# 2. DEV_FLAGS: flags for development
-# 3. LEAK_FLAGS: flangs for checking leaks
-
 # rules for mandatory
-all: CFLAGS += $(PROD_FLAGS)
+.PHONY: all
+all: CFLAGS += $(FLAGS_OPTION)
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(SRC)
-	@make _main
+$(NAME): $(LIBFT) $(SRC) $(HEADER)
+	@make _main CFLAGS="$(CFLAGS)"
 
+.PHONY: _main
 _main:
 	@echo "$(BLUE)[$(NAME)]\t./$(NAME)$(RESET)\t$(WHITE)compling...$(RESET)"
-	@make _build
+	@make _build CFLAGS="$(CFLAGS)"
 
+.PHONY: _build
 _build: $(OBJ)
 	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $(NAME)
 	@echo "\n$(BLUE)[$(NAME)]\t./$(NAME)$(RESET)\t$(GREEN)compiled ✔$(RESET)"
 
 # rules for bonus
-bonus: CFLAGS += $(PROD_FLAGS)
+.PHONY: bonus
+bonus: CFLAGS += $(FLAGS_OPTION)
 bonus: $(CHECKER)
 
-$(CHECKER): $(LIBFT) $(BONUS_SRC)
-	@make _checker_main
+$(CHECKER): $(LIBFT) $(BONUS_SRC) $(HEADER)
+	@make _checker_main CFLAGS="$(CFLAGS)"
 
+.PHONY: _checker_main
 _checker_main:
 	@echo "$(BLUE)[$(CHECKER)]\t./$(CHECKER)$(RESET)\t$(WHITE)compling...$(RESET)"
-	@make _checker_build
+	@make _checker_build CFLAGS="$(CFLAGS)"
 
+.PHONY: _checker_build
 _checker_build: $(BONUS_OBJ)
 	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $(CHECKER)
 	@echo "\n$(BLUE)[$(CHECKER)]\t./$(CHECKER)$(RESET)\t$(GREEN)compiled ✔$(RESET)"
@@ -145,9 +159,13 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDE) $(DEPFLAGS) -c $< -o $@
 	@printf "$(GREEN)─$(RESET)"
 
-$(LIBFT):
+$(LIBFT): $(LIBFT_DIR)
 	@make -C $(@D)
 
+$(LIBFT_DIR):
+	@git submodule update --init
+
+.PHONY: clean
 clean:
 	@make clean -C $(LIBFT_DIR)
 	@$(RM) $(OBJ) $(DEP)
@@ -155,6 +173,7 @@ clean:
 	@$(RM) $(BONUS_OBJ) $(BONUS_DEP)
 	@echo "$(BLUE)[$(CHECKER)]\tobject files$(RESET)\t$(GREEN)deleted ✔$(RESET)"
 
+.PHONY: fclean
 fclean: clean
 	@make fclean -C $(LIBFT_DIR)
 	@$(RM) $(NAME)
@@ -162,32 +181,36 @@ fclean: clean
 	@$(RM) $(CHECKER)
 	@echo "$(BLUE)[$(CHECKER)]\t./$(NAME)$(RESET)\t$(GREEN)deleted ✔$(RESET)"
 
+.PHONY: re
 re: fclean all
 
 # rules for test
+.PHONY: test
 test: all $(GTEST_OBJ) $(TEST_OBJ)
-	@echo "$(BLUE)\ntest linking$(RESET)"
 	@$(CXX) -L $(LIBFT_DIR) -lft -lpthread $(OBJ_FILTER_MAIN) $(TEST_OBJ) $(GTEST_OBJ) -o $(TEST_NAME)
+	@echo "\n$(BLUE)[gtest]\t\t./$(TEST_NAME)$(RESET)\t$(GREEN)compiled ✔$(RESET)"
 	./$(TEST_NAME)
 
+.PHONY: test_clean
 test_clean:
-	@echo "$(BLUE)test cleaning$(RESET)"
 	@$(RM) -r $(TEST_BUILD_DIR)
+	@echo "$(BLUE)[gtest]\t\t./$(TEST_NAME)$(RESET)\t$(GREEN)deleted ✔$(RESET)"
 
+.PHONY: retest
 retest: test_clean test
 
 $(TEST_BUILD_DIR)/%.o: $(TEST_DIR)/%.cpp
 	@mkdir -p $(@D)
 	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $< -o $@
-	@printf "$(GREEN).$(RESET)"
+	@printf "$(GREEN)─$(RESET)"
 
 $(GTEST_OBJ): $(GTEST_DIR)
-	@echo "$(BLUE)test compiling$(RESET)"
+	@echo "$(BLUE)[gtest]\t\t./$(TEST_NAME)$(RESET)\t$(WHITE)compling...$(RESET)"
 	@mkdir -p $(@D)
 	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest-all.cc -o $(TEST_BUILD_DIR)/gtest-all.o
-	@printf "$(GREEN).$(RESET)"
+	@printf "$(GREEN)─$(RESET)"
 	@$(CXX) $(CXXFLAGS) -I $(TEST_DIR) $(INCLUDE) -c $(GTEST_DIR)/gtest_main.cc -o $(TEST_BUILD_DIR)/gtest_main.o
-	@printf "$(GREEN).$(RESET)"
+	@printf "$(GREEN)─$(RESET)"
 
 $(GTEST_DIR):
 	@echo "fetching google test"
@@ -200,9 +223,8 @@ $(GTEST_DIR):
 	@mv $(GTEST_DIR)/gtest/* $(GTEST_DIR)
 	@$(RM) -r $(GTEST_SRC_DIR) $(GTEST_DIR)/gtest $(GTEST_ARCHIVE) $(GTEST_FUSE)
 
+.PHONY: norm
 norm:
 	norminette $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
-
-.PHONY: all clean fclean re dev redev leak releak test norm title
 
 -include $(DEP)

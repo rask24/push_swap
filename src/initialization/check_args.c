@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:44:55 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/13 11:45:54 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/19 12:56:30 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ static bool	_has_duplicate(int argc, char **argv)
 
 int	check_args(int argc, char **argv)
 {
+	if (argc == 1)
+		exit(0);
 	if (_has_not_digit(argc, argv) || _has_overflow(argc, argv)
 		|| _has_duplicate(argc, argv))
 		exit_with_error();

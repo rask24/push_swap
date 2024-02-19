@@ -10,6 +10,14 @@ extern "C" {
 #include "sort.h"
 }
 
+TEST(is_sorted_stack, oneElement) {
+  t_stack *st;
+  t_content *c = new t_content({0, -1, 0, 0, 0, 0, 0, INIT, false});
+
+  st = ft_lstnew(c);
+  EXPECT_TRUE(is_sorted_stack(st));
+}
+
 // st: sorted
 // 0
 // 1
