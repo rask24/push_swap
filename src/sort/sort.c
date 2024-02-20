@@ -6,11 +6,10 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:10:35 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/11 12:54:21 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:18:25 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "sort.h"
 
 void	sort(t_stack **p_a, t_stack **p_b)

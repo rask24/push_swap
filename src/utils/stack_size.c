@@ -6,11 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:25:21 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:05:54 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:14:56 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "utils.h"
 
 int	stack_size(t_stack *stack)
 {
