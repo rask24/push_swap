@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    descriptive_statistics (2.5.1)
     diff-lcs (1.5.1)
     json (2.7.1)
     language_server-protocol (3.17.0.3)
@@ -50,6 +51,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  descriptive_statistics
   open3
   rspec
   rubocop-shopify
