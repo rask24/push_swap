@@ -161,11 +161,9 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 -include $(DEP)
 
-$(LIBFT): $(LIBFT_DIR)
-	@make -C $(@D)
-
-$(LIBFT_DIR):
+$(LIBFT):
 	@git submodule update --init
+	@make -C $(@D)
 
 .PHONY: clean
 clean:
