@@ -6,12 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:17:33 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/14 14:15:57 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:17:50 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "large_sort.h"
-#include "push_swap.h"
 
 static int	_calc_insertion_threshold(t_stack **p_a, t_stack *st_b)
 {

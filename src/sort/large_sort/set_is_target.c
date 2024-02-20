@@ -6,12 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:44:38 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/14 16:42:11 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:17:53 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "large_sort.h"
-#include "push_swap.h"
 
 static int	_calc_max_segment(t_stack *st_b)
 {

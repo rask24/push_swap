@@ -6,11 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:27:37 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/10 20:56:13 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:14:47 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "utils.h"
 
 int	get_first_index(t_stack **p_stack)
 {

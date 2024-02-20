@@ -6,12 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 22:57:28 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/14 14:31:29 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:17:46 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "large_sort.h"
-#include "push_swap.h"
 #include "stack_operations.h"
 
 static int	_calc_segment_id(int target, int n, int segs)

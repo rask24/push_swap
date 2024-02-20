@@ -6,11 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:28:54 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:05:21 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:15:51 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack_operations.h"
 
 void	swap_stack(t_stack **p_stack)
 {

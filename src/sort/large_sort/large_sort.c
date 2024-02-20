@@ -6,12 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:55:10 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/15 12:34:14 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:17:35 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "large_sort.h"
-#include "push_swap.h"
 #include "sort.h"
 #include "stack_operations.h"
 

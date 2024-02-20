@@ -6,11 +6,11 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:18:15 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/07 15:04:58 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:15:40 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack_operations.h"
 
 void	reverse_rotate_stack(t_stack **p_stack)
 {
