@@ -39,6 +39,14 @@ TEST(check_args, OneArgumentNonDigit) {
   EXPECT_EXIT(check_args(argc, argv), ::testing::ExitedWithCode(1), "Error\n");
 }
 
+TEST(check_args, OneArgumentEmptyString) {
+  int argc = 2;
+  const char *args[] = {"push_swap", ""};
+  char **argv = const_cast<char **>(args);
+
+  EXPECT_EXIT(check_args(argc, argv), ::testing::ExitedWithCode(1), "Error\n");
+}
+
 TEST(check_args, OneArgumentIncludingNonDigit) {
   int argc = 2;
   const char *args[] = {"push_swap", "42abc"};

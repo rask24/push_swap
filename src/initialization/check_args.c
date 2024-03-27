@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:44:55 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/20 14:19:12 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/03/27 13:07:53 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ static bool	_has_not_digit(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		errno = 0;
 		ft_strtol(argv[i], &end_ptr, 10);
-		if (*end_ptr)
+		if (*end_ptr || errno)
 			return (true);
 		i++;
 	}
