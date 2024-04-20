@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 10:43:16 by reasuke           #+#    #+#             */
-/*   Updated: 2024/04/20 15:21:20 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/04/20 15:30:34 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	_do_alined_operation(t_stack **p_a, t_stack **p_b,
 	ir_abs = ft_abs(get_content(opt_st_b)->rra_cost);
 	if (get_content(opt_st_b)->opt_method == RA_RB)
 	{
-		do_double_n_operations(p_a, p_b, ft_min(sf_abs, if_abs), operate_rr);
+		repeat_dual_stack_operations(p_a, p_b, ft_min(sf_abs, if_abs), operate_rr);
 		if (sf_abs > if_abs)
 			repeat_stack_operations(p_b, sf_abs - if_abs, operate_rb);
 		else if (sf_abs < if_abs)
@@ -45,7 +45,7 @@ static void	_do_alined_operation(t_stack **p_a, t_stack **p_b,
 	}
 	if (get_content(opt_st_b)->opt_method == RRA_RRB)
 	{
-		do_double_n_operations(p_a, p_b, ft_min(sr_abs, ir_abs), operate_rrr);
+		repeat_dual_stack_operations(p_a, p_b, ft_min(sr_abs, ir_abs), operate_rrr);
 		if (sr_abs > ir_abs)
 			repeat_stack_operations(p_b, sr_abs - ir_abs, operate_rrb);
 		else if (sr_abs < ir_abs)
