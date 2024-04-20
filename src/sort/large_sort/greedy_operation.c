@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 10:43:16 by reasuke           #+#    #+#             */
-/*   Updated: 2024/02/20 14:17:27 by reasuke          ###   ########.fr       */
+/*   Updated: 2024/04/20 16:01:25 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,53 +26,49 @@ static t_stack	*_find_opt_st_b(t_stack **p_b)
 static void	_do_alined_operation(t_stack **p_a, t_stack **p_b,
 		t_stack *opt_st_b)
 {
-	int	sf_abs;
-	int	sr_abs;
-	int	if_abs;
-	int	ir_abs;
+	int	n_a;
+	int	n_b;
 
-	sf_abs = ft_abs(get_content(opt_st_b)->rb_cost);
-	sr_abs = ft_abs(get_content(opt_st_b)->rrb_cost);
-	if_abs = ft_abs(get_content(opt_st_b)->ra_cost);
-	ir_abs = ft_abs(get_content(opt_st_b)->rra_cost);
 	if (get_content(opt_st_b)->opt_method == RA_RB)
 	{
-		do_double_n_operations(p_a, p_b, ft_min(sf_abs, if_abs), operate_rr);
-		if (sf_abs > if_abs)
-			do_single_n_operations(p_b, sf_abs - if_abs, operate_rb);
-		else if (sf_abs < if_abs)
-			do_single_n_operations(p_a, if_abs - sf_abs, operate_ra);
+		n_b = ft_abs(get_content(opt_st_b)->rb_cost);
+		n_a = ft_abs(get_content(opt_st_b)->ra_cost);
+		repeat_dual_stack_operations(p_a, p_b, ft_min(n_b, n_a), operate_rr);
+		if (n_b > n_a)
+			repeat_stack_operations(p_b, n_b - n_a, operate_rb);
+		else if (n_b < n_a)
+			repeat_stack_operations(p_a, n_a - n_b, operate_ra);
 	}
 	if (get_content(opt_st_b)->opt_method == RRA_RRB)
 	{
-		do_double_n_operations(p_a, p_b, ft_min(sr_abs, ir_abs), operate_rrr);
-		if (sr_abs > ir_abs)
-			do_single_n_operations(p_b, sr_abs - ir_abs, operate_rrb);
-		else if (sr_abs < ir_abs)
-			do_single_n_operations(p_a, ir_abs - sr_abs, operate_rra);
+		n_b = ft_abs(get_content(opt_st_b)->rrb_cost);
+		n_a = ft_abs(get_content(opt_st_b)->rra_cost);
+		repeat_dual_stack_operations(p_a, p_b, ft_min(n_b, n_a), operate_rrr);
+		if (n_b > n_a)
+			repeat_stack_operations(p_b, n_b - n_a, operate_rrb);
+		else if (n_b < n_a)
+			repeat_stack_operations(p_a, n_a - n_b, operate_rra);
 	}
 }
 
 static void	_do_mixed_operation(t_stack **p_a, t_stack **p_b, t_stack *opt_st_b)
 {
-	int	sf_abs;
-	int	sr_abs;
-	int	if_abs;
-	int	ir_abs;
+	int	n_a;
+	int	n_b;
 
-	sf_abs = ft_abs(get_content(opt_st_b)->rb_cost);
-	sr_abs = ft_abs(get_content(opt_st_b)->rrb_cost);
-	if_abs = ft_abs(get_content(opt_st_b)->ra_cost);
-	ir_abs = ft_abs(get_content(opt_st_b)->rra_cost);
 	if (get_content(opt_st_b)->opt_method == RRA_RB)
 	{
-		do_single_n_operations(p_b, sf_abs, operate_rb);
-		do_single_n_operations(p_a, ir_abs, operate_rra);
+		n_a = ft_abs(get_content(opt_st_b)->rra_cost);
+		n_b = ft_abs(get_content(opt_st_b)->rb_cost);
+		repeat_stack_operations(p_b, n_b, operate_rb);
+		repeat_stack_operations(p_a, n_a, operate_rra);
 	}
 	if (get_content(opt_st_b)->opt_method == RA_RRB)
 	{
-		do_single_n_operations(p_b, sr_abs, operate_rrb);
-		do_single_n_operations(p_a, if_abs, operate_ra);
+		n_a = ft_abs(get_content(opt_st_b)->ra_cost);
+		n_b = ft_abs(get_content(opt_st_b)->rrb_cost);
+		repeat_stack_operations(p_b, n_b, operate_rrb);
+		repeat_stack_operations(p_a, n_a, operate_ra);
 	}
 }
 
