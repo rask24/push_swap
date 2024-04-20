@@ -49,7 +49,7 @@ SRC				= $(SRC_DIR)/main.c \
 					$(SRC_DIR)/stack_operations/swap.c \
 					$(SRC_DIR)/stack_operations/rotate.c \
 					$(SRC_DIR)/stack_operations/reverse_rotate.c \
-					$(SRC_DIR)/stack_operations/do_single_n_operations.c \
+					$(SRC_DIR)/stack_operations/repeat_stack_operations.c \
 					$(SRC_DIR)/stack_operations/do_double_n_operations.c \
 					$(SRC_DIR)/utils/get_first_index.c \
 					$(SRC_DIR)/utils/get_second_index.c \
