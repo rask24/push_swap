@@ -7,6 +7,8 @@
 #include "gtest/gtest.h"
 
 extern "C" {
+#include <fcntl.h>
+
 #include "push_swap.h"
 #include "sort.h"
 }
