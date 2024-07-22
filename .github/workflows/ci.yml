@@ -14,6 +14,7 @@ jobs:
           python3 -m pip install norminette
       - name: Run Norminette
         run: make norm
+
   build:
     name: check allowed functions
     runs-on: macos-14
@@ -28,6 +29,7 @@ jobs:
         run: make bonus
       - name: check allowed_functions
         run: test/check_allowed_functions.sh
+
   unit_test:
     name: unit_test
     runs-on: macos-14
@@ -40,6 +42,7 @@ jobs:
         run: make
       - name: Unit test
         run: make test
+
   e2e_test:
     runs-on: macos-14
     steps:
@@ -62,8 +65,28 @@ jobs:
       - name: Run tests
         run: rake test
 
-
-      # - name: Upload coverage reports to Codecov
-      #   uses: codecov/codecov-action@v4.0.1
-      #   with:
-      #     token: ${{ secrets.CODECOV_TOKEN }}   
+  coverage:
+    name: Generate and Upload Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcovr
+      - name: Build with coverage
+        run: make coverage
+      - name: Run tests with coverage
+        run: make test
+      - name: Generate coverage report
+        run: make report_coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage
+          flags: unittests
+          fail_ci_if_error: true
