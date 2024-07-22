@@ -79,8 +79,6 @@ jobs:
           sudo apt-get install -y gcovr
       - name: Build with coverage
         run: make coverage
-      - name: Run tests with coverage
-        run: make test
       - name: Generate coverage report
         run: make report_coverage
       - name: Upload coverage to Codecov

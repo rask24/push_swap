@@ -27,6 +27,3 @@ clean_coverage:
 	@find $(BUILD_DIR) -name '*.gcno' -delete
 	@find $(BUILD_DIR) -name '*.gcda' -delete
 	@find . -name '*.gcov' -delete
-
-# Include clean_coverage in the main clean target
-clean: clean_coverage
