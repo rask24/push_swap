@@ -70,7 +70,7 @@ unit_tester
 en.subject.pdf
 
 # Google Test Source
-gtest/
+googletest/
 
 # Visualizer
 push_swap_visualizer/
