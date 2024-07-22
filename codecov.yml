@@ -25,7 +25,7 @@ ignore:
 comment:
   layout: "reach,diff,flags,files,footer"
   behavior: default
-  require_changes: yes
+  require_changes: no
 
 github_checks:
   annotations: yes
