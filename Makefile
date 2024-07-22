@@ -11,7 +11,9 @@ PROD_FLAGS		= -O3
 DEV_FLAGS		= -O0 -g -fsanitize=address,integer,undefined -D DEV
 LEAK_FLAGS		= -D LEAK
 DEP_FLAGS		= -MMD -MP
-INCLUDE			= -I $(INC_DIR)
+INCLUDE			= -I$(INC_DIR)
+LD_LIBS			= -L$(LIBFT_DIR)
+LD_FLAGS		= -lft
 
 # flag options
 # 1. PROD_FLAGS: flags for production
@@ -103,7 +105,7 @@ _main:
 
 .PHONY: _build
 _build: $(OBJ)
-	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $(NAME)
+	@$(CC) $(CFLAGS) $^ $(LD_LIBS) $(LD_FLAGS) -o $(NAME)
 	@echo "\n$(BLUE)[$(NAME)]\t./$(NAME)$(RESET)\t$(GREEN)compiled ✔$(RESET)"
 
 # rules for bonus
@@ -121,7 +123,7 @@ _checker_main:
 
 .PHONY: _checker_build
 _checker_build: $(BONUS_OBJ)
-	@$(CC) $(CFLAGS) $^ -L $(LIBFT_DIR) -lft -o $(CHECKER)
+	@$(CC) $(CFLAGS) $^ $(LD_LIBS) $(LD_FLAGS) -o $(CHECKER)
 	@echo "\n$(BLUE)[$(CHECKER)]\t./$(CHECKER)$(RESET)\t$(GREEN)compiled ✔$(RESET)"
 
 # util
