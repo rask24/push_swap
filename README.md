@@ -1,5 +1,6 @@
 <h1 align="center">Push Swap</h1>
 <p>This repository contains the implementation of the push_swap project, which focuses on sorting a stack of numbers using a limited set of actions.</p>
+<a href="https://codecov.io/gh/rask24/push_swap"><img src="https://codecov.io/gh/rask24/push_swap/branch/main/graph/badge.svg" /></a>
 <img src="https://img.shields.io/badge/norminette-passing-success"/> <img src="https://img.shields.io/badge/leaks-none-success" /> <img src="https://img.shields.io/badge/bonus-included-success"/>
 
 ### Algorithm
